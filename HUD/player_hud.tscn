@@ -1,0 +1,221 @@
+[gd_scene load_steps=4 format=3 uid="uid://ggw2l8ut2p7"]
+
+[ext_resource type="Theme" uid="uid://dt5juab580r1c" path="res://HUD/HUD.tres" id="1_42pf7"]
+[ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="2_njpnp"]
+[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="3_e4oi5"]
+
+[node name="PlayerHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 332.0
+offset_top = 34.0
+offset_right = 532.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme = ExtResource("1_42pf7")
+text = "Score: 69"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -542.0
+offset_top = 33.0
+offset_right = -342.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme = ExtResource("1_42pf7")
+text = "Health: 420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerStats" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 362.0
+offset_top = -97.0
+offset_right = 537.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DefenseIcon" type="Sprite2D" parent="PlayerStats"]
+position = Vector2(28, 23)
+texture = ExtResource("2_njpnp")
+hframes = 21
+vframes = 21
+frame = 46
+
+[node name="DefenseLabel" type="Label" parent="PlayerStats/DefenseIcon"]
+offset_left = -20.0
+offset_top = 23.0
+offset_right = 27.0
+offset_bottom = 46.0
+theme = ExtResource("1_42pf7")
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="AttackIcon" type="Sprite2D" parent="PlayerStats"]
+position = Vector2(72, 26)
+texture = ExtResource("3_e4oi5")
+hframes = 21
+vframes = 21
+frame = 345
+
+[node name="DefenseLabel" type="Label" parent="PlayerStats/AttackIcon"]
+offset_left = -20.0
+offset_top = 21.0
+offset_right = 27.0
+offset_bottom = 59.0
+theme = ExtResource("1_42pf7")
+text = "4
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MagicIcon" type="Sprite2D" parent="PlayerStats"]
+position = Vector2(118, 26)
+texture = ExtResource("3_e4oi5")
+hframes = 21
+vframes = 21
+frame = 333
+
+[node name="DefenseLabel" type="Label" parent="PlayerStats/MagicIcon"]
+offset_left = -25.0
+offset_top = 21.0
+offset_right = 22.0
+offset_bottom = 59.0
+theme = ExtResource("1_42pf7")
+text = "4
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MagicIcon2" type="Sprite2D" parent="PlayerStats"]
+position = Vector2(157, 26)
+texture = ExtResource("2_njpnp")
+hframes = 21
+vframes = 21
+frame = 180
+
+[node name="DefenseLabel" type="Label" parent="PlayerStats/MagicIcon2"]
+offset_left = -25.0
+offset_top = 21.0
+offset_right = 22.0
+offset_bottom = 59.0
+theme = ExtResource("1_42pf7")
+text = "4
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SideStats" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 943.0
+offset_top = 182.0
+offset_right = 983.0
+offset_bottom = 222.0
+
+[node name="KeyPanel" type="Panel" parent="SideStats"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_right = -8.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SideStats/KeyPanel"]
+position = Vector2(16, 16)
+texture = ExtResource("2_njpnp")
+hframes = 21
+vframes = 21
+frame = 263
+
+[node name="KeyLabel" type="Label" parent="SideStats/KeyPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -12.5
+offset_right = 132.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_42pf7")
+theme_override_font_sizes/font_size = 14
+text = "Keys: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PotionPanel" type="Panel" parent="SideStats"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 35.0
+offset_right = -8.0
+offset_bottom = 67.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="SideStats/PotionPanel"]
+position = Vector2(18, 15)
+texture = ExtResource("3_e4oi5")
+hframes = 21
+vframes = 21
+frame = 206
+
+[node name="KeyLabel" type="Label" parent="SideStats/PotionPanel/Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -23.5
+offset_right = 160.0
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_42pf7")
+theme_override_font_sizes/font_size = 14
+text = "Potions: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
