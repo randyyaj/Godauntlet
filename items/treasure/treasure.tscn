@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://duduq86hp1aho"]
+
+[ext_resource type="Script" path="res://items/treasure/treasure.gd" id="1_ev7ws"]
+[ext_resource type="Script" path="res://shared/modifier_resource.gd" id="2_d6rab"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="2_s1aqb"]
+[ext_resource type="Texture2D" uid="uid://dneci7yl7v4j3" path="res://items/treasure/chest_golden_open_full.png" id="4_472jq"]
+
+[sub_resource type="Resource" id="Resource_vm2fk"]
+script = ExtResource("2_d6rab")
+health = 0
+speed = 0
+damage = 0
+armor = 0
+magic_power = 0
+shot_power = 0
+shot_speed = 0
+points = 1000
+
+[sub_resource type="Resource" id="Resource_k7uhh"]
+script = ExtResource("2_s1aqb")
+id = &"Treasure"
+name = "Treasure"
+description = "Treasure"
+stackable = null
+is_consumable = true
+is_destructible = true
+modifiers = SubResource("Resource_vm2fk")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kalw"]
+size = Vector2(16, 16)
+
+[node name="Treasure" type="Node2D"]
+script = ExtResource("1_ev7ws")
+data = SubResource("Resource_k7uhh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_472jq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7kalw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
