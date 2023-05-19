@@ -8,41 +8,28 @@ const SPEED = 200.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
-func _physics_process(delta: float) -> void:
-	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
-	velocity = direction * SPEED
-	move_and_slide()
-
-
-func melee_attack() -> void:
-	# performs a short range melee attack
-	pass
-
-
-func shoot_projectile() -> void:
-	# fires projectile in facing direction
-	pass
-
-
-func magic_attack() -> void:
-	# consumes potion and performs an area of affect attack
-	pass
-
 signal sig_death
+
 signal sig_add_health(amount: int)
 signal sig_subtract_health(amount: int)
+signal sig_health_updated
+
 signal sig_add_speed(amount: int)
 signal sig_subtract_speed(amount: int)
 signal sig_reset_speed
+
+signal sig_add_score
+signal sig_subtract_score
+signal sig_score_updated
+
 signal sig_apply_modifier(property_name: StringName, operand: StringName, amount: int)
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
-@export var max_health := 0
+@export var max_health := 9999
 @export var max_damage := 0
 @export var max_speed := 0
-@export var health := 0
+@export var health := 9999
 @export var damage := 0
 @export var resist := []
 @export var score := 0
@@ -52,6 +39,8 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var sfx_hurt: AudioStream
 @export var sfx_death: AudioStream
 
+@onready var health_timer: Timer = $HealthTimer
+
 ## Connect signals to functions within script
 func _connect_signals():
 	sig_add_health.connect(add_health) 
@@ -59,12 +48,14 @@ func _connect_signals():
 	sig_add_speed.connect(add_speed)
 	sig_subtract_speed.connect(subtract_speed)
 	sig_reset_speed.connect(reset_speed)
+	sig_add_score.connect(add_score)
+	sig_subtract_score.connect(subtract_score)
 	sig_apply_modifier.connect(apply_modifier)
-
+	
 
 func _ready() -> void:
 	_connect_signals()
-	health = max_health
+	PlayerManager.player = self
 
 
 func add_health(amount: int) -> void:
@@ -73,12 +64,14 @@ func add_health(amount: int) -> void:
 			health = max_health
 		else:
 			health += amount
+		sig_health_updated.emit(health)
 
 
 func subtract_health(amount: int) -> void:
 	health -= amount
 	if health <= 0:
 		die()
+	sig_health_updated.emit(health)
 
 
 func add_speed(amount: int) -> void:
@@ -93,6 +86,16 @@ func subtract_speed(amount: int) -> void:
 
 func reset_speed() -> void:
 	speed = max_speed
+
+
+func add_score(amount: int) -> void:
+	score += amount
+	sig_score_updated.emit(score)
+
+
+func subtract_score(amount: int) -> void:
+	score -= amount
+	sig_score_updated.emit(score)
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -120,3 +123,28 @@ func die() -> void:
 		await audio_stream_player.finished
 	# await animation if there is an animation
 	emit_signal('sig_death')
+
+
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
+	velocity = direction * SPEED
+	move_and_slide()
+
+
+func melee_attack() -> void:
+	# performs a short range melee attack
+	pass
+
+
+func shoot_projectile() -> void:
+	# fires projectile in facing direction
+	pass
+
+
+func magic_attack() -> void:
+	# consumes potion and performs an area of affect attack
+	pass
+
+
+func _on_health_timer_timeout() -> void:
+	subtract_health(1)

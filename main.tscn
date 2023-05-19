@@ -1,12 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=4 format=3 uid="uid://b8twan08rtw1p"]
 
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="2_obwjf"]
+[ext_resource type="PackedScene" uid="uid://b5pu550fesp5c" path="res://ui/ui.tscn" id="3_4qxcd"]
 
 [node name="World" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_m0qbn")]
 position = Vector2(576, 320)
 
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="UI" parent="." instance=ExtResource("3_4qxcd")]
+metadata/_edit_use_anchors_ = true
+
 [node name="Treasure" parent="." instance=ExtResource("2_obwjf")]
 position = Vector2(680, 320)
+
+[node name="Treasure2" parent="." instance=ExtResource("2_obwjf")]
+position = Vector2(680, 376)
+
+[node name="Treasure3" parent="." instance=ExtResource("2_obwjf")]
+position = Vector2(576, 368)

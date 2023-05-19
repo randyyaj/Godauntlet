@@ -17,10 +17,10 @@ func _ready() -> void:
 
 
 func apply_modifier(body: Node2D) -> Node2D:
-	body.sig_apply_modifier.emit('score', '+', 1000)
-	print(body.score)
+	body.sig_add_score.emit(1000)
 	return body
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	emit_signal('sig_item_collided', body)
+	await emit_signal('sig_item_collided', body)
+	queue_free()
