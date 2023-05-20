@@ -16,12 +16,13 @@ var collisionShape: CollisionShape2D = CollisionShape2D.new()
 func connect_signals() -> void:
 	area2D.body_entered.connect(_on_area_2d_body_entered)
 
-
 func _ready() -> void:
 	connect_signals()
 	sprite2D.texture = texture
 	collisionShape.shape = RectangleShape2D.new()
 	collisionShape.shape.size = sprite2D.get_rect().size
+	area2D.set_collision_layer_value(5, true) # Items Layer
+	area2D.set_collision_mask_value(2, true)  # Player Mask
 	area2D.add_child(collisionShape)
 	add_child(sprite2D)
 	add_child(area2D)

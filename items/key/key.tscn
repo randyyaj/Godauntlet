@@ -7,6 +7,6 @@
 atlas = ExtResource("2_anpql")
 region = Rect2(248, 320, 16, 16)
 
-[node name="key" type="Node2D"]
+[node name="Key" type="Node2D"]
 script = ExtResource("1_jsm8c")
 texture = SubResource("AtlasTexture_6yurl")

@@ -1,5 +1,5 @@
 extends Node
-class_name Key
+class_name Food
 
 signal sig_item_collided(body: Node2D)
 
@@ -14,6 +14,7 @@ var collisionShape: CollisionShape2D = CollisionShape2D.new()
 
 ## Connect all signals here
 func connect_signals() -> void:
+	sig_item_collided.connect(apply_modifier) 
 	area2D.body_entered.connect(_on_area_2d_body_entered)
 
 
@@ -27,9 +28,13 @@ func _ready() -> void:
 	area2D.add_child(collisionShape)
 	add_child(sprite2D)
 	add_child(area2D)
+	
+	
+func apply_modifier(body: Node2D) -> Node2D:
+	body.sig_add_health.emit(modifier_amount)
+	return body
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	emit_signal('sig_item_collided', body)
-	body.sig_add_key.emit(1)
 	queue_free()
