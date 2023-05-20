@@ -15,7 +15,7 @@ is_destructible = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ckvil"]
 atlas = ExtResource("2_pvjdx")
-region = Rect2(96, 16, 16, 16)
+region = Rect2(96, 144, 16, 16)
 
 [node name="Potion" type="Node2D"]
 script = ExtResource("1_hykfc")

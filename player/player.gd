@@ -29,7 +29,7 @@ signal sig_defense_updated
 signal sig_add_bomb
 signal sig_bombs_updated
 
-signal sig_add_keys
+signal sig_add_key
 signal sig_keys_updated
 
 signal sig_apply_modifier(property_name: StringName, operand: StringName, amount: int)
@@ -74,7 +74,7 @@ func _connect_signals():
 	sig_set_defense.connect(set_defense)
 	sig_reset_defense.connect(reset_defense)
 	sig_add_bomb.connect(add_bombs)
-	sig_add_keys.connect(add_keys)
+	sig_add_key.connect(add_key)
 
 func _ready() -> void:
 	_connect_signals()
@@ -205,7 +205,7 @@ func subtract_bombs(amount: int) -> void:
 	sig_bombs_updated.emit(bombs)
 
 
-func add_keys(amount: int) -> void:
+func add_key(amount: int) -> void:
 	keys += amount
 	sig_keys_updated.emit(keys)
 

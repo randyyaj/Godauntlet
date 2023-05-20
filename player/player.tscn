@@ -8,6 +8,8 @@ size = Vector2(10, 14)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
+collision_mask = 29
 script = ExtResource("1_vlum0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
