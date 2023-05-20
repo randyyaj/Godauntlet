@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl6q5m43u2a4j"]
+
+[ext_resource type="Script" path="res://items/potion/potion.gd" id="1_hykfc"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="2_2fchl"]
+[ext_resource type="Texture2D" uid="uid://7rq5hv7vx7wi" path="res://items/potion/potions.png" id="2_pvjdx"]
+
+[sub_resource type="Resource" id="Resource_pprbd"]
+script = ExtResource("2_2fchl")
+id = &""
+name = ""
+description = ""
+stackable = false
+is_consumable = false
+is_destructible = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckvil"]
+atlas = ExtResource("2_pvjdx")
+region = Rect2(96, 16, 16, 16)
+
+[node name="Potion" type="Node2D"]
+script = ExtResource("1_hykfc")
+data = SubResource("Resource_pprbd")
+texture = SubResource("AtlasTexture_ckvil")

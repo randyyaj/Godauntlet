@@ -18,14 +18,6 @@ signal sig_set_magic(amount: int)
 signal sig_reset_magic
 signal sig_magic_updated
 
-signal sig_set_projectile_damage(amount: int)
-signal sig_reset_projectile_damage
-signal sig_projectile_damage_updated
-
-signal sig_set_projectile_speed(amount: int)
-signal sig_reset_projectile_speed
-signal sig_projectile_speed_updated
-
 signal sig_set_damage(amount: int)
 signal sig_reset_damage
 signal sig_damage_updated
@@ -49,8 +41,6 @@ const DEFAULT_DAMAGE = 1
 const DEFAULT_HEALTH = 9999
 const DEFAULT_DEFENSE = 0
 const DEFAULT_MAGIC = 0
-const DEFAULT_PROJECTILE_DAMAGE = 1
-const DEFAULT_PROJECTILE_SPEED = 200
 
 @export var max_health := 9999
 @export var max_damage := 0
@@ -58,12 +48,9 @@ const DEFAULT_PROJECTILE_SPEED = 200
 @export var health := 9999
 @export var damage := 0
 @export var defense := 0
-#@export var resist := []
 @export var score := 0
 @export var speed: int = DEFAULT_SPEED
 @export var magic: int = 0
-@export var projectile_damage: int = 0
-@export var projectile_speed: int = 0
 @export var bombs: int = 0
 @export var keys: int = 0
 
@@ -83,8 +70,6 @@ func _connect_signals():
 	sig_set_speed.connect(set_speed)
 	sig_reset_speed.connect(reset_speed)
 	sig_set_magic.connect(set_magic)
-	sig_set_projectile_damage.connect(set_projectile_damage)
-	sig_set_projectile_speed.connect(set_projectile_speed)
 	sig_set_damage.connect(set_damage)
 	sig_set_defense.connect(set_defense)
 	sig_reset_defense.connect(reset_defense)
@@ -188,26 +173,6 @@ func set_magic(amount: int) -> void:
 func reset_magic() -> void:
 	magic = DEFAULT_MAGIC
 	sig_magic_updated.emit(magic)
-
-
-func set_projectile_damage(amount: int) -> void:
-	projectile_damage = amount
-	sig_projectile_damage_updated.emit(magic)
-
-
-func reset_projectile_damage() -> void:
-	projectile_damage = DEFAULT_PROJECTILE_DAMAGE
-	sig_projectile_damage_updated.emit(magic)
-
-
-func set_projectile_speed(amount: int) -> void:
-	projectile_speed = amount
-	sig_projectile_speed_updated.emit(projectile_speed)
-
-
-func reset_projectile_speed() -> void:
-	projectile_speed = DEFAULT_PROJECTILE_SPEED
-	sig_projectile_speed_updated.emit(projectile_speed)
 	
 
 func set_damage(amount: int) -> void:
