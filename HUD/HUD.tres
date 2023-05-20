@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dt5juab580r1c"]
+
+[ext_resource type="FontFile" uid="uid://do6gygiu13wds" path="res://HUD/castlevania-bloodlines.ttf" id="1_l4lg4"]
+
+[resource]
+default_font = ExtResource("1_l4lg4")
+Label/fonts/font = ExtResource("1_l4lg4")
