@@ -7,7 +7,7 @@ extends Control
 @onready var magic_label: Label = $PlayerStats/MagicIcon/MagicLabel
 @onready var speed_label: Label = $PlayerStats/SpeedIcon/SpeedLabel
 @onready var key_label: Label = $SideStats/KeyContainer/KeyLabel
-@onready var potion_label: Label = $SideStats/PotionContainer/PotionLabel
+@onready var bomb_label = $SideStats/BombContainer/BombLabel
 
 signal sig_update_health(health)
 signal sig_update_score(score)
@@ -51,8 +51,8 @@ func _ready() -> void:
 	attack_label.text = str(player.damage)
 	magic_label.text = str(player.magic)
 	speed_label.text = str(player.speed)
-	key_label.text = str(player.keys)
-	potion_label.text = str(player.bombs)
+	key_label.text = 'KEYS: ' + str(player.keys)
+	bomb_label.text ='BOMBS: ' +  str(player.bombs)
 
 
 func update_health(health: int) -> void:
@@ -80,9 +80,9 @@ func update_speed(amount: int) -> void:
 	
 	
 func update_keys(amount: int) -> void:
-	key_label.text = str(amount)
+	key_label.text = 'KEYS: ' + str(amount)
 	
 	
 func update_bombs(amount: int) -> void:
-	potion_label.text = str(amount)
+	bomb_label.text = 'BOMBS: ' + str(amount)
 	

@@ -91,6 +91,7 @@ texture = SubResource("AtlasTexture_bjydy")
 stretch_mode = 4
 
 [node name="AttackLabel" type="Label" parent="PlayerStats/AttackIcon"]
+layout_mode = 0
 offset_left = -6.0
 offset_top = 24.0
 offset_right = 24.0
@@ -107,6 +108,7 @@ texture = SubResource("AtlasTexture_jduex")
 stretch_mode = 4
 
 [node name="MagicLabel" type="Label" parent="PlayerStats/MagicIcon"]
+layout_mode = 0
 offset_left = -6.0
 offset_top = 24.0
 offset_right = 24.0
@@ -123,6 +125,7 @@ texture = SubResource("AtlasTexture_4q5we")
 stretch_mode = 4
 
 [node name="SpeedLabel" type="Label" parent="PlayerStats/SpeedIcon"]
+layout_mode = 0
 offset_left = -6.0
 offset_top = 24.0
 offset_right = 24.0
@@ -157,14 +160,14 @@ text = "Keys: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PotionContainer" type="HBoxContainer" parent="SideStats"]
+[node name="BombContainer" type="HBoxContainer" parent="SideStats"]
 layout_mode = 2
 
-[node name="PotionTextureRect" type="TextureRect" parent="SideStats/PotionContainer"]
+[node name="BombTextureRect" type="TextureRect" parent="SideStats/BombContainer"]
 layout_mode = 2
 texture = SubResource("AtlasTexture_12tnb")
 
-[node name="PotionLabel" type="Label" parent="SideStats/PotionContainer"]
+[node name="BombLabel" type="Label" parent="SideStats/BombContainer"]
 layout_mode = 2
 theme = ExtResource("1_42pf7")
 theme_override_font_sizes/font_size = 14
