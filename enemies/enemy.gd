@@ -7,7 +7,7 @@ signal sig_death
 @export var damage := 1
 @export var defense := 0
 @export var score := 100
-@export var speed: int = 100
+@export var speed: int = 50
 
 @onready var navigation_agent_2d = $NavigationAgent2D
 
@@ -18,6 +18,7 @@ func _connect_signals():
 
 func _ready():
 	_connect_signals()
+	add_to_group('enemies', true)
 	
 
 func _physics_process(delta: float) -> void:
