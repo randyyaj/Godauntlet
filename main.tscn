@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=5 format=3 uid="uid://b8twan08rtw1p"]
 
 [ext_resource type="PackedScene" uid="uid://bmeov71jjfhgr" path="res://LevelDesign/tile_map_test.tscn" id="1_joev2"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="2_obwjf"]
 [ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_tt866"]
-[ext_resource type="PackedScene" uid="uid://bl6q5m43u2a4j" path="res://items/potions/potion.tscn" id="5_jkmg6"]
 
 [node name="World" type="Node"]
 
@@ -21,6 +20,3 @@ position = Vector2(680, 320)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
-
-[node name="HealthPotion" parent="." instance=ExtResource("5_jkmg6")]
-position = Vector2(537, 247)
