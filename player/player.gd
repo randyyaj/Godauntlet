@@ -46,7 +46,7 @@ const DEFAULT_MAGIC = 0
 @export var max_damage := 0
 @export var max_speed := 0
 @export var health := 9999
-@export var damage := 0
+@export var damage := 1
 @export var defense := 0
 @export var score := 0
 @export var speed: int = DEFAULT_SPEED
@@ -58,7 +58,11 @@ const DEFAULT_MAGIC = 0
 @export var sfx_hurt: AudioStream
 @export var sfx_death: AudioStream
 
+@export var projectile: PackedScene
+
 @onready var health_timer: Timer = $HealthTimer
+
+var projectile_direction
 
 ## Connect signals to functions within script
 func _connect_signals():
@@ -83,6 +87,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
+	if (direction != Vector2.ZERO):
+		projectile_direction = direction
 	velocity = direction * speed
 	move_and_slide()
 
@@ -145,9 +151,16 @@ func melee_attack() -> void:
 	pass
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		shoot_projectile()
+
 func shoot_projectile() -> void:
 	# fires projectile in facing direction
-	pass
+	var bullet = projectile.instantiate()
+	bullet.global_position = global_position
+	bullet.direction = projectile_direction
+	get_tree().get_root().add_child(bullet)
 
 
 func use_bomb() -> void:

@@ -68,6 +68,8 @@ melee={
 2d_physics/layer_3="Walls"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Items"
+2d_physics/layer_6="Spawner"
+2d_physics/layer_7="Projectile"
 
 [rendering]
 

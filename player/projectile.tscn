@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp0x0ktit7xmg"]
+
+[ext_resource type="Script" path="res://player/projectile.gd" id="1_yws1k"]
+[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="2_uxhl4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdu24"]
+atlas = ExtResource("2_uxhl4")
+region = Rect2(200, 416, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nirh5"]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 64
+collision_mask = 13
+script = ExtResource("1_yws1k")
+texture = SubResource("AtlasTexture_bdu24")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nirh5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="TimeToLiveTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="TimeToLiveTimer" to="." method="_on_time_to_live_timer_timeout"]

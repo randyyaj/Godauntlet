@@ -45,18 +45,18 @@ modifier_amount = 500
 position = Vector2(640, 256)
 potion_type = 1
 duration = 20
-modifier_amount = 100
+modifier_amount = 3
 
 [node name="ArmorPotion" parent="." instance=ExtResource("5_60mi8")]
 position = Vector2(704, 256)
 duration = 20
-modifier_amount = 20
+modifier_amount = 5
 
 [node name="MagicPotion" parent="." instance=ExtResource("5_60mi8")]
 position = Vector2(768, 256)
 potion_type = 2
 duration = 20
-modifier_amount = 20
+modifier_amount = 5
 
 [node name="Key" parent="." instance=ExtResource("6_qvfnd")]
 position = Vector2(512, 256)
