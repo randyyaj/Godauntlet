@@ -11,6 +11,7 @@ region = Rect2(80, 488, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cspui"]
 
 [node name="Spawner" type="StaticBody2D"]
+collision_layer = 32
 script = ExtResource("1_6byjh")
 enemy_spawn = ExtResource("2_ctjhg")
 texture = SubResource("AtlasTexture_oo73v")
