@@ -18,6 +18,7 @@ func _connect_signals():
 
 func _ready():
 	_connect_signals()
+	add_to_group('enemies', true)
 	
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://nef3abjc2xj6"]
+
+[ext_resource type="Script" path="res://spawner/spawner.gd" id="1_6byjh"]
+[ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="2_ctjhg"]
+[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="3_mlrsq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo73v"]
+atlas = ExtResource("3_mlrsq")
+region = Rect2(80, 488, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cspui"]
+
+[node name="Spawner" type="StaticBody2D"]
+script = ExtResource("1_6byjh")
+enemy_spawn = ExtResource("2_ctjhg")
+texture = SubResource("AtlasTexture_oo73v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cspui")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
