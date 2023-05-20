@@ -15,14 +15,14 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
-
 [autoload]
 
 Global="*res://globals/global.gd"
 PlayerManager="*res://globals/player_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [input]
 
@@ -68,3 +68,7 @@ melee={
 2d_physics/layer_3="Walls"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
