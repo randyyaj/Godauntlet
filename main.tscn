@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=12 format=3 uid="uid://b8twan08rtw1p"]
 
 [ext_resource type="PackedScene" uid="uid://bmeov71jjfhgr" path="res://LevelDesign/tile_map_test.tscn" id="1_joev2"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://j2b72g6l2n2j" path="res://items/bomb/bomb.tscn" id="7_k3n6m"]
 [ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="8_iuon0"]
 [ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="9_e1702"]
+[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="10_32jo0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_26vgs"]
 vertices = PackedVector2Array(1144, 16, 1144, 632, 8, 632, 8, 16)
@@ -69,3 +70,6 @@ modifier_amount = 500
 
 [node name="Enemy" parent="." instance=ExtResource("9_e1702")]
 position = Vector2(512, 384)
+
+[node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
+position = Vector2(576, 448)
