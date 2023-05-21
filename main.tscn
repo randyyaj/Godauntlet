@@ -206,8 +206,9 @@ position = Vector2(512, 256)
 [node name="Food" parent="." instance=ExtResource("8_iuon0")]
 position = Vector2(448, 256)
 
-[node name="Enemy" parent="." instance=ExtResource("9_e1702")]
+[node name="RangedEnemy" parent="." instance=ExtResource("9_e1702")]
 position = Vector2(512, 384)
+is_ranged = true
 
 [node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(576, 448)
