@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=7 format=3 uid="uid://b8twan08rtw1p"]
 
 [ext_resource type="PackedScene" uid="uid://bmeov71jjfhgr" path="res://LevelDesign/tile_map_test.tscn" id="1_joev2"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="2_obwjf"]
 [ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_tt866"]
 [ext_resource type="PackedScene" uid="uid://bl6q5m43u2a4j" path="res://items/potion/potion.tscn" id="5_60mi8"]
+[ext_resource type="PackedScene" uid="uid://fjkb6pqxc6lq" path="res://ui/Menus/pause_menu.tscn" id="6_vyk5v"]
 
 [node name="World" type="Node"]
 
@@ -21,6 +22,9 @@ position = Vector2(640, 320)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_vyk5v")]
+visible = false
 
 [node name="SpeedPotion" parent="." instance=ExtResource("5_60mi8")]
 position = Vector2(576, 256)
