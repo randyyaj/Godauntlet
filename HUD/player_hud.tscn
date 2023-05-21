@@ -67,9 +67,9 @@ vertical_alignment = 1
 [node name="PlayerStats" type="HBoxContainer" parent="."]
 layout_mode = 1
 offset_left = 348.0
-offset_top = 571.0
+offset_top = 1062.0
 offset_right = 810.0
-offset_bottom = 618.0
+offset_bottom = 1109.0
 theme_override_constants/separation = 72
 
 [node name="RangedPower" type="TextureRect" parent="PlayerStats"]
