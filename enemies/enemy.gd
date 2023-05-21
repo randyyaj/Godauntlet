@@ -27,9 +27,25 @@ func _ready():
 	
 
 func _physics_process(delta: float) -> void:
+	var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
 	navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
-	velocity = (navigation_agent_2d.get_next_path_position() - global_position) * speed * delta
-	move_and_slide()
+	velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
+	#move_and_slide()
+	var collision = move_and_collide(velocity)
+	
+	#	if distanceToTarget > 20:
+#		navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
+#	else:
+#		navigation_agent_2d.target_reached.emit(true)
+#	var collision = get_last_slide_collision()
+#	print ("Collided with: " + collision.get_collider().name)
+#	print ("Collider position: ", collision.get_collider().global_position)
+	
+	if (collision):
+		var body = collision.get_collider()
+		if (body == PlayerManager.player):
+			body.sig_subtract_health.emit(damage) # Inflict damage to player
+
 
 
 func add_health(amount: int) -> void:
@@ -50,4 +66,5 @@ func subtract_health(amount: int) -> void:
 
 func die() -> void:
 	sig_death.emit()
+	PlayerManager.player.sig_add_score.emit(score)
 	queue_free()

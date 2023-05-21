@@ -23,4 +23,7 @@ shape = SubResource("RectangleShape2D_lbedo")
 [node name="HealthTimer" type="Timer" parent="."]
 autostart = true
 
+[node name="CanFireTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
