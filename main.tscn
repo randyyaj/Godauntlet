@@ -23,6 +23,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(8, 16, 8, 632, 846, 629
 
 [node name="Level1Easy" parent="." instance=ExtResource("11_dd8gi")]
 
+[node name="Door" parent="." instance=ExtResource("11_iodx8")]
+z_index = 1
+position = Vector2(336, 304)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_26vgs")
 
@@ -40,7 +44,10 @@ position = Vector2(640, 320)
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
 
 [node name="SpeedPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(902, 203)
+position = Vector2(640, 256)
+potion_type = 3
+duration = 10
+modifier_amount = 300
 
 [node name="StrengthPotion" parent="." instance=ExtResource("6_t34pn")]
 position = Vector2(719, 325)

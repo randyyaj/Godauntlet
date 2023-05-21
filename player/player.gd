@@ -137,7 +137,83 @@ func _ready() -> void:
 	PlayerManager.player = self
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
-	attack_offset = sprite_2d.texture.get_size().x if sprite_2d else 16
+	
+
+func _physics_process(delta: float) -> void:
+	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
+	if (direction != Vector2.ZERO):
+		projectile_direction = direction
+	velocity = direction.normalized() * speed * delta
+	
+	var collision = move_and_collide(velocity)
+	if (collision):
+		check_door_collision(collision.get_collider())
+	
+	if (is_shooting and can_fire):
+		shoot_projectile()
+
+func check_door_collision(body: Node2D) -> void:
+	if (body is Door):
+		if (keys > 0):
+			subtract_keys(1)
+			body.queue_free()
+
+func add_health(amount: int) -> void:
+	if (health < max_health):
+		if (health + amount > max_health):
+			health = max_health
+		else:
+			health += amount
+		sig_health_updated.emit(health)
+
+
+func subtract_health(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+	sig_health_updated.emit(health)
+
+
+func add_score(amount: int) -> void:
+	score += amount
+	sig_score_updated.emit(score)
+
+
+func subtract_score(amount: int) -> void:
+	score -= amount
+	sig_score_updated.emit(score)
+
+
+## Wrapper function allows us to specify a property name and apply operator logic on it
+## Example emit_signal('health', '+', 4) | emit_signal('health', 'ADD', 4) | emit_signal('health', 'PLUS', 2) | emit_signal('health', 'add', 2)
+func apply_modifier(property_name: StringName, operand: StringName, amount: int) -> void:
+	var property: Variant = get(property_name)
+	match operand:
+		&"+", &"ADD", &"add", &"PLUS", &"plus":
+			set(property_name, property + amount)
+		&"-", &"SUBTRACT", &"subtract", &"MINUS", &"minus":
+			set(property_name, property - amount)
+		&"*", &"MULTIPLY", &"multiply":
+			set(property_name, property * amount)
+		&"/", &"DIVIDE", &"divide":
+			set(property_name, property / amount)
+		_:
+			pass
+
+
+func die() -> void:
+	health = 0
+	if (sfx_death):
+		audio_stream_player.stream = sfx_death
+		audio_stream_player.play()
+		await audio_stream_player.finished
+	# await animation if there is an animation
+	emit_signal('sig_death')
+
+
+func melee_attack() -> void:
+	# performs a short range melee attack
+	pass
 
 
 func _input(event: InputEvent) -> void:
@@ -203,20 +279,70 @@ func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
 	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
-		bombs -= 1
-		var bodies = blast_radius.get_overlapping_bodies()
+		subtract_bombs(1)
+		var bodies = bomb_damage_area.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
 
-func die() -> void:
-	health = 0
-	if (sfx_death):
-		audio_stream_player.stream = sfx_death
-		audio_stream_player.play()
-		await audio_stream_player.finished
-	# await animation if there is an animation
-	sig_death.emit()
+func set_speed(amount: int) -> void:
+	speed = amount
+	sig_speed_updated.emit(speed)
+
+
+func reset_speed() -> void:
+	speed = max_speed
+	sig_speed_updated.emit(speed)
+	
+
+func set_magic(amount: int) -> void:
+	magic = amount
+	sig_magic_updated.emit(magic)
+
+
+func reset_magic() -> void:
+	magic = DEFAULT_MAGIC
+	sig_magic_updated.emit(magic)
+	
+
+func set_damage(amount: int) -> void:
+	damage = amount
+	sig_damage_updated.emit(damage)
+
+
+func reset_damage() -> void:
+	damage = DEFAULT_DAMAGE
+	sig_damage_updated.emit(damage)
+
+
+func set_defense(amount: int) -> void:
+	defense = amount
+	sig_defense_updated.emit(defense)
+
+
+func reset_defense() -> void:
+	defense = DEFAULT_DEFENSE
+	sig_defense_updated.emit(defense)
+	
+
+func add_bombs(amount: int) -> void:
+	bombs += amount
+	sig_bombs_updated.emit(bombs)
+
+
+func subtract_bombs(amount: int) -> void:
+	bombs -= amount
+	sig_bombs_updated.emit(bombs)
+
+
+func add_key(amount: int) -> void:
+	keys += amount
+	sig_keys_updated.emit(keys)
+
+
+func subtract_keys(amount: int) -> void:
+	keys -= amount
+	sig_keys_updated.emit(keys)
 
 
 func _on_health_timer_timeout() -> void:
