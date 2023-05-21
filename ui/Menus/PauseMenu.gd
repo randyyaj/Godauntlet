@@ -1,6 +1,7 @@
 extends Control
 
 @onready var are_you_sure = $Panel/AreYouSure
+@onready var song_label = $SongLabel
 
 var is_paused = false
 
@@ -11,6 +12,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	song_label.text = str(MusicPlayer.currentSongName)
 	if Input.is_action_just_pressed("pause") and not is_paused:
 		Engine.time_scale = 0
 		visible = true

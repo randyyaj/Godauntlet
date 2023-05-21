@@ -1,9 +1,14 @@
-[gd_resource type="Resource" script_class="MusicCollection" load_steps=4 format=3 uid="uid://blmwoowv3kcpv"]
+[gd_resource type="Resource" script_class="MusicCollection" load_steps=9 format=3 uid="uid://blmwoowv3kcpv"]
 
 [ext_resource type="Script" path="res://Music/MusicCollection.gd" id="1_1w45f"]
 [ext_resource type="Resource" uid="uid://b66lofy7cd1y0" path="res://Music/Tracks/Track1.tres" id="1_hgemt"]
 [ext_resource type="Resource" uid="uid://d15eqv3og8vlg" path="res://Music/Tracks/Track2.tres" id="2_ub6wv"]
+[ext_resource type="Resource" uid="uid://twyxslskxvgp" path="res://Music/Tracks/Track3.tres" id="3_i8mpg"]
+[ext_resource type="Resource" uid="uid://cefcurrf0royh" path="res://Music/Tracks/Track4.tres" id="4_05ygt"]
+[ext_resource type="Resource" uid="uid://bixh74hlr0xon" path="res://Music/Tracks/Track5.tres" id="5_l2qdu"]
+[ext_resource type="Resource" uid="uid://b887i41bykia8" path="res://Music/Tracks/Track6.tres" id="6_wlcti"]
+[ext_resource type="Resource" uid="uid://42u1iea5o45i" path="res://Music/Tracks/Track7.tres" id="7_h232v"]
 
 [resource]
 script = ExtResource("1_1w45f")
-MusicList = Array[Resource("res://Music/MusicTrack.gd")]([ExtResource("1_hgemt"), ExtResource("2_ub6wv")])
+MusicList = Array[Resource("res://Music/MusicTrack.gd")]([ExtResource("1_hgemt"), ExtResource("2_ub6wv"), ExtResource("3_i8mpg"), ExtResource("4_05ygt"), ExtResource("5_l2qdu"), ExtResource("6_wlcti"), ExtResource("7_h232v")])
