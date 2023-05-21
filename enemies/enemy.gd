@@ -8,7 +8,7 @@ signal sig_subtract_health
 
 @export var max_health := 3
 @export var health := 3
-@export var damage := 1
+@export var damage := 10
 @export var defense := 0
 @export var score := 100
 @export var speed: int = 50
