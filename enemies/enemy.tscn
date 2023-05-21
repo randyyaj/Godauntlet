@@ -7,9 +7,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4dua"]
 
 [node name="Enemy" type="CharacterBody2D"]
-y_sort_enabled = true
 collision_layer = 8
-collision_mask = 143
+collision_mask = 15
 script = ExtResource("1_fit13")
 projectile = ExtResource("2_fdrxu")
 

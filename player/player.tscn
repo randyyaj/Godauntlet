@@ -33,10 +33,10 @@ autostart = true
 
 [node name="CanFireTimer" type="Timer" parent="."]
 
-[node name="BlastRadius" type="Area2D" parent="."]
+[node name="BombExplosionArea" type="Area2D" parent="."]
 collision_mask = 8
 
-[node name="BlastRadiusShape" type="CollisionShape2D" parent="BlastRadius"]
+[node name="BombCollisionShape" type="CollisionShape2D" parent="BombExplosionArea"]
 shape = SubResource("CircleShape2D_vp0hc")
 
 [node name="DoorDetector" type="Area2D" parent="." groups=["Player"]]

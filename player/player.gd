@@ -5,10 +5,25 @@ signal sig_death
 signal sig_health_updated
 signal sig_score_updated
 signal sig_speed_updated
+
+signal sig_set_shot_speed(amount: int)
+signal sig_reset_shot_speed
 signal sig_shot_speed_updated
+
+signal sig_set_magic_power(amount: int)
+signal sig_reset_magic_power
 signal sig_magic_power_updated
+
+signal sig_set_power(amount: int)
+signal sig_reset_power
 signal sig_power_updated
+
+signal sig_set_shot_power(amount: int)
+signal sig_reset_shot_power
 signal sig_shot_power_updated
+
+signal sig_set_defense(amount: int)
+signal sig_reset_defense
 signal sig_defense_updated
 signal sig_bombs_updated
 signal sig_keys_updated
@@ -16,102 +31,20 @@ signal sig_fire_rate_updated
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
-@export var default_health := 700
-@export var default_power := 1
-@export var default_speed := 200
-@export var default_shot_power := 1
-@export var default_shot_speed := 200
-@export var default_magic_power := 0
-@export var default_defense := 0
-@export var default_fire_rate := .25
-
 @export var max_health := 9999
-@export var max_power := 3
-@export var max_speed := 500
-@export var max_shot_power := 3
-@export var max_shot_speed := 500
-@export var max_magic_power := 3
-@export var max_defense := 3
-@export var max_fire_rate := .1
-
-@export var health := default_health :
-	get:
-		return health
-	set(value):
-		health = value
-		sig_health_updated.emit(health)
-		if (health <= 0):
-			die()
-		
-@export var power := 1 :
-	get:
-		return power
-	set(value):
-		power = value
-		sig_power_updated.emit(power)
-		
-@export var shot_power := 1 :
-	get:
-		return shot_power
-	set(value):
-		shot_power = value
-		sig_shot_power_updated.emit(shot_power)
-
-@export var defense := 0 :
-	get:
-		return defense
-	set(value):
-		defense = value
-		sig_defense_updated.emit(defense)
-		
-@export var score := 0:
-	get:
-		return score
-	set(value):
-		score = value
-		sig_score_updated.emit(score)
-		
-@export var speed: int = 200 : 
-	get:
-		return speed
-	set(value):
-		speed = value
-		sig_speed_updated.emit(speed)
-
-@export var shot_speed := 200 : 
-	get:
-		return shot_speed
-	set(value):
-		shot_speed = value
-		sig_shot_speed_updated.emit(shot_speed)
-		
-@export var magic_power: int = 1 : 
-	get:
-		return magic_power
-	set(value):
-		magic_power = value
-		sig_magic_power_updated.emit(magic_power)
-		
-@export var bombs: int = 0 : 
-	get:
-		return bombs
-	set(value):
-		bombs = value
-		sig_bombs_updated.emit(bombs)
-		
-@export var keys: int = 0 : 
-	get:
-		return keys
-	set(value):
-		keys = value
-		sig_keys_updated.emit(keys)
-
-@export var fire_rate: float = 0.25 : 
-	get:
-		return fire_rate
-	set(value):
-		fire_rate = value
-		sig_fire_rate_updated.emit(fire_rate)
+@export var max_power := 0
+@export var max_speed := 900
+@export var health := 9999
+@export var power := 1
+@export var shot_power := 1
+@export var defense := 0
+@export var score := 0
+@export var speed: int = 200
+@export var shot_speed := 200
+@export var magic_power: int = 1
+@export var bombs: int = 0
+@export var keys: int = 0
+@export var fire_rate: float = 0.25
 
 @export var sfx_shoot: AudioStream
 @export var sfx_hurt: AudioStream
@@ -120,17 +53,33 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var attack_offset := 16
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
-@onready var blast_radius =$BlastRadius
-@onready var blast_radius_shape: CollisionShape2D = $BlastRadius/BlastRadiusShape
-
-@onready var attack_area: Area2D = $AttackArea
-@onready var attack_timer: Timer = $AttackTimer
-@onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackAreaCollision
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var bomb_explosion_area = $BombExplosionArea
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
 var can_fire := true
+
+## Connect signals to functions within script
+func _connect_signals():
+	sig_add_health.connect(add_health) 
+	sig_subtract_health.connect(subtract_health)
+	sig_add_score.connect(add_score)
+	sig_subtract_score.connect(subtract_score)
+	sig_apply_modifier.connect(apply_modifier)
+	sig_set_speed.connect(set_speed)
+	sig_reset_speed.connect(reset_speed)
+	sig_set_shot_speed.connect(set_shot_speed)
+	sig_reset_shot_speed.connect(reset_shot_speed)
+	sig_set_magic_power.connect(set_magic_power)
+	sig_reset_magic_power.connect(reset_magic_power)
+	sig_set_power.connect(set_power)
+	sig_reset_power.connect(reset_power)
+	sig_set_shot_power.connect(set_shot_power)
+	sig_reset_shot_power.connect(reset_shot_power)
+	sig_set_defense.connect(set_defense)
+	sig_reset_defense.connect(reset_defense)
+	sig_add_bomb.connect(add_bombs)
+	sig_add_key.connect(add_key)
 
 
 func _ready() -> void:
@@ -152,11 +101,13 @@ func _physics_process(delta: float) -> void:
 	if (is_shooting and can_fire):
 		shoot_projectile()
 
+
 func check_door_collision(body: Node2D) -> void:
 	if (body is Door):
 		if (keys > 0):
 			subtract_keys(1)
 			body.queue_free()
+
 
 func add_health(amount: int) -> void:
 	if (health < max_health):
@@ -186,7 +137,7 @@ func subtract_score(amount: int) -> void:
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
 ## Example emit_signal('health', '+', 4) | emit_signal('health', 'ADD', 4) | emit_signal('health', 'PLUS', 2) | emit_signal('health', 'add', 2)
-func apply_modifier(property_name: StringName, operand: StringName, amount: int) -> void:
+func apply_modifier(property_name: StringName, operand: StringName, amount: int, duration: float) -> void:
 	var property: Variant = get(property_name)
 	match operand:
 		&"+", &"ADD", &"add", &"PLUS", &"plus":
@@ -197,6 +148,8 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int)
 			set(property_name, property * amount)
 		&"/", &"DIVIDE", &"divide":
 			set(property_name, property / amount)
+		&"=", &"ASSIGN":
+			set(property_name, amount)
 		_:
 			pass
 
@@ -268,7 +221,6 @@ func shoot_projectile() -> void:
 	var bullet = projectile.instantiate()
 	bullet.power = shot_power
 	bullet.speed = shot_speed
-	bullet.is_bouncy = true
 	bullet.global_position = global_position
 	bullet.direction = projectile_direction
 	get_tree().get_root().add_child(bullet)
@@ -280,7 +232,7 @@ func use_bomb() -> void:
 	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
 		subtract_bombs(1)
-		var bodies = bomb_damage_area.get_overlapping_bodies()
+		var bodies = bomb_explosion_area.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
@@ -295,24 +247,44 @@ func reset_speed() -> void:
 	sig_speed_updated.emit(speed)
 	
 
-func set_magic(amount: int) -> void:
-	magic = amount
-	sig_magic_updated.emit(magic)
+func set_magic_power(amount: int) -> void:
+	magic_power = amount
+	sig_magic_power_updated.emit(magic_power)
 
 
-func reset_magic() -> void:
-	magic = DEFAULT_MAGIC
-	sig_magic_updated.emit(magic)
+func reset_magic_power() -> void:
+	magic_power = 1
+	sig_magic_power_updated.emit(magic_power)
 	
 
-func set_damage(amount: int) -> void:
-	damage = amount
-	sig_damage_updated.emit(damage)
+func set_shot_power(amount: int) -> void:
+	shot_power = amount
+	sig_shot_power_updated.emit(shot_power)
 
 
-func reset_damage() -> void:
-	damage = DEFAULT_DAMAGE
-	sig_damage_updated.emit(damage)
+func reset_shot_power() -> void:
+	shot_power = 1
+	sig_shot_power_updated.emit(shot_power)
+	
+
+func set_shot_speed(amount: int) -> void:
+	shot_speed = amount
+	sig_shot_speed_updated.emit(shot_speed)
+
+
+func reset_shot_speed() -> void:
+	shot_speed = 1
+	sig_shot_speed_updated.emit(shot_speed)
+
+
+func set_power(amount: int) -> void:
+	power = amount
+	sig_power_updated.emit(power)
+
+
+func reset_power() -> void:
+	power = 1
+	sig_power_updated.emit(power)
 
 
 func set_defense(amount: int) -> void:
@@ -321,7 +293,7 @@ func set_defense(amount: int) -> void:
 
 
 func reset_defense() -> void:
-	defense = DEFAULT_DEFENSE
+	defense = 0
 	sig_defense_updated.emit(defense)
 	
 

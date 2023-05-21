@@ -21,6 +21,8 @@ func _connect_signals():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	power = player.shot_power
+	speed = player.shot_speed
 	sprite_2d.texture = texture
 	time_to_live_timer.wait_time = time_to_live
 	time_to_live_timer.start()
