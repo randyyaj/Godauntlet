@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxpb4ajpuv8kx"
-path="res://.godot/imported/0x72_DungeonTilesetII_v1.6.png-143d2387b9bd7da94badcb70b879d7ad.ctex"
+uid="uid://co2gxfa6ns6wc"
+path="res://.godot/imported/DarkDungeon.png-d3f3118ef7416e37ca3b0a0091d7f5ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Tilesets/0x72_DungeonTilesetII_v1.6.png"
-dest_files=["res://.godot/imported/0x72_DungeonTilesetII_v1.6.png-143d2387b9bd7da94badcb70b879d7ad.ctex"]
+source_file="res://Art/Tilesets/DarkDungeon.png"
+dest_files=["res://.godot/imported/DarkDungeon.png-d3f3118ef7416e37ca3b0a0091d7f5ad.ctex"]
 
 [params]
 

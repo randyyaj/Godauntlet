@@ -50,19 +50,23 @@ const DEFAULT_MAGIC = 0
 @export var defense := 0
 @export var score := 0
 @export var speed: int = DEFAULT_SPEED
-@export var magic: int = 0
+@export var magic: int = 1
 @export var bombs: int = 0
 @export var keys: int = 0
+@export var fire_rate: float = 0.25
 
 @export var sfx_shoot: AudioStream
 @export var sfx_hurt: AudioStream
 @export var sfx_death: AudioStream
-
 @export var projectile: PackedScene
 
 @onready var health_timer: Timer = $HealthTimer
+@onready var can_fire_timer = $CanFireTimer
+@onready var bomb_damage_area = $BombDamageArea
 
-var projectile_direction
+var projectile_direction = Vector2.DOWN
+var is_shooting := false
+var can_fire := true
 
 ## Connect signals to functions within script
 func _connect_signals():
@@ -80,9 +84,12 @@ func _connect_signals():
 	sig_add_bomb.connect(add_bombs)
 	sig_add_key.connect(add_key)
 
+
 func _ready() -> void:
 	_connect_signals()
 	PlayerManager.player = self
+	can_fire_timer.wait_time = fire_rate
+	can_fire_timer.start()
 	
 
 func _physics_process(delta: float) -> void:
@@ -91,6 +98,9 @@ func _physics_process(delta: float) -> void:
 		projectile_direction = direction
 	velocity = direction * speed
 	move_and_slide()
+	
+	if (is_shooting and can_fire):
+		shoot_projectile()
 
 
 func add_health(amount: int) -> void:
@@ -153,7 +163,14 @@ func melee_attack() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("shoot"):
-		shoot_projectile()
+		is_shooting = true
+
+	if event.is_action_released("shoot"):
+		is_shooting = false
+	
+	if event.is_action_pressed("bomb"):
+		use_bomb()
+	
 
 func shoot_projectile() -> void:
 	# fires projectile in facing direction
@@ -161,11 +178,17 @@ func shoot_projectile() -> void:
 	bullet.global_position = global_position
 	bullet.direction = projectile_direction
 	get_tree().get_root().add_child(bullet)
+	can_fire = false
 
 
 func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
-	pass
+	# if magic level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic power
+	if (bombs != 0):
+		bombs -= 1
+		var bodies = bomb_damage_area.get_overlapping_bodies()
+		for body in bodies:
+			body.die()
 
 
 func set_speed(amount: int) -> void:
@@ -230,3 +253,7 @@ func subtract_keys(amount: int) -> void:
 
 func _on_health_timer_timeout() -> void:
 	subtract_health(1)
+
+
+func _on_can_fire_timer_timeout():
+	can_fire = true

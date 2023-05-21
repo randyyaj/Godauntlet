@@ -12,16 +12,16 @@ region = Rect2(80, 488, 16, 16)
 
 [node name="Spawner" type="StaticBody2D"]
 collision_layer = 32
+collision_mask = 3
 script = ExtResource("1_6byjh")
 enemy_spawn = ExtResource("2_ctjhg")
 texture = SubResource("AtlasTexture_oo73v")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cspui")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
