@@ -38,36 +38,36 @@ position = Vector2(640, 320)
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
 
 [node name="SpeedPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(576, 256)
+position = Vector2(640, 256)
 potion_type = 3
 duration = 10
 modifier_amount = 500
 
 [node name="StrengthPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(640, 256)
+position = Vector2(704, 256)
 potion_type = 1
 duration = 20
 modifier_amount = 3
 
 [node name="ArmorPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(704, 256)
+position = Vector2(768, 256)
 duration = 20
 modifier_amount = 5
 
 [node name="MagicPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(768, 256)
+position = Vector2(832, 256)
 potion_type = 2
 duration = 20
 modifier_amount = 5
 
 [node name="Key" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(512, 256)
+position = Vector2(576, 256)
 
 [node name="Bomb" parent="." instance=ExtResource("7_k3n6m")]
-position = Vector2(448, 256)
+position = Vector2(512, 256)
 
 [node name="Food" parent="." instance=ExtResource("8_iuon0")]
-position = Vector2(384, 256)
+position = Vector2(448, 256)
 modifier_amount = 500
 
 [node name="Enemy" parent="." instance=ExtResource("9_e1702")]
@@ -75,4 +75,8 @@ position = Vector2(512, 384)
 
 [node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(576, 448)
+spawn_rate = 3
+
+[node name="Spawner2" parent="." instance=ExtResource("10_32jo0")]
+position = Vector2(336, 248)
 spawn_rate = 3
