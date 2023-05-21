@@ -78,6 +78,7 @@ bomb={
 2d_physics/layer_5="Items"
 2d_physics/layer_6="Spawner"
 2d_physics/layer_7="Projectile"
+2d_physics/layer_8="Doors"
 
 [rendering]
 

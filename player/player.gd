@@ -97,12 +97,20 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
 	if (direction != Vector2.ZERO):
 		projectile_direction = direction
-	velocity = direction * speed
-	move_and_slide()
+	velocity = direction.normalized() * speed * delta
+	
+	var collision = move_and_collide(velocity)
+	if (collision):
+		check_door_collision(collision.get_collider())
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
 
+func check_door_collision(body: Node2D) -> void:
+	if (body is Door):
+		if (keys > 0):
+			subtract_keys(1)
+			body.queue_free()
 
 func add_health(amount: int) -> void:
 	if (health < max_health):
@@ -186,7 +194,7 @@ func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
 	# if magic level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic power
 	if (bombs != 0):
-		bombs -= 1
+		subtract_bombs(1)
 		var bodies = bomb_damage_area.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
@@ -238,7 +246,7 @@ func add_bombs(amount: int) -> void:
 
 
 func subtract_bombs(amount: int) -> void:
-	bombs += amount
+	bombs -= amount
 	sig_bombs_updated.emit(bombs)
 
 
@@ -248,7 +256,7 @@ func add_key(amount: int) -> void:
 
 
 func subtract_keys(amount: int) -> void:
-	keys += amount
+	keys -= amount
 	sig_keys_updated.emit(keys)
 
 
