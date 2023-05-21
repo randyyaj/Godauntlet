@@ -50,7 +50,7 @@ const DEFAULT_MAGIC = 0
 @export var defense := 0
 @export var score := 0
 @export var speed: int = DEFAULT_SPEED
-@export var magic: int = 0
+@export var magic: int = 1
 @export var bombs: int = 0
 @export var keys: int = 0
 @export var fire_rate: float = 0.25
@@ -62,6 +62,7 @@ const DEFAULT_MAGIC = 0
 
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
+@onready var bomb_damage_area = $BombDamageArea
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -167,6 +168,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_released("shoot"):
 		is_shooting = false
 	
+	if event.is_action_pressed("bomb"):
+		use_bomb()
+	
 
 func shoot_projectile() -> void:
 	# fires projectile in facing direction
@@ -179,8 +183,12 @@ func shoot_projectile() -> void:
 
 func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
-	# if magic level is MAX(3) call enemies group die() wiping all current enemy on screen
-	pass
+	# if magic level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic power
+	if (bombs != 0):
+		bombs -= 1
+		var bodies = bomb_damage_area.get_overlapping_bodies()
+		for body in bodies:
+			body.die()
 
 
 func set_speed(amount: int) -> void:

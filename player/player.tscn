@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c68w2sftvjej0"]
+[gd_scene load_steps=6 format=3 uid="uid://c68w2sftvjej0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vlum0"]
 [ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_l4mr6"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbedo"]
 size = Vector2(10, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp0hc"]
+radius = 64.4981
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -24,6 +27,12 @@ shape = SubResource("RectangleShape2D_lbedo")
 autostart = true
 
 [node name="CanFireTimer" type="Timer" parent="."]
+
+[node name="BombDamageArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="BombCollisionShape" type="CollisionShape2D" parent="BombDamageArea"]
+shape = SubResource("CircleShape2D_vp0hc")
 
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
