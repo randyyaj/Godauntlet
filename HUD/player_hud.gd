@@ -30,8 +30,8 @@ func connect_signals() -> void:
 	player.sig_health_updated.connect(update_health)
 	player.sig_score_updated.connect(update_score)
 	player.sig_defense_updated.connect(update_defense)
-	player.sig_damage_updated.connect(update_attack)
-	player.sig_magic_updated.connect(update_magic)
+	player.sig_power_updated.connect(update_attack)
+	player.sig_magic_power_updated.connect(update_magic_power)
 	player.sig_speed_updated.connect(update_speed)
 	player.sig_keys_updated.connect(update_keys)
 	player.sig_bombs_updated.connect(update_bombs)
@@ -48,8 +48,8 @@ func _ready() -> void:
 	health_label.text = 'HEALTH: ' + str(player.health)
 	score_label.text = 'SCORE: ' + str(player.score)
 	defense_label.text = str(player.defense)
-	attack_label.text = str(player.damage)
-	magic_label.text = str(player.magic)
+	attack_label.text = str(player.power)
+	magic_label.text = str(player.magic_power)
 	speed_label.text = str(player.speed)
 	key_label.text = 'KEYS: ' + str(player.keys)
 	bomb_label.text ='BOMBS: ' +  str(player.bombs)
@@ -71,7 +71,7 @@ func update_attack(amount: int) -> void:
 	attack_label.text = str(amount)
 	
 	
-func update_magic(amount: int) -> void:
+func update_magic_power(amount: int) -> void:
 	magic_label.text = str(amount)
 	
 	

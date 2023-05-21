@@ -28,10 +28,10 @@ autostart = true
 
 [node name="CanFireTimer" type="Timer" parent="."]
 
-[node name="BombDamageArea" type="Area2D" parent="."]
+[node name="BombExplosionArea" type="Area2D" parent="."]
 collision_mask = 8
 
-[node name="BombCollisionShape" type="CollisionShape2D" parent="BombDamageArea"]
+[node name="BombCollisionShape" type="CollisionShape2D" parent="BombExplosionArea"]
 shape = SubResource("CircleShape2D_vp0hc")
 
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
