@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicCollection" load_steps=4 format=3 uid="uid://blmwoowv3kcpv"]
+
+[ext_resource type="Script" path="res://Music/MusicCollection.gd" id="1_1w45f"]
+[ext_resource type="Resource" uid="uid://b66lofy7cd1y0" path="res://Music/Tracks/Track1.tres" id="1_hgemt"]
+[ext_resource type="Resource" uid="uid://d15eqv3og8vlg" path="res://Music/Tracks/Track2.tres" id="2_ub6wv"]
+
+[resource]
+script = ExtResource("1_1w45f")
+MusicList = Array[Resource("res://Music/MusicTrack.gd")]([ExtResource("1_hgemt"), ExtResource("2_ub6wv")])

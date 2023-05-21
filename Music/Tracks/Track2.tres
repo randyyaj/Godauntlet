@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://d15eqv3og8vlg"]
+
+[ext_resource type="AudioStream" uid="uid://b7dsu25l5n8sa" path="res://Music/Tracks/Eggy Toast - Crater.mp3" id="1_j88mr"]
+[ext_resource type="Script" path="res://Music/MusicTrack.gd" id="1_tb3gp"]
+
+[resource]
+script = ExtResource("1_tb3gp")
+Song = ExtResource("1_j88mr")
+SongDescription = "Eggy Toast - Crater"

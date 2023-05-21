@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2710fwmjjx6c"
+path="res://.godot/imported/HoliznaCC0 - Red Skies.mp3-eb83ae608097b30fd56f76f82ecb529a.mp3str"
+
+[deps]
+
+source_file="res://Music/Tracks/HoliznaCC0 - Red Skies.mp3"
+dest_files=["res://.godot/imported/HoliznaCC0 - Red Skies.mp3-eb83ae608097b30fd56f76f82ecb529a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
