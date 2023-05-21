@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddjbgtkyvjedr"]
+
+[ext_resource type="Script" path="res://LevelDesign/door.gd" id="1_hubvt"]
+[ext_resource type="Texture2D" uid="uid://copvp7wrbwv5t" path="res://LevelDesign/door_closed.png" id="2_63nt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf2cg"]
+size = Vector2(32, 16)
+
+[node name="Door" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 128
+collision_mask = 75
+script = ExtResource("1_hubvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_lf2cg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_63nt0")

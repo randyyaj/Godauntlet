@@ -7,8 +7,9 @@
 size = Vector2(16, 10)
 
 [node name="Enemy" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_layer = 8
-collision_mask = 15
+collision_mask = 143
 script = ExtResource("1_fit13")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
