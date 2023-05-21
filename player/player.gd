@@ -94,9 +94,10 @@ func _physics_process(delta: float) -> void:
 		projectile_direction = direction
 	velocity = direction.normalized() * speed * delta
 	
-	var collision = move_and_collide(velocity)
-	if (collision):
-		check_door_collision(collision.get_collider())
+	if (not is_shooting):
+		var collision = move_and_collide(velocity)
+		if (collision):
+			check_door_collision(collision.get_collider())
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
