@@ -8,12 +8,11 @@ extends CharacterBody2D
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var time_to_live_timer = $TimeToLiveTimer
-@onready var time_to_live = 3
+@onready var time_to_live = 5
 @onready var sprite_2d = $Sprite2D
 
 var direction = Vector2.ZERO
-var angleChange = 45
-var restitution = 0.8
+
 
 func _connect_signals():
 	time_to_live_timer.timeout.connect(_on_time_to_live_timer_timeout)
@@ -21,8 +20,6 @@ func _connect_signals():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	power = player.shot_power
-	speed = player.shot_speed
 	sprite_2d.texture = texture
 	time_to_live_timer.wait_time = time_to_live
 	time_to_live_timer.start()
