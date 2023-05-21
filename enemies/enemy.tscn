@@ -3,8 +3,7 @@
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_fit13"]
 [ext_resource type="Texture2D" uid="uid://c4wqe1flj5mq2" path="res://enemies/chort_idle_anim_f2.png" id="2_p8jni"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkeqw"]
-size = Vector2(16, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4dua"]
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
@@ -15,7 +14,7 @@ script = ExtResource("1_fit13")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
-shape = SubResource("RectangleShape2D_lkeqw")
+shape = SubResource("CircleShape2D_n4dua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_p8jni")

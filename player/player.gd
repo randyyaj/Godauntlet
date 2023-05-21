@@ -257,3 +257,10 @@ func _on_health_timer_timeout() -> void:
 
 func _on_can_fire_timer_timeout():
 	can_fire = true
+
+#checking for doors. If area entered, delete the fence and subtract a key
+func _on_door_detector_body_entered(body):
+	if body.is_in_group("Door") and (keys >= 1):
+		subtract_keys(-1)
+		body.queue_free()
+	pass # Replace with function body.
