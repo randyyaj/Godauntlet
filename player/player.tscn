@@ -13,7 +13,7 @@ radius = 64.4981
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 29
+collision_mask = 157
 script = ExtResource("1_vlum0")
 projectile = ExtResource("2_l4mr6")
 
@@ -28,10 +28,10 @@ autostart = true
 
 [node name="CanFireTimer" type="Timer" parent="."]
 
-[node name="BombDamageArea" type="Area2D" parent="."]
+[node name="BombExplosionArea" type="Area2D" parent="."]
 collision_mask = 8
 
-[node name="BombCollisionShape" type="CollisionShape2D" parent="BombDamageArea"]
+[node name="BombCollisionShape" type="CollisionShape2D" parent="BombExplosionArea"]
 shape = SubResource("CircleShape2D_vp0hc")
 
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

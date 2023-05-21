@@ -8,13 +8,8 @@ class_name ItemResource
 @export var is_consumable: bool = false
 @export var is_destructible: bool = false
 @export var texture: AtlasTexture
-@export var modifiers: ModifierResource
+@export var modifiers: Array[Modifier]
 
-# Inherited Method Child Class must implement
-func use(target) -> void:
-	print('Implement Me!')
-
-
-# Inherited Method Child Class must implement
-func on_collide(body: Node2D) -> void:
-	print('Implement Me!')
+func apply_modifiers(body: PhysicsBody2D) -> void:
+	for modifier in modifiers:
+		modifier.apply(body)

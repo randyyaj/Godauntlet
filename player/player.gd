@@ -14,13 +14,21 @@ signal sig_set_speed(amount: int)
 signal sig_reset_speed
 signal sig_speed_updated
 
-signal sig_set_magic(amount: int)
-signal sig_reset_magic
-signal sig_magic_updated
+signal sig_set_shot_speed(amount: int)
+signal sig_reset_shot_speed
+signal sig_shot_speed_updated
 
-signal sig_set_damage(amount: int)
-signal sig_reset_damage
-signal sig_damage_updated
+signal sig_set_magic_power(amount: int)
+signal sig_reset_magic_power
+signal sig_magic_power_updated
+
+signal sig_set_power(amount: int)
+signal sig_reset_power
+signal sig_power_updated
+
+signal sig_set_shot_power(amount: int)
+signal sig_reset_shot_power
+signal sig_shot_power_updated
 
 signal sig_set_defense(amount: int)
 signal sig_reset_defense
@@ -36,21 +44,17 @@ signal sig_apply_modifier(property_name: StringName, operand: StringName, amount
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
-const DEFAULT_SPEED = 200.0
-const DEFAULT_DAMAGE = 1
-const DEFAULT_HEALTH = 9999
-const DEFAULT_DEFENSE = 0
-const DEFAULT_MAGIC = 0
-
 @export var max_health := 9999
-@export var max_damage := 0
-@export var max_speed := 0
+@export var max_power := 0
+@export var max_speed := 900
 @export var health := 9999
-@export var damage := 1
+@export var power := 1
+@export var shot_power := 1
 @export var defense := 0
 @export var score := 0
-@export var speed: int = DEFAULT_SPEED
-@export var magic: int = 1
+@export var speed: int = 200
+@export var shot_speed := 200
+@export var magic_power: int = 1
 @export var bombs: int = 0
 @export var keys: int = 0
 @export var fire_rate: float = 0.25
@@ -62,7 +66,7 @@ const DEFAULT_MAGIC = 0
 
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
-@onready var bomb_damage_area = $BombDamageArea
+@onready var bomb_explosion_area = $BombExplosionArea
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -77,8 +81,14 @@ func _connect_signals():
 	sig_apply_modifier.connect(apply_modifier)
 	sig_set_speed.connect(set_speed)
 	sig_reset_speed.connect(reset_speed)
-	sig_set_magic.connect(set_magic)
-	sig_set_damage.connect(set_damage)
+	sig_set_shot_speed.connect(set_shot_speed)
+	sig_reset_shot_speed.connect(reset_shot_speed)
+	sig_set_magic_power.connect(set_magic_power)
+	sig_reset_magic_power.connect(reset_magic_power)
+	sig_set_power.connect(set_power)
+	sig_reset_power.connect(reset_power)
+	sig_set_shot_power.connect(set_shot_power)
+	sig_reset_shot_power.connect(reset_shot_power)
 	sig_set_defense.connect(set_defense)
 	sig_reset_defense.connect(reset_defense)
 	sig_add_bomb.connect(add_bombs)
@@ -90,17 +100,27 @@ func _ready() -> void:
 	PlayerManager.player = self
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
-	
+
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
 	if (direction != Vector2.ZERO):
 		projectile_direction = direction
-	velocity = direction * speed
-	move_and_slide()
+	velocity = direction.normalized() * speed * delta
+	
+	var collision = move_and_collide(velocity)
+	if (collision):
+		check_door_collision(collision.get_collider())
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
+
+
+func check_door_collision(body: Node2D) -> void:
+	if (body is Door):
+		if (keys > 0):
+			subtract_keys(1)
+			body.queue_free()
 
 
 func add_health(amount: int) -> void:
@@ -131,7 +151,7 @@ func subtract_score(amount: int) -> void:
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
 ## Example emit_signal('health', '+', 4) | emit_signal('health', 'ADD', 4) | emit_signal('health', 'PLUS', 2) | emit_signal('health', 'add', 2)
-func apply_modifier(property_name: StringName, operand: StringName, amount: int) -> void:
+func apply_modifier(property_name: StringName, operand: StringName, amount: int, duration: float) -> void:
 	var property: Variant = get(property_name)
 	match operand:
 		&"+", &"ADD", &"add", &"PLUS", &"plus":
@@ -142,6 +162,8 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int)
 			set(property_name, property * amount)
 		&"/", &"DIVIDE", &"divide":
 			set(property_name, property / amount)
+		&"=", &"ASSIGN":
+			set(property_name, amount)
 		_:
 			pass
 
@@ -175,6 +197,8 @@ func _input(event: InputEvent) -> void:
 func shoot_projectile() -> void:
 	# fires projectile in facing direction
 	var bullet = projectile.instantiate()
+	bullet.power = shot_power
+	bullet.speed = shot_speed
 	bullet.global_position = global_position
 	bullet.direction = projectile_direction
 	get_tree().get_root().add_child(bullet)
@@ -183,10 +207,10 @@ func shoot_projectile() -> void:
 
 func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
-	# if magic level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic power
+	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
-		bombs -= 1
-		var bodies = bomb_damage_area.get_overlapping_bodies()
+		subtract_bombs(1)
+		var bodies = bomb_explosion_area.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
@@ -201,24 +225,44 @@ func reset_speed() -> void:
 	sig_speed_updated.emit(speed)
 	
 
-func set_magic(amount: int) -> void:
-	magic = amount
-	sig_magic_updated.emit(magic)
+func set_magic_power(amount: int) -> void:
+	magic_power = amount
+	sig_magic_power_updated.emit(magic_power)
 
 
-func reset_magic() -> void:
-	magic = DEFAULT_MAGIC
-	sig_magic_updated.emit(magic)
+func reset_magic_power() -> void:
+	magic_power = 1
+	sig_magic_power_updated.emit(magic_power)
 	
 
-func set_damage(amount: int) -> void:
-	damage = amount
-	sig_damage_updated.emit(damage)
+func set_shot_power(amount: int) -> void:
+	shot_power = amount
+	sig_shot_power_updated.emit(shot_power)
 
 
-func reset_damage() -> void:
-	damage = DEFAULT_DAMAGE
-	sig_damage_updated.emit(damage)
+func reset_shot_power() -> void:
+	shot_power = 1
+	sig_shot_power_updated.emit(shot_power)
+	
+
+func set_shot_speed(amount: int) -> void:
+	shot_speed = amount
+	sig_shot_speed_updated.emit(shot_speed)
+
+
+func reset_shot_speed() -> void:
+	shot_speed = 1
+	sig_shot_speed_updated.emit(shot_speed)
+
+
+func set_power(amount: int) -> void:
+	power = amount
+	sig_power_updated.emit(power)
+
+
+func reset_power() -> void:
+	power = 1
+	sig_power_updated.emit(power)
 
 
 func set_defense(amount: int) -> void:
@@ -227,7 +271,7 @@ func set_defense(amount: int) -> void:
 
 
 func reset_defense() -> void:
-	defense = DEFAULT_DEFENSE
+	defense = 0
 	sig_defense_updated.emit(defense)
 	
 
@@ -237,7 +281,7 @@ func add_bombs(amount: int) -> void:
 
 
 func subtract_bombs(amount: int) -> void:
-	bombs += amount
+	bombs -= amount
 	sig_bombs_updated.emit(bombs)
 
 
@@ -247,7 +291,7 @@ func add_key(amount: int) -> void:
 
 
 func subtract_keys(amount: int) -> void:
-	keys += amount
+	keys -= amount
 	sig_keys_updated.emit(keys)
 
 
