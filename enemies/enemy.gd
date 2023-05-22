@@ -8,7 +8,7 @@ signal sig_subtract_health
 
 @export var max_health := 3
 @export var health := 3
-@export var damage := 10
+@export var power := 10
 @export var defense := 0
 @export var score := 100
 @export var speed: int = 50
@@ -22,6 +22,9 @@ signal sig_subtract_health
 
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var timer = $Timer
+
+
+var is_attacking := false
 
 ## Connect signals to functions within script
 func _connect_signals():
@@ -40,11 +43,14 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
 	velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
 	var collision = move_and_collide(velocity)
-	if (collision):
+	if (collision and not is_attacking):
 		var body = collision.get_collider()
 		if (body == PlayerManager.player):
-			body.sig_subtract_health.emit(damage) # Inflict damage to player
-
+			is_attacking = true
+			await get_tree().create_timer(1).timeout
+			# todo play attack animation
+			body.sig_subtract_health.emit(power) # Inflict power to player
+			is_attacking = false
 
 func add_health(amount: int) -> void:
 	if (health < max_health):
