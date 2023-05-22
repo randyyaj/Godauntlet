@@ -3,8 +3,7 @@ extends CharacterBody2D
 @export var power := 1
 @export var texture: AtlasTexture
 @export var speed := 400
-@onready var area_2d = $Area2D
-@onready var collision_shape_2d = $Area2D/CollisionShape2D
+@onready var collision_shape_2d = $CollisionShape2D
 @onready var time_to_live_timer = $TimeToLiveTimer
 @onready var time_to_live = 5
 @onready var sprite_2d = $Sprite2D
@@ -28,8 +27,8 @@ func _process(delta):
 	var collision = move_and_collide(direction.normalized() * speed * delta)
 	if (collision):
 		var body = collision.get_collider()
-		if (body.has_signal('sig_subtract_health')):
-			body.sig_subtract_health.emit(power)
+		if ('health' in body):
+			body.health -= power
 		queue_free()
 
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhsy0gnj2juh"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/TP_tiles.gd" id="1_esghw"]
+[ext_resource type="Texture2D" uid="uid://dg8rdxldehlyw" path="res://Art/Tilesets/dungeontileset-extended.png" id="2_sca83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5mkb"]
+atlas = ExtResource("2_sca83")
+region = Rect2(161, 143, 11, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psx0a"]
+size = Vector2(12, 14)
+
+[node name="TP_tiles" type="Node2D"]
+script = ExtResource("1_esghw")
+
+[node name="Tile1" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_r5mkb")
+
+[node name="Tile1Area" type="Area2D" parent="Tile1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile1/Tile1Area"]
+shape = SubResource("RectangleShape2D_psx0a")
+
+[node name="Tile1Position" type="Marker2D" parent="Tile1"]
+position = Vector2(0, -21)
+
+[node name="Tile2" type="Sprite2D" parent="."]
+position = Vector2(18, 0)
+texture = SubResource("AtlasTexture_r5mkb")
+
+[node name="Tile2Area" type="Area2D" parent="Tile2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tile2/Tile2Area"]
+shape = SubResource("RectangleShape2D_psx0a")
+
+[node name="Tile2Position" type="Marker2D" parent="Tile2"]
+position = Vector2(0, -21)
+
+[connection signal="area_entered" from="Tile1/Tile1Area" to="." method="_on_tile_1_area_area_entered"]
+[connection signal="body_entered" from="Tile1/Tile1Area" to="." method="_on_tile_1_area_body_entered"]
+[connection signal="area_entered" from="Tile2/Tile2Area" to="." method="_on_tile_2_area_area_entered"]

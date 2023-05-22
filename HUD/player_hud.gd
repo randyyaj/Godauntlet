@@ -1,9 +1,9 @@
 extends Control
 
 @onready var score_label: Label = $ScoreLabel
-@onready var health_label: Label = $HealthLabel
-@onready var defense_label: Label = $PlayerStats/DefenseIcon/DefenseLabel
-@onready var attack_label: Label = $PlayerStats/AttackIcon/AttackLabel
+@onready var health_label: Label = $SideStats/HealthContainer/HealthLabel
+@onready var defense_label: Label = $PlayerStats/MeleePowerIcon/MeleePowerLabel
+@onready var attack_label: Label = $PlayerStats/MeleePowerIcon/MeleePowerLabel
 @onready var magic_label: Label = $PlayerStats/MagicIcon/MagicLabel
 @onready var speed_label: Label = $PlayerStats/SpeedIcon/SpeedLabel
 @onready var key_label: Label = $SideStats/KeyContainer/KeyLabel

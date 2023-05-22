@@ -19,9 +19,12 @@ config/icon="res://icon.svg"
 
 Global="*res://globals/global.gd"
 PlayerManager="*res://globals/player_manager.gd"
+LevelTransition="*res://LevelDesign/level_transition.tscn"
 
 [display]
 
+window/size/viewport_width=1200
+window/size/viewport_height=900
 window/stretch/mode="viewport"
 
 [input]

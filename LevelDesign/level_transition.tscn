@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfsfg7swwlo47"]
+
+[ext_resource type="Script" path="res://LevelDesign/level_transition.gd" id="1_o2f10"]
+
+[node name="LevelTransition" type="CanvasLayer"]
+script = ExtResource("1_o2f10")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_top = -1029.0
+offset_right = 1200.0
+offset_bottom = -120.0
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[connection signal="level_beat" from="." to="." method="_on_level_beat"]
