@@ -8,6 +8,7 @@ signal sig_subtract_health
 @export var health: int = 3
 @export var spawn_rate: int = 5 #seconds
 @export var texture: AtlasTexture
+@export var score: int = 10
 
 @onready var sprite_2d = $Sprite2D
 @onready var timer = $Timer
@@ -41,4 +42,5 @@ func subtract_health(amount: int) -> void:
 
 func die() -> void:
 	sig_death.emit()
+	PlayerManager.player.score = score
 	queue_free()

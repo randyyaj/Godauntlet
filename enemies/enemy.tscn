@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rr1ydwaucpym"]
+[gd_scene load_steps=5 format=3 uid="uid://rr1ydwaucpym"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_fit13"]
+[ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_fdrxu"]
 [ext_resource type="Texture2D" uid="uid://c4wqe1flj5mq2" path="res://enemies/chort_idle_anim_f2.png" id="2_p8jni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4dua"]
@@ -9,6 +10,7 @@
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_fit13")
+projectile = ExtResource("2_fdrxu")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -18,3 +20,7 @@ shape = SubResource("CircleShape2D_n4dua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_p8jni")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
