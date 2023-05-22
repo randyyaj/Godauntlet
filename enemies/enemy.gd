@@ -2,12 +2,18 @@ class_name Enemy
 extends CharacterBody2D
 
 signal sig_death
-signal sig_add_health
 signal sig_health_updated
-signal sig_subtract_health
 
 @export var max_health := 3
-@export var health := 3
+@export var health := 3 :
+	get:
+		return health
+	set(value):
+		health = value
+		sig_health_updated.emit(health)
+		if (health <= 0):
+			die()
+
 @export var power := 10
 @export var defense := 0
 @export var score := 100
@@ -23,17 +29,10 @@ signal sig_subtract_health
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var timer = $Timer
 
-
 var is_attacking := false
-
-## Connect signals to functions within script
-func _connect_signals():
-	sig_add_health.connect(add_health) 
-	sig_subtract_health.connect(subtract_health)
 
 
 func _ready():
-	_connect_signals()
 	add_to_group('enemies', true)
 	timer.wait_time = shooting_delay
 	timer.start()
@@ -49,24 +48,9 @@ func _physics_process(delta: float) -> void:
 			is_attacking = true
 			await get_tree().create_timer(1).timeout
 			# todo play attack animation
-			body.sig_subtract_health.emit(power) # Inflict power to player
+			body.health -= power # Inflict power to player
 			is_attacking = false
-
-func add_health(amount: int) -> void:
-	if (health < max_health):
-		if (health + amount > max_health):
-			health = max_health
-		else:
-			health += amount
-		sig_health_updated.emit(health)
-
-
-func subtract_health(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-	sig_health_updated.emit(health)
-
+			
 
 func shoot() -> void:
 	var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
@@ -85,7 +69,7 @@ func shoot() -> void:
 
 func die() -> void:
 	sig_death.emit()
-	PlayerManager.player.sig_add_score.emit(score)
+	PlayerManager.player.score = score
 	queue_free()
 
 
