@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccjnp7x1xfe1h"]
+[gd_scene load_steps=3 format=3 uid="uid://ccjnp7x1xfe1h"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_4b4o2"]
+[ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="2_71nin"]
 
 [node name="Level1Easy" type="TileMap"]
 y_sort_enabled = true
@@ -55,3 +56,5 @@ layer_0/tile_data = PackedInt32Array(1114147, 1179650, 1, 1376261, 65538, 0, 144
 tile_set = ExtResource("1_4b4o2")
 format = 2
 layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1703995, 983041, 15, 1638460, 1048577, 14, 1703996, 1048577, 15)
+
+[node name="Player" parent="." instance=ExtResource("2_71nin")]
