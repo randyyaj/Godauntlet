@@ -36,7 +36,7 @@ func _ready() -> void:
 
 func die() -> void:
 	sig_death.emit()
-	PlayerManager.player.score += score
+	PlayerManager.player.score = score
 	queue_free()
 
 
