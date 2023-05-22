@@ -2,13 +2,19 @@ class_name Enemy
 extends CharacterBody2D
 
 signal sig_death
-signal sig_add_health
 signal sig_health_updated
-signal sig_subtract_health
 
 @export var max_health := 3
-@export var health := 3
-@export var damage := 10
+@export var health := 3 :
+	get:
+		return health
+	set(value):
+		health = value
+		sig_health_updated.emit(health)
+		if (health <= 0):
+			die()
+
+@export var power := 10
 @export var defense := 0
 @export var score := 100
 @export var speed: int = 50
@@ -23,14 +29,10 @@ signal sig_subtract_health
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var timer = $Timer
 
-## Connect signals to functions within script
-func _connect_signals():
-	sig_add_health.connect(add_health) 
-	sig_subtract_health.connect(subtract_health)
+var is_attacking := false
 
 
 func _ready():
-	_connect_signals()
 	add_to_group('enemies', true)
 	timer.wait_time = shooting_delay
 	timer.start()
@@ -40,27 +42,15 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
 	velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
 	var collision = move_and_collide(velocity)
-	if (collision):
+	if (collision and not is_attacking):
 		var body = collision.get_collider()
 		if (body == PlayerManager.player):
-			body.sig_subtract_health.emit(damage) # Inflict damage to player
-
-
-func add_health(amount: int) -> void:
-	if (health < max_health):
-		if (health + amount > max_health):
-			health = max_health
-		else:
-			health += amount
-		sig_health_updated.emit(health)
-
-
-func subtract_health(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-	sig_health_updated.emit(health)
-
+			is_attacking = true
+			await get_tree().create_timer(1).timeout
+			# todo play attack animation
+			body.health -= power # Inflict power to player
+			is_attacking = false
+			
 
 func shoot() -> void:
 	var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
@@ -79,7 +69,7 @@ func shoot() -> void:
 
 func die() -> void:
 	sig_death.emit()
-	PlayerManager.player.sig_add_score.emit(score)
+	PlayerManager.player.score = score
 	queue_free()
 
 

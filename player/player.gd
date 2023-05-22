@@ -2,62 +2,117 @@ class_name Player
 extends CharacterBody2D
 
 signal sig_death
-signal sig_add_health(amount: int)
-signal sig_subtract_health(amount: int)
 signal sig_health_updated
-
-signal sig_add_score
-signal sig_subtract_score
 signal sig_score_updated
-
-signal sig_set_speed(amount: int)
-signal sig_reset_speed
 signal sig_speed_updated
-
-signal sig_set_shot_speed(amount: int)
-signal sig_reset_shot_speed
 signal sig_shot_speed_updated
-
-signal sig_set_magic_power(amount: int)
-signal sig_reset_magic_power
 signal sig_magic_power_updated
-
-signal sig_set_power(amount: int)
-signal sig_reset_power
 signal sig_power_updated
-
-signal sig_set_shot_power(amount: int)
-signal sig_reset_shot_power
 signal sig_shot_power_updated
-
-signal sig_set_defense(amount: int)
-signal sig_reset_defense
 signal sig_defense_updated
-
-signal sig_add_bomb
 signal sig_bombs_updated
-
-signal sig_add_key
 signal sig_keys_updated
-
-signal sig_apply_modifier(property_name: StringName, operand: StringName, amount: int)
+signal sig_fire_rate_updated
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
+@export var default_health := 3000
+@export var default_power := 1
+@export var default_speed := 200
+@export var default_shot_power := 1
+@export var default_shot_speed := 200
+@export var default_magic_power := 0
+@export var default_defense := 0
+@export var default_fire_rate := .25
+
 @export var max_health := 9999
-@export var max_power := 0
-@export var max_speed := 900
-@export var health := 9999
-@export var power := 1
-@export var shot_power := 1
-@export var defense := 0
-@export var score := 0
-@export var speed: int = 200
-@export var shot_speed := 200
-@export var magic_power: int = 1
-@export var bombs: int = 0
-@export var keys: int = 0
-@export var fire_rate: float = 0.25
+@export var max_power := 3
+@export var max_speed := 500
+@export var max_shot_power := 3
+@export var max_shot_speed := 500
+@export var max_magic_power := 3
+@export var max_defense := 3
+@export var max_fire_rate := .1
+
+@export var health := 9999 :
+	get:
+		return health
+	set(value):
+		health = value
+		sig_health_updated.emit(health)
+		if (health <= 0):
+			die()
+		
+@export var power := 1 :
+	get:
+		return power
+	set(value):
+		power = value
+		sig_power_updated.emit(power)
+		
+@export var shot_power := 1 :
+	get:
+		return shot_power
+	set(value):
+		shot_power = value
+		sig_shot_power_updated.emit(shot_power)
+
+@export var defense := 0 :
+	get:
+		return defense
+	set(value):
+		defense = value
+		sig_defense_updated.emit(defense)
+		
+@export var score := 0:
+	get:
+		return score
+	set(value):
+		score = value
+		sig_score_updated.emit(score)
+		
+@export var speed: int = 200 : 
+	get:
+		return speed
+	set(value):
+		speed = value
+		sig_speed_updated.emit(speed)
+
+@export var shot_speed := 200 : 
+	get:
+		return shot_speed
+	set(value):
+		shot_speed = value
+		sig_shot_speed_updated.emit(shot_speed)
+		
+@export var magic_power: int = 1 : 
+	get:
+		return magic_power
+	set(value):
+		magic_power = value
+		sig_magic_power_updated.emit(magic_power)
+		
+@export var bombs: int = 0 : 
+	get:
+		return bombs
+	set(value):
+		bombs = value
+		sig_bombs_updated.emit(bombs)
+		
+@export var keys: int = 0 : 
+	get:
+		return keys
+	set(value):
+		print('here setter')
+		keys = value
+		sig_keys_updated.emit(keys)
+
+@export var fire_rate: float = 0.25 : 
+	get:
+		return fire_rate
+	set(value):
+		fire_rate = value
+		sig_fire_rate_updated.emit(fire_rate)
 
 @export var sfx_shoot: AudioStream
 @export var sfx_hurt: AudioStream
@@ -72,35 +127,23 @@ var projectile_direction = Vector2.DOWN
 var is_shooting := false
 var can_fire := true
 
-## Connect signals to functions within script
-func _connect_signals():
-	sig_add_health.connect(add_health) 
-	sig_subtract_health.connect(subtract_health)
-	sig_add_score.connect(add_score)
-	sig_subtract_score.connect(subtract_score)
-	sig_apply_modifier.connect(apply_modifier)
-	sig_set_speed.connect(set_speed)
-	sig_reset_speed.connect(reset_speed)
-	sig_set_shot_speed.connect(set_shot_speed)
-	sig_reset_shot_speed.connect(reset_shot_speed)
-	sig_set_magic_power.connect(set_magic_power)
-	sig_reset_magic_power.connect(reset_magic_power)
-	sig_set_power.connect(set_power)
-	sig_reset_power.connect(reset_power)
-	sig_set_shot_power.connect(set_shot_power)
-	sig_reset_shot_power.connect(reset_shot_power)
-	sig_set_defense.connect(set_defense)
-	sig_reset_defense.connect(reset_defense)
-	sig_add_bomb.connect(add_bombs)
-	sig_add_key.connect(add_key)
-
 
 func _ready() -> void:
-	_connect_signals()
 	PlayerManager.player = self
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		is_shooting = true
+
+	if event.is_action_released("shoot"):
+		is_shooting = false
+	
+	if event.is_action_pressed("bomb"):
+		use_bomb()
+		
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
@@ -111,7 +154,10 @@ func _physics_process(delta: float) -> void:
 	if (not is_shooting):
 		var collision = move_and_collide(velocity)
 		if (collision):
-			check_door_collision(collision.get_collider())
+			var collider = collision.get_collider()
+			check_door_collision(collider)
+			if (collider is Enemy):
+				melee_attack(collider)
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
@@ -120,34 +166,8 @@ func _physics_process(delta: float) -> void:
 func check_door_collision(body: Node2D) -> void:
 	if (body is Door):
 		if (keys > 0):
-			subtract_keys(1)
+			keys -= 1
 			body.queue_free()
-
-
-func add_health(amount: int) -> void:
-	if (health < max_health):
-		if (health + amount > max_health):
-			health = max_health
-		else:
-			health += amount
-		sig_health_updated.emit(health)
-
-
-func subtract_health(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-	sig_health_updated.emit(health)
-
-
-func add_score(amount: int) -> void:
-	score += amount
-	sig_score_updated.emit(score)
-
-
-func subtract_score(amount: int) -> void:
-	score -= amount
-	sig_score_updated.emit(score)
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -169,30 +189,10 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int,
 			pass
 
 
-func die() -> void:
-	health = 0
-	if (sfx_death):
-		audio_stream_player.stream = sfx_death
-		audio_stream_player.play()
-		await audio_stream_player.finished
-	# await animation if there is an animation
-	emit_signal('sig_death')
-
-
-func melee_attack() -> void:
+func melee_attack(body: PhysicsBody2D) -> void:
 	# performs a short range melee attack
-	pass
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("shoot"):
-		is_shooting = true
-
-	if event.is_action_released("shoot"):
-		is_shooting = false
-	
-	if event.is_action_pressed("bomb"):
-		use_bomb()
+	# todo add animation
+	body.health -= power
 	
 
 func shoot_projectile() -> void:
@@ -210,95 +210,26 @@ func use_bomb() -> void:
 	# consumes potion and performs an area of affect attack
 	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
-		subtract_bombs(1)
+		bombs -= 1
 		var bodies = bomb_explosion_area.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
 
-func set_speed(amount: int) -> void:
-	speed = amount
-	sig_speed_updated.emit(speed)
-
-
-func reset_speed() -> void:
-	speed = max_speed
-	sig_speed_updated.emit(speed)
-	
-
-func set_magic_power(amount: int) -> void:
-	magic_power = amount
-	sig_magic_power_updated.emit(magic_power)
-
-
-func reset_magic_power() -> void:
-	magic_power = 1
-	sig_magic_power_updated.emit(magic_power)
-	
-
-func set_shot_power(amount: int) -> void:
-	shot_power = amount
-	sig_shot_power_updated.emit(shot_power)
-
-
-func reset_shot_power() -> void:
-	shot_power = 1
-	sig_shot_power_updated.emit(shot_power)
-	
-
-func set_shot_speed(amount: int) -> void:
-	shot_speed = amount
-	sig_shot_speed_updated.emit(shot_speed)
-
-
-func reset_shot_speed() -> void:
-	shot_speed = 1
-	sig_shot_speed_updated.emit(shot_speed)
-
-
-func set_power(amount: int) -> void:
-	power = amount
-	sig_power_updated.emit(power)
-
-
-func reset_power() -> void:
-	power = 1
-	sig_power_updated.emit(power)
-
-
-func set_defense(amount: int) -> void:
-	defense = amount
-	sig_defense_updated.emit(defense)
-
-
-func reset_defense() -> void:
-	defense = 0
-	sig_defense_updated.emit(defense)
-	
-
-func add_bombs(amount: int) -> void:
-	bombs += amount
-	sig_bombs_updated.emit(bombs)
-
-
-func subtract_bombs(amount: int) -> void:
-	bombs -= amount
-	sig_bombs_updated.emit(bombs)
-
-
-func add_key(amount: int) -> void:
-	keys += amount
-	sig_keys_updated.emit(keys)
-
-
-func subtract_keys(amount: int) -> void:
-	keys -= amount
-	sig_keys_updated.emit(keys)
+func die() -> void:
+	health = 0
+	if (sfx_death):
+		audio_stream_player.stream = sfx_death
+		audio_stream_player.play()
+		await audio_stream_player.finished
+	# await animation if there is an animation
+	sig_death.emit()
 
 
 func _on_health_timer_timeout() -> void:
-	subtract_health(1)
+	health -= 1
 
 
 func _on_can_fire_timer_timeout():
 	can_fire = true
+	
