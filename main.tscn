@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="9_e1702"]
 [ext_resource type="Texture2D" uid="uid://7rq5hv7vx7wi" path="res://items/potion/potions.png" id="9_w8f74"]
 [ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="10_32jo0"]
-[ext_resource type="PackedScene" path="res://LevelDesign/door.tscn" id="11_iodx8"]
+[ext_resource type="PackedScene" uid="uid://dn7wdfjd6ardr" path="res://LevelDesign/door.tscn" id="11_iodx8"]
 [ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="12_gbvq6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_26vgs"]
@@ -206,8 +206,9 @@ position = Vector2(512, 256)
 [node name="Food" parent="." instance=ExtResource("8_iuon0")]
 position = Vector2(448, 256)
 
-[node name="Enemy" parent="." instance=ExtResource("9_e1702")]
+[node name="RangedEnemy" parent="." instance=ExtResource("9_e1702")]
 position = Vector2(512, 384)
+is_ranged = true
 
 [node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(576, 448)

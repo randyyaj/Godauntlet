@@ -6,16 +6,21 @@ extends CharacterBody2D
 @onready var area_2d = $Area2D
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 @onready var time_to_live_timer = $TimeToLiveTimer
+@onready var time_to_live = 5
 @onready var sprite_2d = $Sprite2D
 
 var direction = Vector2.ZERO
-var player = PlayerManager.player
+
+
+func _connect_signals():
+	time_to_live_timer.timeout.connect(_on_time_to_live_timer_timeout)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	power = player.shot_power
-	speed = player.shot_speed
 	sprite_2d.texture = texture
+	time_to_live_timer.wait_time = time_to_live
+	time_to_live_timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,4 +34,4 @@ func _process(delta):
 
 
 func _on_time_to_live_timer_timeout():
-	pass # Replace with function body.
+	queue_free()
