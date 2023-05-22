@@ -11,7 +11,7 @@ var real_current_level_index = 1
 
 @export var level_index_shuffler = 5
 
-signal level_beat
+signal easy_level_beat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 func _process(delta):
 	pass
 	
-func next_level():
+func next_level_easy():
 	real_current_level_index += 1
 	current_level_index += randi_range(1,2)
 	#Main.add_child(myLevelList.levelList[1])
@@ -34,8 +34,8 @@ func next_level():
 		myLevelList.levelList.shuffle()
 		print(str(myLevelList.levelList[1]))
 
-func _on_level_beat():
-	next_level()
+func _on_easy_level_beat():
+	next_level_easy()
 	pass # Replace with function body.
 
 
