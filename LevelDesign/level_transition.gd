@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var color_rect = $ColorRect
 @onready var marker_2d = $Marker2D
-@onready var myLevelList = preload("res://LevelDesign/LevelList1.tres")
+#@onready var myLevelList = preload('res://LevelDesign/LevelList1.tres')
 var Main = preload("res://main.tscn")
 var current_level_index = 0
 

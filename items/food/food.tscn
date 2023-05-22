@@ -1,26 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://nao5ghiwnn8m"]
+[gd_scene load_steps=8 format=3 uid="uid://nao5ghiwnn8m"]
 
 [ext_resource type="Script" path="res://items/food/food.gd" id="1_sr0e1"]
+[ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="2_jhdhc"]
 [ext_resource type="Script" path="res://items/modifier.gd" id="2_l1b7v"]
 [ext_resource type="Script" path="res://items/item_resource.gd" id="3_e7mmk"]
 
-[sub_resource type="Resource" id="Resource_xcduo"]
+[sub_resource type="Resource" id="Resource_foknk"]
 script = ExtResource("2_l1b7v")
 modifier_type = 0
-amount = 0
+amount = 500
 operation_type = 0
 duration = 0.0
 
-[sub_resource type="Resource" id="Resource_je4kv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok0ii"]
+atlas = ExtResource("2_jhdhc")
+region = Rect2(416, 248, 16, 16)
+
+[sub_resource type="Resource" id="Resource_jfuqe"]
 script = ExtResource("3_e7mmk")
-id = &""
-name = ""
-description = ""
+id = &"food"
+name = "food"
+description = "Restores Health"
 stackable = false
 is_consumable = false
 is_destructible = false
-modifiers = Array[ExtResource("2_l1b7v")]([SubResource("Resource_xcduo")])
+texture = SubResource("AtlasTexture_ok0ii")
+modifiers = Array[ExtResource("2_l1b7v")]([SubResource("Resource_foknk")])
 
 [node name="Food" type="Node2D"]
 script = ExtResource("1_sr0e1")
-data = SubResource("Resource_je4kv")
+data = SubResource("Resource_jfuqe")

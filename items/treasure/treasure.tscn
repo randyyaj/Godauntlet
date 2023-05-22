@@ -1,17 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://duduq86hp1aho"]
+[gd_scene load_steps=8 format=3 uid="uid://duduq86hp1aho"]
 
 [ext_resource type="Script" path="res://items/treasure/treasure.gd" id="1_ev7ws"]
+[ext_resource type="Script" path="res://items/modifier.gd" id="2_k572k"]
 [ext_resource type="Script" path="res://items/item_resource.gd" id="2_s1aqb"]
+[ext_resource type="Texture2D" uid="uid://dneci7yl7v4j3" path="res://items/treasure/chest_golden_open_full.png" id="4_472jq"]
+
+[sub_resource type="Resource" id="Resource_bgddl"]
+script = ExtResource("2_k572k")
+modifier_type = 7
+amount = 500
+operation_type = 0
+duration = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhqnh"]
+atlas = ExtResource("4_472jq")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="Resource" id="Resource_k7uhh"]
 script = ExtResource("2_s1aqb")
 id = &"Treasure"
 name = "Treasure"
-description = "Treasure"
+description = "Treasure. Increases score and applies multiplier to score bonus"
 stackable = false
 is_consumable = true
 is_destructible = true
-modifiers = Array[Resource("res://items/modifier.gd")]([])
+texture = SubResource("AtlasTexture_dhqnh")
+modifiers = Array[ExtResource("2_k572k")]([SubResource("Resource_bgddl")])
 
 [node name="Treasure" type="Node2D"]
 script = ExtResource("1_ev7ws")

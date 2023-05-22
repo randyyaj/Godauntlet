@@ -103,7 +103,6 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	get:
 		return keys
 	set(value):
-		print('here setter')
 		keys = value
 		sig_keys_updated.emit(keys)
 
@@ -121,7 +120,9 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
-@onready var bomb_explosion_area = $BombExplosionArea
+@onready var blast_radius =$BlastRadius
+@onready var blast_radius_shape: CollisionShape2D = $BlastRadius/BlastRadiusShape
+
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -155,19 +156,11 @@ func _physics_process(delta: float) -> void:
 		var collision = move_and_collide(velocity)
 		if (collision):
 			var collider = collision.get_collider()
-			check_door_collision(collider)
 			if (collider is Enemy):
 				melee_attack(collider)
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
-
-
-func check_door_collision(body: Node2D) -> void:
-	if (body is Door):
-		if (keys > 0):
-			keys -= 1
-			body.queue_free()
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -211,7 +204,7 @@ func use_bomb() -> void:
 	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
 		bombs -= 1
-		var bodies = bomb_explosion_area.get_overlapping_bodies()
+		var bodies = blast_radius.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
@@ -237,12 +230,5 @@ func _on_can_fire_timer_timeout():
 #checking for doors. If area entered, delete the fence and subtract a key
 func _on_door_detector_body_entered(body):
 	if body.is_in_group("Door") and (keys >= 1):
-		subtract_keys(-1)
+		keys -= 1
 		body.queue_free()
-	pass # Replace with function body.
-
-
-func _on_stun_timer_timeout():
-	print("Hi!")
-	speed = 200
-	pass # Replace with function body.

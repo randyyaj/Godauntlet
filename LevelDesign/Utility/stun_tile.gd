@@ -1,16 +1,6 @@
 extends Node2D
 
-@onready var timer = $Timer
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+@export var stun_duration: float = 1
 
 func _on_area_2d_body_entered(body):
 	pass # Replace with function body.
@@ -18,12 +8,10 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
+		print('here')
 		area.get_parent().speed = 0
-		area.get_parent().stun_timer.start()
-		timer.start()
-	pass # Replace with function body.
+		await get_tree().create_timer(stun_duration).timeout
+		area.get_parent().speed = area.get_parent().default_speed
+		queue_free()
 
-
-func _on_timer_timeout():
-	queue_free()
-	pass # Replace with function body.
+	

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dc138rp7ybxnw"]
+[gd_scene load_steps=6 format=3 uid="uid://dc138rp7ybxnw"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_av0fj"]
-[ext_resource type="PackedScene" uid="uid://bcgoqafrmcnuw" path="res://LevelDesign/next_level_ladder.tscn" id="2_yyqch"]
 [ext_resource type="PackedScene" uid="uid://dob43ahxbtdei" path="res://LevelDesign/Utility/slow_tile.tscn" id="3_dhok2"]
 [ext_resource type="PackedScene" uid="uid://dtjj45b0y4i4d" path="res://LevelDesign/Utility/stun_tile.tscn" id="4_wjt6p"]
 [ext_resource type="PackedScene" uid="uid://c0feqne80j0vr" path="res://LevelDesign/Utility/damage_tile.tscn" id="5_snsgn"]
@@ -60,9 +59,6 @@ layer_0/tile_data = PackedInt32Array(1114147, 1179650, 1, 1376261, 65538, 0, 144
 tile_set = ExtResource("1_av0fj")
 format = 2
 layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1703995, 983041, 15, 1638460, 1048577, 14, 1703996, 1048577, 15)
-
-[node name="NextLevelLadder" parent="." instance=ExtResource("2_yyqch")]
-position = Vector2(194, 94)
 
 [node name="SlowTile" parent="." instance=ExtResource("3_dhok2")]
 position = Vector2(160, 64)
