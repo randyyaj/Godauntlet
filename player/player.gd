@@ -63,6 +63,7 @@ const DEFAULT_MAGIC = 0
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
 @onready var bomb_damage_area = $BombDamageArea
+@onready var stun_timer = $StunTimer
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -263,4 +264,10 @@ func _on_door_detector_body_entered(body):
 	if body.is_in_group("Door") and (keys >= 1):
 		subtract_keys(-1)
 		body.queue_free()
+	pass # Replace with function body.
+
+
+func _on_stun_timer_timeout():
+	print("Hi!")
+	speed = 200
 	pass # Replace with function body.

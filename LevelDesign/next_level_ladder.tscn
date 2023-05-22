@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcgoqafrmcnuw"]
+
+[ext_resource type="Texture2D" uid="uid://bc5uj1f4sg7fp" path="res://Art/Tilesets/0x72_16x16DungeonTileset.v5.png" id="1_f024u"]
+[ext_resource type="Script" path="res://LevelDesign/next_level_ladder.gd" id="1_j726f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q8tw"]
+atlas = ExtResource("1_f024u")
+region = Rect2(289, 116, 14, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxlfi"]
+size = Vector2(14, 10)
+
+[node name="NextLevelLadder" type="Node2D"]
+script = ExtResource("1_j726f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6q8tw")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_kxlfi")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

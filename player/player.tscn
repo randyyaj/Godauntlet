@@ -13,7 +13,7 @@ radius = 64.4981
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbruv"]
 radius = 13.8924
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 29
@@ -37,11 +37,15 @@ collision_mask = 8
 [node name="BombCollisionShape" type="CollisionShape2D" parent="BombDamageArea"]
 shape = SubResource("CircleShape2D_vp0hc")
 
-[node name="DoorDetector" type="Area2D" parent="."]
+[node name="DoorDetector" type="Area2D" parent="." groups=["Player"]]
 
 [node name="DoorDetectorCollisionShape" type="CollisionShape2D" parent="DoorDetector"]
 shape = SubResource("CircleShape2D_pbruv")
 
+[node name="StunTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
 [connection signal="body_entered" from="DoorDetector" to="." method="_on_door_detector_body_entered"]
+[connection signal="timeout" from="StunTimer" to="." method="_on_stun_timer_timeout"]
