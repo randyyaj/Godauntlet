@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 			
 
 func shoot() -> void:
-	var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
+	#var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
 	if (is_ranged):
 		var bullet = projectile.instantiate()
 		bullet.speed = shot_speed

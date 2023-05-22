@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2m2lctjy773j"]
+
+[ext_resource type="Script" path="res://items/potion/potion.gd" id="1_16ka1"]
+[ext_resource type="Script" path="res://items/modifier.gd" id="2_ntros"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="3_age38"]
+[ext_resource type="Texture2D" uid="uid://7rq5hv7vx7wi" path="res://items/potion/potions.png" id="4_2jw4v"]
+
+[sub_resource type="Resource" id="Resource_j37ma"]
+script = ExtResource("2_ntros")
+modifier_type = 2
+amount = 400
+operation_type = 4
+duration = 25.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou4oa"]
+atlas = ExtResource("4_2jw4v")
+region = Rect2(112, 96, 16, 16)
+
+[sub_resource type="Resource" id="Resource_vbe63"]
+script = ExtResource("3_age38")
+id = &"speed_potion"
+name = "Speed Potion"
+description = "Increases Speed"
+stackable = false
+is_consumable = true
+is_destructible = false
+texture = SubResource("AtlasTexture_ou4oa")
+modifiers = Array[ExtResource("2_ntros")]([SubResource("Resource_j37ma")])
+
+[node name="ShotSpeedPotion" type="Node2D"]
+script = ExtResource("1_16ka1")
+data = SubResource("Resource_vbe63")
