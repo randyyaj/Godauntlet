@@ -7,4 +7,4 @@
 
 [resource]
 script = ExtResource("1_dljnt")
-levelList = [ExtResource("1_xfxch"), ExtResource("2_40nqy"), ExtResource("3_6tudy")]
+levelList = Array[PackedScene]([ExtResource("1_xfxch"), ExtResource("2_40nqy"), ExtResource("3_6tudy")])

@@ -13,7 +13,7 @@ func _process(delta):
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("PlayerArea"):
+	if area.is_in_group("Player"):
 		LevelTransition.emit_signal("level_beat")
 		area_2d.queue_free()
 		get_parent().queue_free()

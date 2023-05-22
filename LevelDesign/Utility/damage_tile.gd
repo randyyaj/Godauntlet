@@ -16,7 +16,7 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
-		area.get_parent().sig_subtract_health.emit(damage) # Inflict damage to player
+		#area.get_parent().sig_subtract_health.emit(damage) # Inflict damage to player
 		area_2d.set_deferred("monitoring", false)
 		timer.start()
 	pass # Replace with function body.
