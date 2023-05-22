@@ -42,6 +42,9 @@ shape = SubResource("CircleShape2D_vp0hc")
 [node name="DoorDetectorCollisionShape" type="CollisionShape2D" parent="DoorDetector"]
 shape = SubResource("CircleShape2D_pbruv")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
 [connection signal="body_entered" from="DoorDetector" to="." method="_on_door_detector_body_entered"]

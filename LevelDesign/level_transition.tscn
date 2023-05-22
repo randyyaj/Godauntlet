@@ -17,5 +17,5 @@ color = Color(0.12549, 0.12549, 0.12549, 1)
 wait_time = 0.5
 one_shot = true
 
-[connection signal="level_beat" from="." to="." method="_on_level_beat"]
+[connection signal="easy_level_beat" from="." to="." method="_on_easy_level_beat"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

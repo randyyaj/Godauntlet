@@ -58,3 +58,4 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1703995, 983041, 15, 1638460, 1048577, 14, 1703996, 1048577, 15)
 
 [node name="Player" parent="." instance=ExtResource("2_71nin")]
+position = Vector2(44, 46)
