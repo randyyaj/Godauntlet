@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc138rp7ybxnw"]
+[gd_scene load_steps=7 format=3 uid="uid://dc138rp7ybxnw"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_av0fj"]
 [ext_resource type="PackedScene" uid="uid://bcgoqafrmcnuw" path="res://LevelDesign/next_level_ladder.tscn" id="2_yyqch"]
 [ext_resource type="PackedScene" uid="uid://dob43ahxbtdei" path="res://LevelDesign/Utility/slow_tile.tscn" id="3_dhok2"]
 [ext_resource type="PackedScene" uid="uid://dtjj45b0y4i4d" path="res://LevelDesign/Utility/stun_tile.tscn" id="4_wjt6p"]
 [ext_resource type="PackedScene" uid="uid://c0feqne80j0vr" path="res://LevelDesign/Utility/damage_tile.tscn" id="5_snsgn"]
+[ext_resource type="PackedScene" uid="uid://dhsy0gnj2juh" path="res://LevelDesign/Utility/tp_tiles.tscn" id="6_xnxbs"]
 
 [node name="Level1Easy" type="TileMap"]
 y_sort_enabled = true
@@ -80,3 +81,14 @@ position = Vector2(250, 69)
 
 [node name="StunTile" parent="." instance=ExtResource("5_snsgn")]
 position = Vector2(102, 108)
+
+[node name="TP_tiles" parent="." instance=ExtResource("6_xnxbs")]
+position = Vector2(19, 31)
+
+[node name="Tile1" parent="TP_tiles" index="0"]
+rotation = 3.14159
+
+[node name="Tile2" parent="TP_tiles" index="1"]
+position = Vector2(420, 586)
+
+[editable path="TP_tiles"]

@@ -1,17 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcgoqafrmcnuw"]
+[gd_scene load_steps=5 format=3 uid="uid://cpwb3kiincc4v"]
 
-[ext_resource type="Texture2D" uid="uid://bc5uj1f4sg7fp" path="res://Art/Tilesets/0x72_16x16DungeonTileset.v5.png" id="1_f024u"]
-[ext_resource type="Script" path="res://LevelDesign/next_level_ladder.gd" id="1_j726f"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/next_level_ladder.gd" id="1_285pk"]
+[ext_resource type="Texture2D" uid="uid://bc5uj1f4sg7fp" path="res://Art/Tilesets/0x72_16x16DungeonTileset.v5.png" id="2_jnqnj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6q8tw"]
-atlas = ExtResource("1_f024u")
+atlas = ExtResource("2_jnqnj")
 region = Rect2(289, 116, 14, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kxlfi"]
 size = Vector2(14, 10)
 
 [node name="NextLevelLadder" type="Node2D"]
-script = ExtResource("1_j726f")
+script = ExtResource("1_285pk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_6q8tw")
