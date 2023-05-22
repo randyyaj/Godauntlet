@@ -98,6 +98,7 @@ func _physics_process(delta: float) -> void:
 		var collision = move_and_collide(velocity)
 		if (collision):
 			check_door_collision(collision.get_collider())
+			check_enemey_collision(collision.get_collider())
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
@@ -108,6 +109,11 @@ func check_door_collision(body: Node2D) -> void:
 		if (keys > 0):
 			subtract_keys(1)
 			body.queue_free()
+
+
+func check_enemey_collision(body: PhysicsBody2D):
+	if (body.is_in_group('enemies') or body == Enemy):
+		melee_attack(body)
 
 
 func add_health(amount: int) -> void:
@@ -165,9 +171,10 @@ func die() -> void:
 	emit_signal('sig_death')
 
 
-func melee_attack() -> void:
+func melee_attack(body: PhysicsBody2D) -> void:
 	# performs a short range melee attack
-	pass
+	# todo add animation
+	body.sig_subtract_health.emit(power)
 
 
 func _input(event: InputEvent) -> void:

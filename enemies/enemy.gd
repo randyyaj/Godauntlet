@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 	navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
 	velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
 	var collision = move_and_collide(velocity)
-	if (collision):
+	if (collision and not is_attacking):
 		var body = collision.get_collider()
 		if (body == PlayerManager.player):
 			is_attacking = true

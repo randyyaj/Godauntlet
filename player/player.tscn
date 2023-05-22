@@ -18,7 +18,7 @@ radius = 9.05539
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
 collision_layer = 2
-collision_mask = 61
+collision_mask = 189
 script = ExtResource("1_vlum0")
 projectile = ExtResource("2_l4mr6")
 

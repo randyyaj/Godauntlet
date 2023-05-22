@@ -2,22 +2,15 @@
 
 [ext_resource type="Script" path="res://items/potion/potion.gd" id="1_hykfc"]
 [ext_resource type="Script" path="res://items/item_resource.gd" id="2_2fchl"]
-[ext_resource type="Script" path="res://shared/modifier_resource.gd" id="2_o51x1"]
+[ext_resource type="Script" path="res://items/modifier.gd" id="2_nrptt"]
 [ext_resource type="Texture2D" uid="uid://7rq5hv7vx7wi" path="res://items/potion/potions.png" id="2_pvjdx"]
 
-[sub_resource type="Resource" id="Resource_5aeqo"]
-script = ExtResource("2_o51x1")
-max_health = 9999
-max_damage = 9999
-max_speed = 999
-health = 0
-speed = 0
-damage = 0
-defense = 0
-magic = 0
-shot_power = 0
-shot_speed = 0
-score = 0
+[sub_resource type="Resource" id="Resource_8nuvp"]
+script = ExtResource("2_nrptt")
+modifier_type = 0
+amount = 500
+operation_type = 0
+duration = 0.0
 
 [sub_resource type="Resource" id="Resource_pprbd"]
 script = ExtResource("2_2fchl")
