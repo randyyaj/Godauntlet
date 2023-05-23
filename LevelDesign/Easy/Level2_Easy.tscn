@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://duw5oyfkendys"]
+[gd_scene load_steps=4 format=3 uid="uid://duw5oyfkendys"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_2u4cx"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="2_3y6dr"]
+[ext_resource type="PackedScene" uid="uid://dryif7r1tjml0" path="res://LevelDesign/Utility/triggered_door.tscn" id="3_6ubs2"]
 
-[node name="Level1Easy" type="TileMap"]
+[node name="Level2Easy" type="TileMap"]
 y_sort_enabled = true
 texture_filter = 1
 tile_set = ExtResource("1_2u4cx")
@@ -66,3 +67,14 @@ layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1703995, 983041, 15, 1
 
 [node name="Player" parent="." instance=ExtResource("2_3y6dr")]
 position = Vector2(56, 114)
+
+[node name="TriggeredDoor" parent="." instance=ExtResource("3_6ubs2")]
+
+[node name="WallToBeDestroyed" parent="TriggeredDoor" index="0"]
+layer_0/modulate = Color(0.341176, 0.745098, 1, 1)
+layer_0/tile_data = PackedInt32Array(393236, 1, 13, 327700, 1, 13, 262164, 1, 13, 196628, 1, 13)
+
+[node name="Triggers" parent="TriggeredDoor" index="1"]
+position = Vector2(304, 128)
+
+[editable path="TriggeredDoor"]

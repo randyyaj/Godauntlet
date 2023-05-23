@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsl54"]
 atlas = ExtResource("2_o405j")
-region = Rect2(230, 40, 10, 10)
+region = Rect2(170, 0, 10, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a2m4j"]
 size = Vector2(14, 14)

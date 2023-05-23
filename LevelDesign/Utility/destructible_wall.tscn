@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bif0t8ug1rab5"]
+
+[ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_1kwne"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/DestructibleWall.gd" id="1_ujkti"]
+
+[node name="DestructibleWall" type="TileMap"]
+tile_set = ExtResource("1_1kwne")
+format = 2
+script = ExtResource("1_ujkti")
