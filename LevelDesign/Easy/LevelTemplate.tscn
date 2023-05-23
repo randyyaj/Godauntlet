@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bj8kqp5ghij8t"]
+[gd_scene load_steps=21 format=3 uid="uid://bj8kqp5ghij8t"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_qy022"]
 [ext_resource type="PackedScene" uid="uid://cpwb3kiincc4v" path="res://LevelDesign/Utility/next_level_ladder.tscn" id="2_05eex"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d2m2lctjy773j" path="res://items/potion/shot_speed_potion.tscn" id="14_2ruxb"]
 [ext_resource type="PackedScene" uid="uid://j2b72g6l2n2j" path="res://items/bomb/bomb.tscn" id="16_40rbk"]
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="17_5ir0b"]
+[ext_resource type="PackedScene" uid="uid://bif0t8ug1rab5" path="res://LevelDesign/Utility/destructible_wall.tscn" id="18_qxkey"]
+[ext_resource type="PackedScene" uid="uid://dryif7r1tjml0" path="res://LevelDesign/Utility/triggered_door.tscn" id="18_smxam"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0orol"]
 vertices = PackedVector2Array(847, 350, 842, 639, 2, 644, -1, -1, 852, -4)
@@ -141,6 +143,15 @@ position = Vector2(-209, 299)
 position = Vector2(-188, 60)
 
 [node name="Treasure" parent="Treasure" instance=ExtResource("17_5ir0b")]
+
+[node name="DestructibleWalls" type="Node2D" parent="."]
+
+[node name="DestructibleWall" parent="DestructibleWalls" instance=ExtResource("18_qxkey")]
+
+[node name="TriggeredDoors" type="Node2D" parent="."]
+
+[node name="TriggeredDoor" parent="TriggeredDoors" instance=ExtResource("18_smxam")]
+position = Vector2(-393, -15)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

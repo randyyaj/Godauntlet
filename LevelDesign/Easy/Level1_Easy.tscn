@@ -84,19 +84,19 @@ position = Vector2(128, 224)
 position = Vector2(784, 608)
 
 [node name="SlowTile" parent="." instance=ExtResource("3_dhok2")]
-position = Vector2(160, 64)
+position = Vector2(800, 240)
 
 [node name="SlowTile2" parent="." instance=ExtResource("3_dhok2")]
-position = Vector2(160, 80)
+position = Vector2(784, 240)
 
 [node name="SlowTile3" parent="." instance=ExtResource("3_dhok2")]
-position = Vector2(160, 96)
+position = Vector2(752, 240)
 
 [node name="SlowTile4" parent="." instance=ExtResource("3_dhok2")]
-position = Vector2(160, 112)
+position = Vector2(768, 240)
 
 [node name="SlowTile5" parent="." instance=ExtResource("4_wjt6p")]
-position = Vector2(624, 236)
+position = Vector2(624, 240)
 
 [node name="StunTile" parent="." instance=ExtResource("5_snsgn")]
 position = Vector2(102, 108)
