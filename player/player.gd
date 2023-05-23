@@ -193,6 +193,7 @@ func shoot_projectile() -> void:
 	var bullet = projectile.instantiate()
 	bullet.power = shot_power
 	bullet.speed = shot_speed
+	bullet.is_bouncy = true
 	bullet.global_position = global_position
 	bullet.direction = projectile_direction
 	get_tree().get_root().add_child(bullet)
