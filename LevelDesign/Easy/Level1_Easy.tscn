@@ -126,15 +126,12 @@ position = Vector2(621, 178)
 
 [node name="Spawner" parent="." instance=ExtResource("9_d4d7s")]
 position = Vector2(92, 583)
-spawn_rate = 3
 
 [node name="Spawner2" parent="." instance=ExtResource("9_d4d7s")]
 position = Vector2(270, 346)
-spawn_rate = 3
 
 [node name="Spawner3" parent="." instance=ExtResource("9_d4d7s")]
 position = Vector2(579, 462)
-spawn_rate = 3
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_0orol")

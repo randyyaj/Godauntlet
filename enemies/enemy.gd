@@ -82,24 +82,8 @@ func _physics_process(delta: float) -> void:
 			is_attacking = false
 
 
-func add_health(amount: int) -> void:
-	if (health < max_health):
-		if (health + amount > max_health):
-			health = max_health
-		else:
-			health += amount
-		sig_health_updated.emit(health)
-
-
-func subtract_health(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-	sig_health_updated.emit(health)
-
-
 func shoot() -> void:
-	var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
+	#var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())
 	if (is_ranged):
 		var bullet = projectile.instantiate()
 		bullet.speed = shot_speed

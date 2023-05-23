@@ -16,7 +16,7 @@ signal sig_fire_rate_updated
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
-@export var default_health := 3000
+@export var default_health := 700
 @export var default_power := 1
 @export var default_speed := 200
 @export var default_shot_power := 1
@@ -34,7 +34,7 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var max_defense := 3
 @export var max_fire_rate := .1
 
-@export var health := 9999 :
+@export var health := default_health :
 	get:
 		return health
 	set(value):
@@ -103,7 +103,6 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	get:
 		return keys
 	set(value):
-		print('here setter')
 		keys = value
 		sig_keys_updated.emit(keys)
 
@@ -121,7 +120,13 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var attack_offset := 16
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
-@onready var bomb_explosion_area = $BombExplosionArea
+@onready var blast_radius =$BlastRadius
+@onready var blast_radius_shape: CollisionShape2D = $BlastRadius/BlastRadiusShape
+
+@onready var attack_area: Area2D = $AttackArea
+@onready var attack_timer: Timer = $AttackTimer
+@onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackAreaCollision
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -130,9 +135,9 @@ var can_fire := true
 
 func _ready() -> void:
 	PlayerManager.player = self
-	PlayerManager.init_player_data()
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
+	attack_offset = sprite_2d.texture.get_size().x if sprite_2d else 16
 
 
 func _input(event: InputEvent) -> void:
@@ -150,25 +155,17 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
 	if (direction != Vector2.ZERO):
 		projectile_direction = direction
-	velocity = direction.normalized() * speed * delta
+	
+	attack_area.position = direction * attack_offset
 	
 	if (not is_shooting):
 		var collision = move_and_collide(velocity)
-		if (collision):
-			var collider = collision.get_collider()
-			check_door_collision(collider)
-			if (collider is Enemy):
-				melee_attack(collider)
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
-
-
-func check_door_collision(body: Node2D) -> void:
-	if (body is Door):
-		if (keys > 0):
-			keys -= 1
-			body.queue_free()
+	
+	velocity = direction.normalized() * speed * delta
+	
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -188,12 +185,6 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int,
 			set(property_name, amount)
 		_:
 			pass
-
-
-func melee_attack(body: PhysicsBody2D) -> void:
-	# performs a short range melee attack
-	# todo add animation
-	body.health -= power
 	
 
 func shoot_projectile() -> void:
@@ -201,6 +192,7 @@ func shoot_projectile() -> void:
 	var bullet = projectile.instantiate()
 	bullet.power = shot_power
 	bullet.speed = shot_speed
+	bullet.is_bouncy = true
 	bullet.global_position = global_position
 	bullet.direction = projectile_direction
 	get_tree().get_root().add_child(bullet)
@@ -212,7 +204,7 @@ func use_bomb() -> void:
 	# if magic_power level is MAX(5) call enemies group die() wiping all current enemy on screen else multiply BombCollisionShape * magic_power power
 	if (bombs != 0):
 		bombs -= 1
-		var bodies = bomb_explosion_area.get_overlapping_bodies()
+		var bodies = blast_radius.get_overlapping_bodies()
 		for body in bodies:
 			body.die()
 
