@@ -131,6 +131,7 @@ var can_fire := true
 
 func _ready() -> void:
 	PlayerManager.player = self
+	PlayerManager.init_player_data()
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
 
