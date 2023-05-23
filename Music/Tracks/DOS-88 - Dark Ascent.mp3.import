@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bej4a7denv3f0"
+path="res://.godot/imported/DOS-88 - Dark Ascent.mp3-502c65dd7ecb5368e27e72afcd902baa.mp3str"
+
+[deps]
+
+source_file="res://Music/Tracks/DOS-88 - Dark Ascent.mp3"
+dest_files=["res://.godot/imported/DOS-88 - Dark Ascent.mp3-502c65dd7ecb5368e27e72afcd902baa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
