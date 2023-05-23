@@ -12,16 +12,6 @@ amount = 500
 operation_type = 0
 duration = 0.0
 
-[sub_resource type="Resource" id="Resource_pprbd"]
-script = ExtResource("2_2fchl")
-id = &""
-name = ""
-description = ""
-stackable = false
-is_consumable = false
-is_destructible = false
-modifiers = SubResource("Resource_5aeqo")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b4ew"]
 atlas = ExtResource("2_pvjdx")
 region = Rect2(128, 0, 16, 16)
