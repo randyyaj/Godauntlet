@@ -1,0 +1,946 @@
+[gd_scene load_steps=27 format=3 uid="uid://60frvjbrpbs7"]
+
+[ext_resource type="Script" path="res://ui/Menus/ChooseClass.gd" id="1_na6ku"]
+[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="2_bwseg"]
+[ext_resource type="Texture2D" uid="uid://bc5uj1f4sg7fp" path="res://Art/Tilesets/0x72_16x16DungeonTileset.v5.png" id="2_yd2h4"]
+[ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="3_frvdc"]
+[ext_resource type="Theme" uid="uid://e3762etq6xnc" path="res://ui/Menus/Menus.tres" id="4_grmsc"]
+[ext_resource type="FontFile" uid="uid://do6gygiu13wds" path="res://HUD/castlevania-bloodlines.ttf" id="5_ea2ec"]
+[ext_resource type="Texture2D" uid="uid://dxpb4ajpuv8kx" path="res://Art/Tilesets/0x72_DungeonTilesetII_v1.6.png" id="6_e8nxc"]
+
+[sub_resource type="FontVariation" id="FontVariation_6n225"]
+base_font = ExtResource("5_ea2ec")
+spacing_glyph = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h3gi"]
+bg_color = Color(0.258824, 0.2, 0.227451, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs8nj"]
+bg_color = Color(0.34, 0.2652, 0.3026, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.182137, 0.136258, 0.15804, 1)
+
+[sub_resource type="Theme" id="Theme_wqi3t"]
+default_font = ExtResource("5_ea2ec")
+Button/colors/font_hover_color = Color(0.627451, 0.627451, 0.627451, 1)
+Button/colors/font_pressed_color = Color(0.85098, 0.627451, 0.313726, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_3h3gi")
+Label/fonts/font = ExtResource("5_ea2ec")
+Panel/styles/panel = SubResource("StyleBoxFlat_bs8nj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg5ir"]
+atlas = ExtResource("2_yd2h4")
+region = Rect2(144.347, 241.456, 15.6751, 14.1887)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wofcq"]
+atlas = ExtResource("2_bwseg")
+region = Rect2(223, 368, 18, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uicgf"]
+atlas = ExtResource("2_bwseg")
+region = Rect2(176.727, 392.835, 13.6482, 13.3779)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei1mw"]
+atlas = ExtResource("3_frvdc")
+region = Rect2(104.944, 56.1609, 14.3238, 15.9454)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei5gd"]
+atlas = ExtResource("2_bwseg")
+region = Rect2(439, 368, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g075f"]
+atlas = ExtResource("3_frvdc")
+region = Rect2(344, 106, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpnuj"]
+atlas = ExtResource("3_frvdc")
+region = Rect2(297, 201, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjly5"]
+atlas = ExtResource("2_yd2h4")
+region = Rect2(224, 236, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6fnc"]
+atlas = ExtResource("2_yd2h4")
+region = Rect2(129, 224, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5uon"]
+atlas = ExtResource("6_e8nxc")
+region = Rect2(128, 45, 15, 20)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf84j"]
+bg_color = Color(0.341176, 0.266667, 0.301961, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nxaq"]
+bg_color = Color(0.262745, 0.2, 0.231373, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ymgl"]
+bg_color = Color(0.670588, 0.560784, 0.611765, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="Theme" id="Theme_o0kt5"]
+Button/styles/focus = SubResource("StyleBoxFlat_nf84j")
+Button/styles/hover = SubResource("StyleBoxFlat_4nxaq")
+Button/styles/normal = SubResource("StyleBoxFlat_nf84j")
+Button/styles/pressed = SubResource("StyleBoxFlat_0ymgl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qd4h"]
+atlas = ExtResource("3_frvdc")
+region = Rect2(274.077, 9.67548, 11.8915, 12.432)
+
+[node name="ChooseClass" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_na6ku")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 648.0
+color = Color(0.258824, 0.219608, 0.239216, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 26.0
+offset_right = 1052.0
+offset_bottom = 122.0
+theme = ExtResource("4_grmsc")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_fonts/font = SubResource("FontVariation_6n225")
+theme_override_font_sizes/font_size = 42
+text = "Choose a character"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 152.0
+offset_right = 1116.0
+offset_bottom = 618.0
+theme_override_constants/separation = 12
+
+[node name="WarriorPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_grmsc")
+
+[node name="WarriorButton" type="Button" parent="HBoxContainer/WarriorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_wqi3t")
+
+[node name="WarriorPic" type="TextureRect" parent="HBoxContainer/WarriorPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -210.0
+offset_right = 58.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_pg5ir")
+
+[node name="ClassNameLabel" type="Label" parent="HBoxContainer/WarriorPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -68.0
+offset_right = 69.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_grmsc")
+text = "Warrior"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WarriorStats" type="Panel" parent="HBoxContainer/WarriorPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wofcq")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_uicgf")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/DefenceIcon"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 78.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei1mw")
+
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/MagicIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_g075f")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackSpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KnightPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_grmsc")
+
+[node name="KnightButton" type="Button" parent="HBoxContainer/KnightPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_wqi3t")
+
+[node name="KnightPic" type="TextureRect" parent="HBoxContainer/KnightPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -210.0
+offset_right = 58.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_yjly5")
+
+[node name="ClassNameLabel" type="Label" parent="HBoxContainer/KnightPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -68.0
+offset_right = 69.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_grmsc")
+text = "Knight"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KnightStats" type="Panel" parent="HBoxContainer/KnightPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wofcq")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_uicgf")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/DefenceIcon"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 78.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei1mw")
+
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/MagicIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_g075f")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackSpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WizardPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_grmsc")
+
+[node name="WizardButton" type="Button" parent="HBoxContainer/WizardPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_wqi3t")
+
+[node name="WizardPic" type="TextureRect" parent="HBoxContainer/WizardPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -210.0
+offset_right = 58.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_x6fnc")
+
+[node name="ClassNameLabel" type="Label" parent="HBoxContainer/WizardPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -68.0
+offset_right = 69.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_grmsc")
+text = "Wizard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WizardStats" type="Panel" parent="HBoxContainer/WizardPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wofcq")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_uicgf")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/DefenceIcon"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 78.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei1mw")
+
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/MagicIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_g075f")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackSpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcherPanel" type="Panel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_grmsc")
+
+[node name="ArcherButton" type="Button" parent="HBoxContainer/ArcherPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_wqi3t")
+
+[node name="WizardPic" type="TextureRect" parent="HBoxContainer/ArcherPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -210.0
+offset_right = 58.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+texture = SubResource("AtlasTexture_l5uon")
+
+[node name="ClassNameLabel" type="Label" parent="HBoxContainer/ArcherPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.5
+offset_top = -68.0
+offset_right = 69.5
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_grmsc")
+text = "Archer"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcherStats" type="Panel" parent="HBoxContainer/ArcherPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_wofcq")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "5
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_uicgf")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/DefenceIcon"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 78.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei1mw")
+
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/MagicIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_g075f")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackSpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 34.0
+offset_right = 118.0
+offset_bottom = 108.0
+mouse_filter = 1
+theme = SubResource("Theme_o0kt5")
+
+[node name="TextureRect" type="TextureRect" parent="BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 14.0
+offset_right = -15.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_0qd4h")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

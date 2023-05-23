@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://dryif7r1tjml0"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/TriggeredWall.gd" id="1_14ksj"]
+[ext_resource type="Texture2D" uid="uid://dg8rdxldehlyw" path="res://Art/Tilesets/dungeontileset-extended.png" id="2_i3s80"]
+[ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="3_suf3u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf0pt"]
+atlas = ExtResource("2_i3s80")
+region = Rect2(176, 320, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tba0v"]
+atlas = ExtResource("2_i3s80")
+region = Rect2(160, 320, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mo7lo"]
+size = Vector2(16, 16)
+
+[node name="TriggeredDoor" type="Node2D"]
+script = ExtResource("1_14ksj")
+
+[node name="WallToBeDestroyed" type="TileMap" parent="."]
+tile_set = ExtResource("3_suf3u")
+format = 2
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Trigger2" type="Sprite2D" parent="Triggers"]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_mf0pt")
+
+[node name="Trigger" type="Sprite2D" parent="Triggers"]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_tba0v")
+
+[node name="Area2D" type="Area2D" parent="Triggers/Trigger"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger/Area2D"]
+shape = SubResource("RectangleShape2D_mo7lo")
+
+[connection signal="area_entered" from="Triggers/Trigger/Area2D" to="." method="_on_area_2d_area_entered"]

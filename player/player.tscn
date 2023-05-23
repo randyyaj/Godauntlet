@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c68w2sftvjej0"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_vlum0"]
+[ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_l4mr6"]
+[ext_resource type="Texture2D" uid="uid://d3vwukin2la7a" path="res://player/hero_basic.png" id="3_nbe8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbedo"]
+size = Vector2(10, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vp0hc"]
+radius = 128.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbruv"]
+radius = 9.05539
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dn6wj"]
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 189
+script = ExtResource("1_vlum0")
+projectile = ExtResource("2_l4mr6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_nbe8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lbedo")
+
+[node name="HealthTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanFireTimer" type="Timer" parent="."]
+
+[node name="BombExplosionArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="BombCollisionShape" type="CollisionShape2D" parent="BombExplosionArea"]
+shape = SubResource("CircleShape2D_vp0hc")
+
+[node name="DoorDetector" type="Area2D" parent="." groups=["Player"]]
+
+[node name="DoorDetectorCollisionShape" type="CollisionShape2D" parent="DoorDetector"]
+shape = SubResource("CircleShape2D_pbruv")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 8
+
+[node name="AttackAreaCollision" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_dn6wj")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
+[connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
+[connection signal="body_entered" from="DoorDetector" to="." method="_on_door_detector_body_entered"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

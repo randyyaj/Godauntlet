@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnis52em384w8"]
+
+[ext_resource type="Script" path="res://ui/player_state_container.gd" id="1_c7fbn"]
+
+[node name="PlayerStateContainer" type="VBoxContainer"]
+size_flags_vertical = 2
+script = ExtResource("1_c7fbn")
+
+[node name="PlayerName" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+text = "WARRIOR"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScoreContainer" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="ScoreLabel" type="Label" parent="HSplitContainer/ScoreContainer"]
+layout_mode = 2
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreValue" type="Label" parent="HSplitContainer/ScoreContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1
+
+[node name="HealthContainer" type="VBoxContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="HealthLabel" type="Label" parent="HSplitContainer/HealthContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "HEALTH"
+horizontal_alignment = 1
+
+[node name="HealthValue" type="Label" parent="HSplitContainer/HealthContainer"]
+layout_mode = 2
+text = "0"
+horizontal_alignment = 1

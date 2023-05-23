@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://cefcurrf0royh"]
+
+[ext_resource type="AudioStream" uid="uid://bxnw52ll7fyk6" path="res://Music/Tracks/Gigakoops - Honey Is Sweet, But Nostalgia Is Bitter.mp3" id="1_r57d6"]
+[ext_resource type="Script" path="res://Music/MusicTrack.gd" id="2_pnckw"]
+
+[resource]
+script = ExtResource("2_pnckw")
+Song = ExtResource("1_r57d6")
+SongDescription = "Gigakoops - Honey is Sweet, But Nostalgia is Bitter"

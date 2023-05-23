@@ -1,0 +1,211 @@
+[gd_scene load_steps=12 format=3 uid="uid://fjkb6pqxc6lq"]
+
+[ext_resource type="Script" path="res://ui/Menus/PauseMenu.gd" id="1_i3tp4"]
+[ext_resource type="Theme" uid="uid://e3762etq6xnc" path="res://ui/Menus/Menus.tres" id="2_pdg38"]
+[ext_resource type="FontFile" uid="uid://do6gygiu13wds" path="res://HUD/castlevania-bloodlines.ttf" id="3_fy7ct"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jp247"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahnnh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l30wk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gvlo"]
+bg_color = Color(0.286275, 0.219608, 0.254902, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.182137, 0.136258, 0.15804, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfad8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs8nj"]
+bg_color = Color(0.34, 0.2652, 0.3026, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.182137, 0.136258, 0.15804, 1)
+
+[sub_resource type="Theme" id="Theme_86f5x"]
+default_font = ExtResource("3_fy7ct")
+Button/colors/font_hover_color = Color(0.627451, 0.627451, 0.627451, 1)
+Button/colors/font_pressed_color = Color(0.85098, 0.627451, 0.313726, 1)
+Button/fonts/font = ExtResource("3_fy7ct")
+Button/styles/disabled = SubResource("StyleBoxEmpty_jp247")
+Button/styles/focus = SubResource("StyleBoxEmpty_ahnnh")
+Button/styles/hover = SubResource("StyleBoxEmpty_l30wk")
+Button/styles/normal = SubResource("StyleBoxFlat_2gvlo")
+Button/styles/pressed = SubResource("StyleBoxEmpty_xfad8")
+Label/fonts/font = ExtResource("3_fy7ct")
+Panel/styles/panel = SubResource("StyleBoxFlat_bs8nj")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1yrec"]
+bg_color = Color(0.415686, 0.329412, 0.372549, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.182137, 0.136258, 0.15804, 1)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i3tp4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -261.0
+offset_top = -194.0
+offset_right = 261.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_pdg38")
+
+[node name="PauseLabel" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -167.0
+offset_right = 118.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefaultContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.0
+offset_top = -98.0
+offset_right = 164.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="ContinueButton" type="Button" parent="Panel/DefaultContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "Continue"
+
+[node name="OptionsButton" type="Button" parent="Panel/DefaultContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "Options"
+
+[node name="OptionsButton2" type="Button" parent="Panel/DefaultContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "How to Play"
+
+[node name="QuitButton" type="Button" parent="Panel/DefaultContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "Quit
+"
+
+[node name="AreYouSure" type="Panel" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -91.0
+offset_right = 200.0
+offset_bottom = 147.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1yrec")
+
+[node name="PauseLabel" type="Label" parent="Panel/AreYouSure"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -97.0
+offset_right = 118.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "Are you Sure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YesNoContainer" type="HBoxContainer" parent="Panel/AreYouSure"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = 6.0
+offset_right = 156.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="YesButton" type="Button" parent="Panel/AreYouSure/YesNoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "Yes"
+
+[node name="NoButton" type="Button" parent="Panel/AreYouSure/YesNoContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_86f5x")
+text = "No"
+
+[node name="SongLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 575.0
+offset_right = 448.0
+offset_bottom = 613.0
+theme = ExtResource("2_pdg38")
+theme_override_font_sizes/font_size = 14
+text = "Song - Artist"
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/DefaultContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Panel/DefaultContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Panel/AreYouSure/YesNoContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Panel/AreYouSure/YesNoContainer/NoButton" to="." method="_on_no_button_pressed"]

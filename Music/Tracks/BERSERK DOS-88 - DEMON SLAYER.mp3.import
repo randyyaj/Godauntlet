@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b1k8e1l5hvm3u"
+path="res://.godot/imported/BERSERK DOS-88 - DEMON SLAYER.mp3-5b86aeaf1f1fc5d8f5c7301584fc59e0.mp3str"
+
+[deps]
+
+source_file="res://Music/Tracks/BERSERK DOS-88 - DEMON SLAYER.mp3"
+dest_files=["res://.godot/imported/BERSERK DOS-88 - DEMON SLAYER.mp3-5b86aeaf1f1fc5d8f5c7301584fc59e0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://duduq86hp1aho"]
+
+[ext_resource type="Script" path="res://items/treasure/treasure.gd" id="1_ev7ws"]
+[ext_resource type="Script" path="res://items/item_resource.gd" id="2_s1aqb"]
+
+[sub_resource type="Resource" id="Resource_k7uhh"]
+script = ExtResource("2_s1aqb")
+id = &"Treasure"
+name = "Treasure"
+description = "Treasure"
+stackable = false
+is_consumable = true
+is_destructible = true
+modifiers = Array[Resource("res://items/modifier.gd")]([])
+
+[node name="Treasure" type="Node2D"]
+script = ExtResource("1_ev7ws")
+data = SubResource("Resource_k7uhh")

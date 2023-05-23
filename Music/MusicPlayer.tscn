@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7430wi343aky"]
+
+[ext_resource type="Script" path="res://Music/MusicPlayer.gd" id="1_lx01b"]
+[ext_resource type="Resource" uid="uid://blmwoowv3kcpv" path="res://Music/MusicCollections.tres" id="2_4duye"]
+[ext_resource type="AudioStream" uid="uid://b60bcwo1em1j8" path="res://Music/Tracks/Race to Mars.mp3" id="2_rhg3h"]
+
+[node name="MusicPlayer" type="Node"]
+script = ExtResource("1_lx01b")
+MusicList = ExtResource("2_4duye")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rhg3h")
+autoplay = true
+bus = &"Music"

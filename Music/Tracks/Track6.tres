@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://b887i41bykia8"]
+
+[ext_resource type="AudioStream" uid="uid://2710fwmjjx6c" path="res://Music/Tracks/HoliznaCC0 - Red Skies.mp3" id="1_dkt30"]
+[ext_resource type="Script" path="res://Music/MusicTrack.gd" id="2_2pv11"]
+
+[resource]
+script = ExtResource("2_2pv11")
+Song = ExtResource("1_dkt30")
+SongDescription = "DOS-88 -  Race to Mars"
