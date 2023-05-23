@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://60frvjbrpbs7"]
+[gd_scene load_steps=27 format=3 uid="uid://60frvjbrpbs7"]
 
 [ext_resource type="Script" path="res://ui/Menus/ChooseClass.gd" id="1_na6ku"]
 [ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="2_bwseg"]
@@ -45,16 +45,24 @@ atlas = ExtResource("2_bwseg")
 region = Rect2(223, 368, 18, 17)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uicgf"]
-atlas = ExtResource("3_frvdc")
-region = Rect2(105, 56, 14, 15)
+atlas = ExtResource("2_bwseg")
+region = Rect2(176.727, 392.835, 13.6482, 13.3779)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei1mw"]
-atlas = ExtResource("2_bwseg")
-region = Rect2(438, 368, 19, 17)
+atlas = ExtResource("3_frvdc")
+region = Rect2(104.944, 56.1609, 14.3238, 15.9454)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ei5gd"]
+atlas = ExtResource("2_bwseg")
+region = Rect2(439, 368, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g075f"]
 atlas = ExtResource("3_frvdc")
-region = Rect2(296, 200, 15, 15)
+region = Rect2(344, 106, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpnuj"]
+atlas = ExtResource("3_frvdc")
+region = Rect2(297, 201, 14, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yjly5"]
 atlas = ExtResource("2_yd2h4")
@@ -192,32 +200,36 @@ text = "Warrior"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WarriorStats" type="Control" parent="HBoxContainer/WarriorPanel"]
+[node name="WarriorStats" type="Panel" parent="HBoxContainer/WarriorPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -20.0
-offset_right = -29.0
-offset_bottom = 20.0
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="AttackIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_wofcq")
 
 [node name="AttackLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "5
@@ -226,18 +238,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 64.0
-offset_right = 41.0
-offset_bottom = 104.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_uicgf")
 
 [node name="DefenceLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/DefenceIcon"]
 layout_mode = 0
-offset_left = 94.0
-offset_right = 126.0
+offset_left = 46.0
+offset_right = 78.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "3"
@@ -245,17 +259,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
-layout_mode = 0
-offset_top = 124.0
-offset_right = 40.0
-offset_bottom = 164.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ei1mw")
 
 [node name="MagiclLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/MagicIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "1"
@@ -263,17 +280,62 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
-layout_mode = 0
-offset_top = 180.0
-offset_right = 40.0
-offset_bottom = 220.0
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ei5gd")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/SpeedIcon"]
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/SpeedIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_g075f")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackSpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/WarriorPanel/WarriorStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WarriorPanel/WarriorStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "2"
@@ -331,91 +393,145 @@ text = "Knight"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="KnightStats" type="Control" parent="HBoxContainer/KnightPanel"]
+[node name="KnightStats" type="Panel" parent="HBoxContainer/KnightPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -20.0
-offset_right = -29.0
-offset_bottom = 20.0
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="AttackIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_wofcq")
 
 [node name="AttackLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "3
+text = "5
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 64.0
-offset_right = 41.0
-offset_bottom = 104.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_uicgf")
 
 [node name="DefenceLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/DefenceIcon"]
 layout_mode = 0
-offset_left = 94.0
-offset_right = 126.0
+offset_left = 46.0
+offset_right = 78.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "5"
+text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MagicIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
-layout_mode = 0
-offset_top = 124.0
-offset_right = 40.0
-offset_bottom = 164.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ei1mw")
 
 [node name="MagiclLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/MagicIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
-layout_mode = 0
-offset_top = 180.0
-offset_right = 40.0
-offset_bottom = 220.0
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ei5gd")
+texture = SubResource("AtlasTexture_g075f")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/SpeedIcon"]
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackSpeedIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "1"
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/KnightPanel/KnightStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/KnightPanel/KnightStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -470,91 +586,145 @@ text = "Wizard"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WizardStats" type="Control" parent="HBoxContainer/WizardPanel"]
+[node name="WizardStats" type="Panel" parent="HBoxContainer/WizardPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -20.0
-offset_right = -29.0
-offset_bottom = 20.0
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
 [node name="AttackIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_wofcq")
 
 [node name="AttackLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "2
+text = "5
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 64.0
-offset_right = 41.0
-offset_bottom = 104.0
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_uicgf")
 
 [node name="DefenceLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/DefenceIcon"]
 layout_mode = 0
-offset_left = 94.0
-offset_right = 126.0
+offset_left = 46.0
+offset_right = 78.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei1mw")
+
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/MagicIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
-layout_mode = 0
-offset_top = 124.0
-offset_right = 40.0
-offset_bottom = 164.0
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ei1mw")
+texture = SubResource("AtlasTexture_g075f")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/MagicIcon"]
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackSpeedIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "5"
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
-layout_mode = 0
-offset_top = 180.0
-offset_right = 40.0
-offset_bottom = 220.0
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/WizardPanel/WizardStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ei5gd")
+texture = SubResource("AtlasTexture_lpnuj")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/SpeedIcon"]
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WizardPanel/WizardStats/AttackSpeedIcon2"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "1"
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -609,91 +779,145 @@ text = "Archer"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WizardStats" type="Control" parent="HBoxContainer/ArcherPanel"]
+[node name="ArcherStats" type="Panel" parent="HBoxContainer/ArcherPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -69.0
-offset_top = -20.0
-offset_right = -29.0
-offset_bottom = 20.0
+offset_left = -114.5
+offset_top = 5.0
+offset_right = 112.5
+offset_bottom = 213.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/WizardStats"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_wofcq")
 
-[node name="AttackLabel" type="Label" parent="HBoxContainer/ArcherPanel/WizardStats/AttackIcon"]
+[node name="AttackLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "3
+text = "5
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/WizardStats"]
-layout_mode = 0
-offset_left = 9.0
-offset_top = 64.0
-offset_right = 41.0
-offset_bottom = 104.0
+[node name="DefenceIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 79.0
+offset_right = 57.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_uicgf")
 
-[node name="DefenceLabel" type="Label" parent="HBoxContainer/ArcherPanel/WizardStats/DefenceIcon"]
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/DefenceIcon"]
 layout_mode = 0
-offset_left = 94.0
-offset_right = 126.0
+offset_left = 46.0
+offset_right = 78.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "2"
+text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/WizardStats"]
-layout_mode = 0
-offset_top = 124.0
-offset_right = 40.0
-offset_bottom = 164.0
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 147.0
+offset_right = 55.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AtlasTexture_ei1mw")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/ArcherPanel/WizardStats/MagicIcon"]
+[node name="MagiclLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/MagicIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 15.0
+offset_right = 173.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ei5gd")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/SpeedIcon"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/WizardStats"]
-layout_mode = 0
-offset_top = 180.0
-offset_right = 40.0
-offset_bottom = 220.0
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 79.0
+offset_right = 173.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = SubResource("AtlasTexture_ei5gd")
+texture = SubResource("AtlasTexture_g075f")
 
-[node name="MagiclLabel" type="Label" parent="HBoxContainer/ArcherPanel/WizardStats/SpeedIcon"]
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackSpeedIcon"]
 layout_mode = 0
-offset_left = 102.0
-offset_right = 134.0
+offset_left = 54.0
+offset_right = 86.0
 offset_bottom = 40.0
 theme = ExtResource("4_grmsc")
-text = "4"
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedIcon2" type="TextureRect" parent="HBoxContainer/ArcherPanel/ArcherStats"]
+layout_mode = 2
+offset_left = 133.0
+offset_top = 147.0
+offset_right = 173.0
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_lpnuj")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherPanel/ArcherStats/AttackSpeedIcon2"]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 86.0
+offset_bottom = 40.0
+theme = ExtResource("4_grmsc")
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
