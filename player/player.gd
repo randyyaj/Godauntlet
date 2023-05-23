@@ -117,12 +117,16 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var sfx_hurt: AudioStream
 @export var sfx_death: AudioStream
 @export var projectile: PackedScene
-
+@export var attack_offset := 16
 @onready var health_timer: Timer = $HealthTimer
 @onready var can_fire_timer = $CanFireTimer
 @onready var blast_radius =$BlastRadius
 @onready var blast_radius_shape: CollisionShape2D = $BlastRadius/BlastRadiusShape
 
+@onready var attack_area: Area2D = $AttackArea
+@onready var attack_timer: Timer = $AttackTimer
+@onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackAreaCollision
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var projectile_direction = Vector2.DOWN
 var is_shooting := false
@@ -133,6 +137,7 @@ func _ready() -> void:
 	PlayerManager.player = self
 	can_fire_timer.wait_time = fire_rate
 	can_fire_timer.start()
+	attack_offset = sprite_2d.texture.get_size().x if sprite_2d else 16
 
 
 func _input(event: InputEvent) -> void:
@@ -150,17 +155,17 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("control_left", "control_right", "control_up", "control_down")
 	if (direction != Vector2.ZERO):
 		projectile_direction = direction
-	velocity = direction.normalized() * speed * delta
+	
+	attack_area.position = direction * attack_offset
 	
 	if (not is_shooting):
 		var collision = move_and_collide(velocity)
-		if (collision):
-			var collider = collision.get_collider()
-			if (collider is Enemy):
-				melee_attack(collider)
 	
 	if (is_shooting and can_fire):
 		shoot_projectile()
+	
+	velocity = direction.normalized() * speed * delta
+	
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -180,12 +185,6 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int,
 			set(property_name, amount)
 		_:
 			pass
-
-
-func melee_attack(body: PhysicsBody2D) -> void:
-	# performs a short range melee attack
-	# todo add animation
-	body.health -= power
 	
 
 func shoot_projectile() -> void:
@@ -233,3 +232,13 @@ func _on_door_detector_body_entered(body):
 	if body.is_in_group("Door") and (keys >= 1):
 		keys -= 1
 		body.queue_free()
+
+
+func _on_attack_area_body_entered(body: Node2D) -> void:
+	body.health -= power # Inflict damage to enemy
+	attack_area.set_deferred("monitoring", false)
+	attack_timer.start()
+	
+
+func _on_attack_timer_timeout() -> void:
+	attack_area.set_deferred("monitoring", true)

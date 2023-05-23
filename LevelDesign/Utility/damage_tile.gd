@@ -19,9 +19,7 @@ func _on_area_2d_area_entered(area):
 		area.get_parent().health -= damage # Inflict damage to player
 		area_2d.set_deferred("monitoring", false)
 		timer.start()
-	pass # Replace with function body.
 
 
 func _on_timer_timeout():
 	area_2d.set_deferred("monitoring", true)
-	pass # Replace with function body.

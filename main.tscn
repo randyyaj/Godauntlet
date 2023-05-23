@@ -28,33 +28,6 @@ navigation_polygon = SubResource("NavigationPolygon_26vgs")
 
 [node name="Player" parent="." instance=ExtResource("1_m0qbn")]
 position = Vector2(69, 68)
-default_health = 3000
-default_power = 1
-default_speed = 200
-default_shot_power = 1
-default_shot_speed = 200
-default_magic_power = 0
-default_defense = 0
-default_fire_rate = 0.25
-max_health = 9999
-max_power = 3
-max_speed = 500
-max_shot_power = 3
-max_shot_speed = 500
-max_magic_power = 3
-max_defense = 3
-max_fire_rate = 0.1
-health = 9999
-power = 1
-shot_power = 1
-defense = 0
-score = 0
-speed = 200
-shot_speed = 200
-magic_power = 1
-bombs = 0
-keys = 0
-fire_rate = 0.25
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(3, 3)
@@ -101,20 +74,15 @@ position = Vector2(512, 384)
 
 [node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(374, 351)
-spawn_rate = 3
 
 [node name="Spawner2" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(710, 135)
-spawn_rate = 3
 
 [node name="Spawner3" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(76, 590)
-spawn_rate = 3
 
 [node name="Spawner4" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(70, 269)
-spawn_rate = 3
 
 [node name="Spawner5" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(731, 568)
-spawn_rate = 3
