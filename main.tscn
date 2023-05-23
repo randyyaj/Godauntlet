@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=14 format=3 uid="uid://b8twan08rtw1p"]
 
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="2_obwjf"]
 [ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_tt866"]
-[ext_resource type="PackedScene" uid="uid://bl6q5m43u2a4j" path="res://items/potion/potion.tscn" id="5_60mi8"]
 [ext_resource type="PackedScene" uid="uid://tuc5fgxjk74c" path="res://items/key/key.tscn" id="6_qvfnd"]
 [ext_resource type="PackedScene" uid="uid://cs0acy6ewncdr" path="res://items/potion/strength_potion.tscn" id="6_t34pn"]
 [ext_resource type="PackedScene" uid="uid://j2b72g6l2n2j" path="res://items/bomb/bomb.tscn" id="7_k3n6m"]
@@ -11,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bcx1wdsnktsv3" path="res://items/potion/magic_potion.tscn" id="8_d0vxx"]
 [ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="8_iuon0"]
 [ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="9_e1702"]
-[ext_resource type="Texture2D" uid="uid://7rq5hv7vx7wi" path="res://items/potion/potions.png" id="9_w8f74"]
 [ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="10_32jo0"]
 [ext_resource type="PackedScene" uid="uid://dc138rp7ybxnw" path="res://LevelDesign/Easy/Level1_Easy.tscn" id="11_dd8gi"]
 
@@ -20,182 +18,40 @@ vertices = PackedVector2Array(841, 19, 846, 629, 8, 632, 8, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(8, 16, 8, 632, 846, 629, 841, 19)])
 
-[sub_resource type="Resource" id="Resource_k13u7"]
-script = ExtResource("7_nyi2p")
-modifier_type = 7
-amount = 100
-operation_type = 0
-duration = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tqksa"]
-atlas = ExtResource("8_30sho")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="Resource" id="Resource_eyt1o"]
-script = ExtResource("8_bkuuk")
-id = &"treasure"
-name = "Treasure"
-description = "Increases Score"
-stackable = false
-is_consumable = true
-is_destructible = false
-texture = SubResource("AtlasTexture_tqksa")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_k13u7")])
-
-[sub_resource type="Resource" id="Resource_h8whc"]
-script = ExtResource("7_nyi2p")
-modifier_type = 1
-amount = 400
-operation_type = 4
-duration = 20.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33mrm"]
-atlas = ExtResource("9_w8f74")
-region = Rect2(128, 64, 16, 16)
-
-[sub_resource type="Resource" id="Resource_ib3u0"]
-script = ExtResource("8_bkuuk")
-id = &"speed_potion"
-name = "Speed Potion"
-description = "Increases Speed"
-stackable = false
-is_consumable = true
-is_destructible = false
-texture = SubResource("AtlasTexture_33mrm")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_h8whc")])
-
-[sub_resource type="Resource" id="Resource_05bh1"]
-script = ExtResource("7_nyi2p")
-modifier_type = 3
-amount = 3
-operation_type = 4
-duration = 20.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fv4ut"]
-atlas = ExtResource("9_w8f74")
-region = Rect2(128, 32, 16, 16)
-
-[sub_resource type="Resource" id="Resource_ebm7o"]
-script = ExtResource("8_bkuuk")
-id = &"strength_potion"
-name = "Strength Potion"
-description = "Increase Power"
-stackable = false
-is_consumable = true
-is_destructible = false
-texture = SubResource("AtlasTexture_fv4ut")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_05bh1")])
-
-[sub_resource type="Resource" id="Resource_jhm5q"]
-script = ExtResource("7_nyi2p")
-modifier_type = 6
-amount = 1
-operation_type = 0
-duration = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w5ikq"]
-atlas = ExtResource("9_w8f74")
-region = Rect2(128, 144, 16, 16)
-
-[sub_resource type="Resource" id="Resource_iv5jn"]
-script = ExtResource("8_bkuuk")
-id = &"armor_potion"
-name = "Armor Potion"
-description = "Increase Defense"
-stackable = false
-is_consumable = true
-is_destructible = false
-texture = SubResource("AtlasTexture_w5ikq")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_jhm5q")])
-
-[sub_resource type="Resource" id="Resource_5qvo0"]
-script = ExtResource("7_nyi2p")
-modifier_type = 5
-amount = 1
-operation_type = 0
-duration = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kppwg"]
-atlas = ExtResource("9_w8f74")
-region = Rect2(128, 80, 16, 16)
-
-[sub_resource type="Resource" id="Resource_5cmcr"]
-script = ExtResource("8_bkuuk")
-id = &"magic_potion"
-name = "Magic Potion"
-description = "Increase Magic Power"
-stackable = false
-is_consumable = true
-is_destructible = false
-texture = SubResource("AtlasTexture_kppwg")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_5qvo0")])
-
-[sub_resource type="Resource" id="Resource_15a4l"]
-script = ExtResource("7_nyi2p")
-modifier_type = 9
-amount = 1
-operation_type = 0
-duration = 0.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkvup"]
-atlas = ExtResource("12_gbvq6")
-region = Rect2(248, 320, 16, 16)
-
-[sub_resource type="Resource" id="Resource_p5nap"]
-script = ExtResource("8_bkuuk")
-id = &"key"
-name = "key"
-description = "Open Doors"
-stackable = true
-is_consumable = false
-is_destructible = false
-texture = SubResource("AtlasTexture_nkvup")
-modifiers = Array[ExtResource("7_nyi2p")]([SubResource("Resource_15a4l")])
-
 [node name="World" type="Node"]
 
 [node name="Level1Easy" parent="." instance=ExtResource("11_dd8gi")]
 
-[node name="Door" parent="." instance=ExtResource("11_iodx8")]
-z_index = 1
-position = Vector2(336, 304)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_26vgs")
 
-[node name="Player" parent="." instance=ExtResource("1_m0qbn")]
-position = Vector2(69, 68)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
+[node name="Treasure" parent="." instance=ExtResource("2_obwjf")]
+position = Vector2(640, 320)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
 
-[node name="Treasure" parent="." instance=ExtResource("2_obwjf")]
-position = Vector2(640, 320)
-data = SubResource("Resource_eyt1o")
-
-[node name="SpeedPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(640, 256)
-data = SubResource("Resource_ib3u0")
-
-[node name="StrengthPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(704, 256)
-data = SubResource("Resource_ebm7o")
+[node name="StrengthPotion" parent="." instance=ExtResource("6_t34pn")]
+position = Vector2(719, 325)
 
 [node name="ArmorPotion" parent="." instance=ExtResource("7_vhinr")]
 position = Vector2(768, 256)
-data = SubResource("Resource_iv5jn")
 
-[node name="MagicPotion" parent="." instance=ExtResource("5_60mi8")]
-position = Vector2(832, 256)
-data = SubResource("Resource_5cmcr")
+[node name="MagicPotion" parent="." instance=ExtResource("8_d0vxx")]
+position = Vector2(790, 305)
 
 [node name="Key" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(576, 256)
-data = SubResource("Resource_p5nap")
+position = Vector2(214, 89)
+
+[node name="Key2" parent="." instance=ExtResource("6_qvfnd")]
+position = Vector2(694, 219)
+
+[node name="Key3" parent="." instance=ExtResource("6_qvfnd")]
+position = Vector2(251, 373)
+
+[node name="Key4" parent="." instance=ExtResource("6_qvfnd")]
+position = Vector2(23, 619)
 
 [node name="Bomb" parent="." instance=ExtResource("7_k3n6m")]
 position = Vector2(512, 256)
@@ -203,9 +59,14 @@ position = Vector2(512, 256)
 [node name="Food" parent="." instance=ExtResource("8_iuon0")]
 position = Vector2(448, 256)
 
-[node name="RangedEnemy" parent="." instance=ExtResource("9_e1702")]
+[node name="Enemy" parent="." instance=ExtResource("9_e1702")]
 position = Vector2(512, 384)
-is_ranged = true
+
+[node name="Player" parent="." instance=ExtResource("1_m0qbn")]
+position = Vector2(69, 68)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
 
 [node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
 position = Vector2(374, 351)
