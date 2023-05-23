@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://nef3abjc2xj6"]
+[gd_scene load_steps=7 format=3 uid="uid://nef3abjc2xj6"]
 
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_6byjh"]
 [ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="2_ctjhg"]
@@ -9,6 +9,9 @@ atlas = ExtResource("3_mlrsq")
 region = Rect2(80, 488, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cspui"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wm8cv"]
+radius = 128.996
 
 [node name="Spawner" type="StaticBody2D"]
 collision_layer = 32
@@ -24,4 +27,13 @@ shape = SubResource("RectangleShape2D_cspui")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[node name="SpawnRadius" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="SpawnRadiusCollision" type="CollisionShape2D" parent="SpawnRadius"]
+shape = SubResource("CircleShape2D_wm8cv")
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="SpawnRadius" to="." method="_on_spawn_radius_body_entered"]
+[connection signal="body_exited" from="SpawnRadius" to="." method="_on_spawn_radius_body_exited"]

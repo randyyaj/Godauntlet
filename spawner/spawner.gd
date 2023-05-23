@@ -14,7 +14,7 @@ signal sig_health_updated
 		if (health <= 0):
 			die()
 
-@export var spawn_rate: int = 5 #seconds
+@export var spawn_rate: float = 2.0 #seconds
 @export var texture: AtlasTexture
 @export var score: int = 10
 
@@ -28,16 +28,25 @@ func _ready() -> void:
 	collision_shape_2d.shape = RectangleShape2D.new()
 	collision_shape_2d.shape.size = sprite_2d.get_rect().size
 	timer.wait_time = spawn_rate
-	timer.start()
-
-
-func _on_timer_timeout():
-	var new_enemy = enemy_spawn.instantiate()
-	new_enemy.global_position = global_position
-	get_tree().get_root().add_child(new_enemy)
-
+	
 
 func die() -> void:
 	sig_death.emit()
 	PlayerManager.player.score += score
 	queue_free()
+
+
+func _on_timer_timeout():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	if (enemies.size() < Global.MAX_ENEMIES_ON_SCREEN and enemy_spawn.can_instantiate()):
+		var new_enemy = enemy_spawn.instantiate()
+		new_enemy.global_position = global_position
+		get_tree().get_root().add_child(new_enemy)
+
+
+func _on_spawn_radius_body_entered(body: Node2D) -> void:
+	timer.start()
+
+
+func _on_spawn_radius_body_exited(body: Node2D) -> void:
+	timer.stop()
