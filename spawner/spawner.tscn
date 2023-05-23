@@ -11,7 +11,7 @@ region = Rect2(80, 488, 16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cspui"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wm8cv"]
-radius = 128.996
+radius = 192.0
 
 [node name="Spawner" type="StaticBody2D"]
 collision_layer = 32

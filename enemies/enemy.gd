@@ -16,27 +16,57 @@ signal sig_health_updated
 
 @export var power := 10
 @export var defense := 0
-@export var score := 100
+@export var score := 10
 @export var speed: int = 50
 @export var is_ranged: bool = false
-
 @export var projectile: PackedScene
 @export var fire_rate : float = .25
 @export var shot_power := 25
 @export var shot_speed := 100
 @export var shooting_delay := 1
+@export var spawner_level_scale: Dictionary = {
+	1: {
+		'health': 1,
+		'power': 10,
+		'score': 10,
+		'opacity': .5
+	},
+	2: {
+		'health': 2,
+		'power': 20,
+		'score': 10,
+		'opacity': .75
+	},
+	3: {
+		'health': 3,
+		'power': 30,
+		'score': 10,
+		'opacity': 1
+	}
+}
 
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var timer = $Timer
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 var is_attacking := false
+
+var level := 3 :
+	get:
+		return level
+	set(value):
+		level = value
+		health = spawner_level_scale[value].health
+		power = spawner_level_scale[value].power
+		score = spawner_level_scale[value].score
+		
 
 
 func _ready():
 	add_to_group('enemies', true)
 	timer.wait_time = shooting_delay
 	timer.start()
-	
+	sprite_2d.self_modulate.a = spawner_level_scale[level].opacity
 
 func _physics_process(delta: float) -> void:
 	navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
@@ -50,7 +80,7 @@ func _physics_process(delta: float) -> void:
 			# todo play attack animation
 			body.health -= power # Inflict power to player
 			is_attacking = false
-			
+
 
 func shoot() -> void:
 	#var distanceToTarget = global_position.distance_to(PlayerManager.player.get_global_position())

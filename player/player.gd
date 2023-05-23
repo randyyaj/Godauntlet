@@ -16,7 +16,7 @@ signal sig_fire_rate_updated
 
 var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 
-@export var default_health := 3000
+@export var default_health := 700
 @export var default_power := 1
 @export var default_speed := 200
 @export var default_shot_power := 1
@@ -34,7 +34,7 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var max_defense := 3
 @export var max_fire_rate := .1
 
-@export var health := 9999 :
+@export var health := default_health :
 	get:
 		return health
 	set(value):
