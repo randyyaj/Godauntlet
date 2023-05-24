@@ -50,6 +50,7 @@ border_width_bottom = 8
 border_color = Color(0.182137, 0.136258, 0.15804, 1)
 
 [node name="PauseMenu" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -197,9 +198,9 @@ text = "No"
 [node name="SongLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 33.0
-offset_top = 575.0
+offset_top = 841.0
 offset_right = 448.0
-offset_bottom = 613.0
+offset_bottom = 879.0
 theme = ExtResource("2_pdg38")
 theme_override_font_sizes/font_size = 14
 text = "Song - Artist"

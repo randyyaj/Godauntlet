@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c68w2sftvjej0"]
+[gd_scene load_steps=10 format=3 uid="uid://c68w2sftvjej0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vlum0"]
 [ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_l4mr6"]
 [ext_resource type="Texture2D" uid="uid://d3vwukin2la7a" path="res://player/hero_basic.png" id="3_nbe8u"]
+[ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_b4ivl"]
+[ext_resource type="PackedScene" uid="uid://fjkb6pqxc6lq" path="res://ui/Menus/pause_menu.tscn" id="5_hvjw8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbedo"]
 size = Vector2(10, 14)
@@ -20,6 +22,7 @@ y_sort_enabled = true
 collision_layer = 2
 collision_mask = 189
 script = ExtResource("1_vlum0")
+fire_rate = 0.35
 projectile = ExtResource("2_l4mr6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -53,6 +56,16 @@ shape = SubResource("RectangleShape2D_dn6wj")
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_b4ivl")]
+player_node_path = NodePath("../..")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_hvjw8")]
 
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]
 [connection signal="timeout" from="CanFireTimer" to="." method="_on_can_fire_timer_timeout"]
