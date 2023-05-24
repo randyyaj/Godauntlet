@@ -22,6 +22,9 @@ collision_mask = 189
 script = ExtResource("1_vlum0")
 projectile = ExtResource("2_l4mr6")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_nbe8u")
 

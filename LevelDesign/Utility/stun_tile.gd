@@ -12,6 +12,3 @@ func _on_area_2d_area_entered(area):
 		area.get_parent().speed = 0
 		await get_tree().create_timer(stun_duration).timeout
 		area.get_parent().speed = area.get_parent().default_speed
-		#queue_free()
-
-	
