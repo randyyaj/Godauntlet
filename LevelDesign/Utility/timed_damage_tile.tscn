@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://com4pbmf2snbw"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/timed_damage_tile.gd" id="1_hxptv"]
+[ext_resource type="Texture2D" uid="uid://dg8rdxldehlyw" path="res://Art/Tilesets/dungeontileset-extended.png" id="2_vpcaw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsl54"]
+atlas = ExtResource("2_vpcaw")
+region = Rect2(64, 256, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q506p"]
+atlas = ExtResource("2_vpcaw")
+region = Rect2(32, 256, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a2m4j"]
+size = Vector2(16, 16)
+
+[node name="TimedDamageTile" type="Node2D"]
+modulate = Color(0.901961, 0.658824, 0.658824, 1)
+script = ExtResource("1_hxptv")
+damage_frequency = 0.3
+
+[node name="SpikeUP" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_qsl54")
+
+[node name="SpikeDown" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = SubResource("AtlasTexture_q506p")
+
+[node name="Area2D" type="Area2D" parent="."]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_a2m4j")
+debug_color = Color(0.564706, 0.533333, 0.458824, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+
+[node name="SpikeUpTImer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="SpikeUpTImer" to="." method="_on_spike_up_t_imer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

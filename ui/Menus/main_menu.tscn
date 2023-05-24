@@ -96,18 +96,21 @@ grow_vertical = 2
 script = ExtResource("1_sowhy")
 
 [node name="BG" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.258824, 0.219608, 0.239216, 1)
 
 [node name="IconGrid" type="GridContainer" parent="."]
 modulate = Color(0.184314, 0.105882, 0.145098, 0.396078)
 layout_mode = 0
-offset_left = 616.0
-offset_top = 142.0
-offset_right = 1103.0
-offset_bottom = 596.0
+offset_left = 571.0
+offset_top = 190.0
+offset_right = 1148.0
+offset_bottom = 728.0
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
@@ -154,10 +157,10 @@ vertical_alignment = 1
 
 [node name="ButtonsContainter" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 261.0
-offset_right = 317.0
-offset_bottom = 600.0
+offset_left = 64.0
+offset_top = 486.0
+offset_right = 482.0
+offset_bottom = 825.0
 theme_override_constants/separation = 36
 
 [node name="PlayButton" type="Button" parent="ButtonsContainter"]
