@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MusicTrack" load_steps=3 format=3 uid="uid://twyxslskxvgp"]
 
-[ext_resource type="AudioStream" uid="uid://b7dsu25l5n8sa" path="res://Music/Tracks/Eggy Toast - Crater.mp3" id="1_0giee"]
+[ext_resource type="AudioStream" uid="uid://b1k8e1l5hvm3u" path="res://Music/Tracks/BERSERK DOS-88 - DEMON SLAYER.mp3" id="1_ujlba"]
 [ext_resource type="Script" path="res://Music/MusicTrack.gd" id="2_tijg3"]
 
 [resource]
 script = ExtResource("2_tijg3")
-Song = ExtResource("1_0giee")
-SongDescription = "Eggy Toast - Crater"
+Song = ExtResource("1_ujlba")
+SongDescription = "DOS-88 - Demon Slayer"

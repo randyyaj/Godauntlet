@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://bprjc5nrx57fr"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://c1bxj04qo6els"]
 
 [sub_resource type="AudioEffectEQ" id="AudioEffectEQ_4due4"]
 resource_name = "EQ"
@@ -8,7 +8,7 @@ bus/1/name = &"Music"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
-bus/1/volume_db = -0.428246
+bus/1/volume_db = -17.0211
 bus/1/send = &"Music 2"
 bus/1/effect/0/effect = SubResource("AudioEffectEQ_4due4")
 bus/1/effect/0/enabled = true

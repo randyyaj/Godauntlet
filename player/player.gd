@@ -159,13 +159,17 @@ func _physics_process(delta: float) -> void:
 	attack_area.position = direction * attack_offset
 	
 	if (not is_shooting):
-		var collision = move_and_collide(velocity)
+		#var collision = move_and_collide(velocity)
+		velocity = velocity.move_toward(direction.normalized() * speed, 20)
 	
 	if (is_shooting and can_fire):
+		velocity = velocity.move_toward(Vector2.ZERO, 90)
 		shoot_projectile()
 	
-	velocity = direction.normalized() * speed * delta
-	
+	#velocity = direction.normalized() * speed * delta
+	move_and_slide()
+	if not is_shooting:
+		pass
 
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
@@ -188,6 +192,7 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int,
 	
 
 func shoot_projectile() -> void:
+	#move_and_slide()
 	# fires projectile in facing direction
 	var bullet = projectile.instantiate()
 	bullet.power = shot_power
