@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var time_to_live_timer = $TimeToLiveTimer
-@onready var time_to_live = 5
+@onready var time_to_live = 3
 @onready var sprite_2d = $Sprite2D
 
 var direction = Vector2.ZERO

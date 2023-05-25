@@ -41,9 +41,7 @@ func next_level_easy():
 
 func _on_easy_level_beat():
 	next_level_easy()
-	pass # Replace with function body.
 
 
 func _on_timer_timeout():
 	get_tree().change_scene_to_packed(myLevelList.levelList[current_level_index])
-	pass # Replace with function body.

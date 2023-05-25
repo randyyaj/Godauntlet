@@ -9,9 +9,10 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
 		print("stunned for " + str(stun_duration) + " seconds")
+		var lastSpeed = area.get_parent().speed
 		area.get_parent().speed = 0
 		await get_tree().create_timer(stun_duration).timeout
-		area.get_parent().speed = area.get_parent().default_speed
+		area.get_parent().speed = lastSpeed
 		#queue_free()
 
 	
