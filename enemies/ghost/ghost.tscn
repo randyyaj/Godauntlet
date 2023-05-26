@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://83e5hfqsl2e8"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_usnem"]
+[ext_resource type="Texture2D" uid="uid://be8w4unatx1rq" path="res://enemies/ghost/ghost.png" id="2_h2bvv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n714q"]
+
+[node name="Ghost" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 463
+script = ExtResource("1_usnem")
+is_kamikaze = true
+is_melee_proof = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n714q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_h2bvv")

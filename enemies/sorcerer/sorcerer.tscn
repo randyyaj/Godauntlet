@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://objrltg4dbj1"]
+
+[ext_resource type="Script" path="res://enemies/sorcerer/sorcerer.gd" id="1_0yadn"]
+[ext_resource type="Texture2D" uid="uid://dg2u1gvfwo2kd" path="res://enemies/sorcerer/monster_necromancer.png" id="2_akvoi"]
+[ext_resource type="PackedScene" uid="uid://5e8vtqck28tn" path="res://enemies/enemy_projectile.tscn" id="2_wntmj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7c46"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lhnf"]
+radius = 42.19
+
+[node name="Sorcerer" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 463
+script = ExtResource("1_0yadn")
+projectile = ExtResource("2_wntmj")
+spawner_level_scale = {
+1: {
+"health": 1,
+"opacity": 0.5,
+"power": 5,
+"score": 10
+},
+2: {
+"health": 2,
+"opacity": 0.75,
+"power": 8,
+"score": 10
+},
+3: {
+"health": 3,
+"opacity": 1,
+"power": 10,
+"score": 10
+}
+}
+is_ranged = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_c7c46")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_akvoi")
+
+[node name="InvisibilityTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BulletDetectionArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletDetectionArea"]
+shape = SubResource("CircleShape2D_8lhnf")
+
+[connection signal="timeout" from="InvisibilityTimer" to="." method="_on_invisibility_timer_timeout"]
+[connection signal="body_entered" from="BulletDetectionArea" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="BulletDetectionArea" to="." method="_on_bullet_detection_area_body_exited"]

@@ -1,8 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://nef3abjc2xj6"]
+[gd_scene load_steps=11 format=3 uid="uid://nef3abjc2xj6"]
 
 [ext_resource type="Script" path="res://spawner/spawner.gd" id="1_6byjh"]
-[ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="2_ctjhg"]
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="2_qw2ri"]
 [ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="3_mlrsq"]
+[ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="3_wb5vs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n4dua"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_noruj"]
+
+[sub_resource type="PackedScene" id="PackedScene_sb2l1"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Enemy", "collision_layer", "collision_mask", "script", "projectile", "is_ranged", "CharacterBody2D", "NavigationAgent2D", "CollisionShape2D", "position", "shape", "Sprite2D", "texture"),
+"node_count": 4,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 0, 0, 0, 0, 8, 8, -1, 2, 9, 5, 10, 6, 0, 0, 0, 11, 11, -1, 1, 12, 7, 0),
+"variants": [8, 15, ExtResource("2_qw2ri"), ExtResource("3_wb5vs"), true, Vector2(0, 5), SubResource("CircleShape2D_n4dua"), SubResource("CompressedTexture2D_noruj")],
+"version": 3
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo73v"]
 atlas = ExtResource("3_mlrsq")
@@ -17,7 +35,7 @@ radius = 192.0
 collision_layer = 32
 collision_mask = 67
 script = ExtResource("1_6byjh")
-enemy_spawn = ExtResource("2_ctjhg")
+enemy_spawn = SubResource("PackedScene_sb2l1")
 texture = SubResource("AtlasTexture_oo73v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
