@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7bd5jehnynnp"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_4r65c"]
+[ext_resource type="Texture2D" uid="uid://6471af4xww8n" path="res://enemies/death/monster_skelet.png" id="2_6k84q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdv1g"]
+
+[node name="Death" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 463
+script = ExtResource("1_4r65c")
+spawner_level_scale = {
+1: {
+"health": 1,
+"opacity": 0.5,
+"power": 5,
+"score": 10
+},
+2: {
+"health": 2,
+"opacity": 0.75,
+"power": 8,
+"score": 10
+},
+3: {
+"health": 3,
+"opacity": 1,
+"power": 10,
+"score": 10
+}
+}
+is_melee_proof = true
+is_bullet_proof = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kdv1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6k84q")

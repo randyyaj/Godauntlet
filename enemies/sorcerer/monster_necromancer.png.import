@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4wqe1flj5mq2"
-path="res://.godot/imported/chort_idle_anim_f2.png-8c0eb779f73cccb5dce454591bf0d2ef.ctex"
+uid="uid://dg2u1gvfwo2kd"
+path="res://.godot/imported/monster_necromancer.png-85365b9c10aefa0da1ae4f685d7b1b74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/chort_idle_anim_f2.png"
-dest_files=["res://.godot/imported/chort_idle_anim_f2.png-8c0eb779f73cccb5dce454591bf0d2ef.ctex"]
+source_file="res://enemies/sorcerer/monster_necromancer.png"
+dest_files=["res://.godot/imported/monster_necromancer.png-85365b9c10aefa0da1ae4f685d7b1b74.ctex"]
 
 [params]
 

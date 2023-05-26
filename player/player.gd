@@ -40,7 +40,7 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 	set(value):
 		health = value
 		sig_health_updated.emit(health)
-		if (health <= 0):
+		if (health <= 0 or value > health):
 			die()
 		
 @export var power := 1 :
@@ -215,13 +215,16 @@ func use_bomb() -> void:
 
 
 func die() -> void:
-	health = 0
+	# TODO present gameover screen
+	get_tree().call_group("enemies", "set_target_position", null)
+	queue_free()
 	if (sfx_death):
 		audio_stream_player.stream = sfx_death
 		audio_stream_player.play()
 		await audio_stream_player.finished
-	# await animation if there is an animation
+	# TODO await animation if there is an animation
 	sig_death.emit()
+	
 
 
 func _on_health_timer_timeout() -> void:
@@ -240,9 +243,10 @@ func _on_door_detector_body_entered(body):
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	body.health -= power # Inflict damage to enemy
-	attack_area.set_deferred("monitoring", false)
-	attack_timer.start()
+	if (body.is_in_group('enemies') and !body.is_melee_proof):
+		body.health -= power # Inflict damage to enemy
+		attack_area.set_deferred("monitoring", false)
+		attack_timer.start()
 	
 
 func _on_attack_timer_timeout() -> void:

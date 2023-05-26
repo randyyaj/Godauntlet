@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dc138rp7ybxnw"]
+[gd_scene load_steps=18 format=3 uid="uid://dc138rp7ybxnw"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_av0fj"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="2_1k0am"]
@@ -11,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="9_d4d7s"]
 [ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="10_idf1k"]
 [ext_resource type="PackedScene" uid="uid://com4pbmf2snbw" path="res://LevelDesign/Utility/timed_damage_tile.tscn" id="11_jscb0"]
+[ext_resource type="PackedScene" uid="uid://83e5hfqsl2e8" path="res://enemies/ghost/ghost.tscn" id="11_u33ky"]
+[ext_resource type="PackedScene" uid="uid://objrltg4dbj1" path="res://enemies/sorcerer/sorcerer.tscn" id="12_7g4wh"]
+[ext_resource type="PackedScene" uid="uid://2aend56nw62r" path="res://enemies/grunt/grunt.tscn" id="13_pgko8"]
+[ext_resource type="PackedScene" uid="uid://bu03k208ojloi" path="res://enemies/demon/demon.tscn" id="14_snt2v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mp81"]
 size = Vector2(64, 16)
@@ -138,14 +142,33 @@ position = Vector2(145, 142)
 
 [node name="Spawners" type="Node2D" parent="."]
 
-[node name="Spawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
+[node name="GhostSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
+position = Vector2(448, 64)
+enemy_spawn = ExtResource("11_u33ky")
+health = 3
+spawn_rate = 1.5
+score = 10
+
+[node name="SorcererSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(92, 583)
+enemy_spawn = ExtResource("12_7g4wh")
+health = 3
+spawn_rate = 1.5
+score = 10
 
-[node name="Spawner2" parent="Spawners" instance=ExtResource("9_d4d7s")]
+[node name="GruntSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(270, 346)
+enemy_spawn = ExtResource("13_pgko8")
+health = 3
+spawn_rate = 1.5
+score = 10
 
-[node name="Spawner3" parent="Spawners" instance=ExtResource("9_d4d7s")]
+[node name="DemonSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(579, 462)
+enemy_spawn = ExtResource("14_snt2v")
+health = 3
+spawn_rate = 1.5
+score = 10
 
 [node name="TimedDamageTile" parent="." instance=ExtResource("11_jscb0")]
 position = Vector2(320, 64)
