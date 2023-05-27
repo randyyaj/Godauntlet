@@ -1,10 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://cytmdngjvej63"]
+[gd_scene load_steps=14 format=3 uid="uid://cytmdngjvej63"]
 
 [ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="1_l1lgj"]
 [ext_resource type="Script" path="res://ui/Menus/main_menu.gd" id="1_sowhy"]
 [ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="2_1lmds"]
 [ext_resource type="Theme" uid="uid://e3762etq6xnc" path="res://ui/Menus/Menus.tres" id="3_jdix0"]
-[ext_resource type="FontFile" uid="uid://do6gygiu13wds" path="res://HUD/castlevania-bloodlines.ttf" id="5_68sfb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rl6bk"]
 atlas = ExtResource("1_l1lgj")
@@ -22,7 +21,7 @@ region = Rect2(104, 56, 16, 16)
 atlas = ExtResource("1_l1lgj")
 region = Rect2(440, 368, 16, 16)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf84j"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8uw6y"]
 bg_color = Color(0.341176, 0.266667, 0.301961, 1)
 border_width_left = 8
 border_width_top = 8
@@ -30,7 +29,7 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.180392, 0.137255, 0.156863, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nxaq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mnmbt"]
 bg_color = Color(0.262745, 0.2, 0.231373, 1)
 border_width_left = 8
 border_width_top = 8
@@ -38,7 +37,7 @@ border_width_right = 8
 border_width_bottom = 8
 border_color = Color(0.180392, 0.137255, 0.156863, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ymgl"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_152hp"]
 bg_color = Color(0.670588, 0.560784, 0.611765, 1)
 border_width_left = 8
 border_width_top = 8
@@ -47,44 +46,14 @@ border_width_bottom = 8
 border_color = Color(0.180392, 0.137255, 0.156863, 1)
 
 [sub_resource type="Theme" id="Theme_17j2i"]
-Button/styles/focus = SubResource("StyleBoxFlat_nf84j")
-Button/styles/hover = SubResource("StyleBoxFlat_4nxaq")
-Button/styles/normal = SubResource("StyleBoxFlat_nf84j")
-Button/styles/pressed = SubResource("StyleBoxFlat_0ymgl")
+Button/styles/focus = SubResource("StyleBoxFlat_8uw6y")
+Button/styles/hover = SubResource("StyleBoxFlat_mnmbt")
+Button/styles/normal = SubResource("StyleBoxFlat_8uw6y")
+Button/styles/pressed = SubResource("StyleBoxFlat_152hp")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nli1t"]
 atlas = ExtResource("2_1lmds")
 region = Rect2(272, 8, 16, 16)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jp247"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahnnh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l30wk"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8smp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xfad8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bs8nj"]
-bg_color = Color(0.34, 0.2652, 0.3026, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.182137, 0.136258, 0.15804, 1)
-
-[sub_resource type="Theme" id="Theme_hgkcy"]
-default_font = ExtResource("5_68sfb")
-Button/colors/font_hover_color = Color(0.627451, 0.627451, 0.627451, 1)
-Button/colors/font_pressed_color = Color(0.85098, 0.627451, 0.313726, 1)
-Button/styles/disabled = SubResource("StyleBoxEmpty_jp247")
-Button/styles/focus = SubResource("StyleBoxEmpty_ahnnh")
-Button/styles/hover = SubResource("StyleBoxEmpty_l30wk")
-Button/styles/normal = SubResource("StyleBoxEmpty_w8smp")
-Button/styles/pressed = SubResource("StyleBoxEmpty_xfad8")
-Label/fonts/font = ExtResource("5_68sfb")
-Panel/styles/panel = SubResource("StyleBoxFlat_bs8nj")
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -95,25 +64,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sowhy")
 
-[node name="BG" type="ColorRect" parent="."]
+[node name="BG" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.258824, 0.219608, 0.239216, 1)
+theme = ExtResource("3_jdix0")
 
 [node name="IconGrid" type="GridContainer" parent="."]
-modulate = Color(0.184314, 0.105882, 0.145098, 0.396078)
 layout_mode = 0
-offset_left = 571.0
-offset_top = 190.0
-offset_right = 1148.0
-offset_bottom = 728.0
+offset_left = 446.0
+offset_top = 193.0
+offset_right = 739.0
+offset_bottom = 259.0
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
-columns = 2
+columns = 4
 
 [node name="Sword" type="TextureRect" parent="IconGrid"]
 layout_mode = 2
@@ -142,69 +110,76 @@ texture = SubResource("AtlasTexture_ceid6")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 43.0
-offset_right = 661.0
-offset_bottom = 139.0
+offset_left = 216.0
+offset_top = 80.0
+offset_right = 936.0
+offset_bottom = 176.0
 theme = ExtResource("3_jdix0")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 6
 theme_override_constants/shadow_offset_y = 6
-theme_override_font_sizes/font_size = 61
-text = "Godauntlet"
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 72
+text = "VAMbrace"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ButtonsContainter" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 64.0
-offset_top = 486.0
-offset_right = 482.0
-offset_bottom = 825.0
+offset_left = 312.0
+offset_top = 296.0
+offset_right = 902.0
+offset_bottom = 840.0
 theme_override_constants/separation = 36
 
 [node name="PlayButton" type="Button" parent="ButtonsContainter"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "Play"
-alignment = 0
 
 [node name="HowToPlay" type="Button" parent="ButtonsContainter"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "How to Play"
-alignment = 0
 
 [node name="Options" type="Button" parent="ButtonsContainter"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "Options"
-alignment = 0
 
 [node name="Credits" type="Button" parent="ButtonsContainter"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "Credits"
-alignment = 0
 
 [node name="Quit" type="Button" parent="ButtonsContainter"]
 layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 38
+theme_override_font_sizes/font_size = 32
 text = "Quit"
-alignment = 0
 
 [node name="MenuPanel" type="Panel" parent="."]
 visible = false
-layout_mode = 0
-offset_left = 576.0
-offset_top = 157.0
-offset_right = 1103.0
-offset_bottom = 600.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -520.0
+offset_top = -366.0
+offset_right = 521.0
+offset_bottom = 366.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("3_jdix0")
 
 [node name="MenuTitleLabel" type="Label" parent="MenuPanel"]
@@ -231,10 +206,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 432.0
-offset_top = 19.0
-offset_right = -25.0
-offset_bottom = -365.0
+offset_left = 936.0
+offset_top = 36.0
+offset_right = -38.0
+offset_bottom = -638.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_17j2i")
@@ -259,67 +234,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 71.0
-offset_top = 227.0
+offset_top = 292.0
 offset_right = -71.0
-offset_bottom = -143.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ExitButtonPanelYes" type="Panel" parent="MenuPanel/QuitYesAndNoButtons"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = SubResource("Theme_hgkcy")
-
-[node name="ExitYesButton" type="Button" parent="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="YesLabel" type="Label" parent="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -8.0
+offset_bottom = -208.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 15
+theme_override_constants/separation = 18
+
+[node name="ExitYesButton" type="Button" parent="MenuPanel/QuitYesAndNoButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
 text = "Yes"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="ExitButtonPanelNo" type="Panel" parent="MenuPanel/QuitYesAndNoButtons"]
+[node name="ExitNoButton" type="Button" parent="MenuPanel/QuitYesAndNoButtons"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_hgkcy")
-
-[node name="NoLabel" type="Label" parent="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 8.0
-offset_right = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_jdix0")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 60
 text = "No"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ExitNoButton" type="Button" parent="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="ButtonsContainter/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ButtonsContainter/HowToPlay" to="." method="_on_how_to_play_pressed"]
@@ -327,13 +260,9 @@ grow_vertical = 2
 [connection signal="pressed" from="ButtonsContainter/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="ButtonsContainter/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes" to="." method="_on_exit_button_panel_mouse_entered"]
-[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes" to="." method="_on_exit_button_panel_mouse_exited"]
-[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes/ExitYesButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes/ExitYesButton" to="." method="_on_exit_button_mouse_exited"]
-[connection signal="pressed" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelYes/ExitYesButton" to="." method="_on_exit_yes_button_pressed"]
-[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo" to="." method="_on_exit_button_panel_mouse_entered"]
-[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo" to="." method="_on_exit_button_panel_mouse_exited"]
-[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo/ExitNoButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo/ExitNoButton" to="." method="_on_exit_button_mouse_exited"]
-[connection signal="pressed" from="MenuPanel/QuitYesAndNoButtons/ExitButtonPanelNo/ExitNoButton" to="." method="_on_exit_no_button_pressed"]
+[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitYesButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitYesButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="MenuPanel/QuitYesAndNoButtons/ExitYesButton" to="." method="_on_exit_yes_button_pressed"]
+[connection signal="mouse_entered" from="MenuPanel/QuitYesAndNoButtons/ExitNoButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="MenuPanel/QuitYesAndNoButtons/ExitNoButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="MenuPanel/QuitYesAndNoButtons/ExitNoButton" to="." method="_on_exit_no_button_pressed"]
