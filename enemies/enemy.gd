@@ -25,7 +25,7 @@ signal on_projectile_hit
 @export var fire_rate : float = .25
 @export var shot_power := 25
 @export var shot_speed := 100
-@export var shooting_delay := 1
+@export var shooting_delay: float = 1.0
 @export var spawner_level_scale: Dictionary = {
 	1: {
 		'health': 1,
@@ -48,6 +48,8 @@ signal on_projectile_hit
 }
 
 @export var is_ranged: bool = false
+@export var is_projectile_bouncy: bool = false
+@export var is_projectile_piercing: bool = false
 @export var is_kamikaze := false
 @export var is_melee_proof := false
 @export var is_bullet_proof := false
@@ -56,7 +58,7 @@ signal on_projectile_hit
 @onready var timer = $Timer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
-const MAX_PROJECTILE_DISTANCE = 250
+const MAX_PROJECTILE_DISTANCE = 200
 var level := 3 :
 	get:
 		return level
@@ -72,7 +74,7 @@ var attack_area: Area2D = Area2D.new()
 var attack_area_collision: CollisionShape2D = CollisionShape2D.new()
 var attack_timer: Timer = Timer.new()
 var shoot_timer: Timer = Timer.new()
-
+var is_shooting := false
 
 func connect_signals():
 	attack_area.area_entered.connect(_on_area_2d_area_entered)
@@ -114,20 +116,28 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if (is_instance_valid(PlayerManager.player)):
 		navigation_agent_2d.set_target_position(PlayerManager.player.get_global_position())
+		
+	if (navigation_agent_2d.get_next_path_position()):
+		velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
+		velocity += knockback_vector
 	
-	velocity = (navigation_agent_2d.get_next_path_position() - global_position).normalized() * speed * delta
-	velocity += knockback_vector
+	if (is_shooting):
+		velocity = Vector2.ZERO
+		
 	var collision = move_and_collide(velocity)
 	knockback_vector = Vector2.ZERO
 
 
 func shoot() -> void:
 	if (is_instance_valid(PlayerManager.player)):
+		is_shooting = true
 		var distance_to_target = global_position.distance_to(PlayerManager.player.get_global_position())
 		if (distance_to_target < MAX_PROJECTILE_DISTANCE):
 			var bullet = projectile.instantiate()
 			bullet.speed = shot_speed
 			bullet.power = shot_power
+			bullet.is_bouncy = is_projectile_bouncy
+			bullet.is_piercing = is_projectile_piercing
 			bullet.global_position = global_position
 			bullet.look_at(PlayerManager.player.get_global_position())
 			bullet.direction = (PlayerManager.player.get_global_position() - global_position).normalized()
@@ -135,6 +145,8 @@ func shoot() -> void:
 			bullet.set_collision_mask_value(4, false) # Enemy Mask
 			bullet.set_collision_mask_value(6, false) # Spawner Mask
 			get_tree().get_root().add_child(bullet)
+			await get_tree().create_timer(.5).timeout
+			is_shooting = false
 
 
 func knockback(from_position, strength: int = 1) -> void:
