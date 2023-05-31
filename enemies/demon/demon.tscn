@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu03k208ojloi"]
+
+[ext_resource type="Script" path="res://enemies/enemy.gd" id="1_nl1l8"]
+[ext_resource type="Texture2D" uid="uid://d3ou52c3j8mur" path="res://enemies/demon/monster_demon.png" id="2_5gn35"]
+[ext_resource type="PackedScene" uid="uid://5e8vtqck28tn" path="res://enemies/enemy_projectile.tscn" id="2_mdakg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdv1g"]
+
+[node name="Demon" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 463
+script = ExtResource("1_nl1l8")
+projectile = ExtResource("2_mdakg")
+shooting_delay = 2.0
+spawner_level_scale = {
+1: {
+"health": 1,
+"opacity": 0.5,
+"power": 5,
+"score": 10
+},
+2: {
+"health": 2,
+"opacity": 0.75,
+"power": 8,
+"score": 10
+},
+3: {
+"health": 3,
+"opacity": 1,
+"power": 10,
+"score": 10
+}
+}
+is_ranged = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kdv1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5gn35")

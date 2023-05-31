@@ -1,84 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=3 format=3 uid="uid://b8twan08rtw1p"]
 
-[ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="1_m0qbn"]
-[ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="2_obwjf"]
 [ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_tt866"]
-[ext_resource type="PackedScene" uid="uid://tuc5fgxjk74c" path="res://items/key/key.tscn" id="6_qvfnd"]
-[ext_resource type="PackedScene" uid="uid://cs0acy6ewncdr" path="res://items/potion/strength_potion.tscn" id="6_t34pn"]
-[ext_resource type="PackedScene" uid="uid://j2b72g6l2n2j" path="res://items/bomb/bomb.tscn" id="7_k3n6m"]
-[ext_resource type="PackedScene" uid="uid://cj5qctysr73p7" path="res://items/potion/armor_potion.tscn" id="7_vhinr"]
-[ext_resource type="PackedScene" uid="uid://bcx1wdsnktsv3" path="res://items/potion/magic_potion.tscn" id="8_d0vxx"]
-[ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="8_iuon0"]
-[ext_resource type="PackedScene" uid="uid://rr1ydwaucpym" path="res://enemies/enemy.tscn" id="9_e1702"]
-[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="10_32jo0"]
 [ext_resource type="PackedScene" uid="uid://dc138rp7ybxnw" path="res://LevelDesign/Easy/Level1_Easy.tscn" id="11_dd8gi"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_26vgs"]
-vertices = PackedVector2Array(841, 19, 846, 629, 8, 632, 8, 16)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(8, 16, 8, 632, 846, 629, 841, 19)])
 
 [node name="World" type="Node"]
 
 [node name="Level1Easy" parent="." instance=ExtResource("11_dd8gi")]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_26vgs")
-
-[node name="Treasure" parent="." instance=ExtResource("2_obwjf")]
-position = Vector2(640, 320)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
-
-[node name="StrengthPotion" parent="." instance=ExtResource("6_t34pn")]
-position = Vector2(719, 325)
-
-[node name="ArmorPotion" parent="." instance=ExtResource("7_vhinr")]
-position = Vector2(768, 256)
-
-[node name="MagicPotion" parent="." instance=ExtResource("8_d0vxx")]
-position = Vector2(790, 305)
-
-[node name="Key" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(214, 89)
-
-[node name="Key2" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(694, 219)
-
-[node name="Key3" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(251, 373)
-
-[node name="Key4" parent="." instance=ExtResource("6_qvfnd")]
-position = Vector2(23, 619)
-
-[node name="Bomb" parent="." instance=ExtResource("7_k3n6m")]
-position = Vector2(512, 256)
-
-[node name="Food" parent="." instance=ExtResource("8_iuon0")]
-position = Vector2(448, 256)
-
-[node name="Enemy" parent="." instance=ExtResource("9_e1702")]
-position = Vector2(512, 384)
-
-[node name="Player" parent="." instance=ExtResource("1_m0qbn")]
-position = Vector2(69, 68)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(3, 3)
-
-[node name="Spawner" parent="." instance=ExtResource("10_32jo0")]
-position = Vector2(374, 351)
-
-[node name="Spawner2" parent="." instance=ExtResource("10_32jo0")]
-position = Vector2(710, 135)
-
-[node name="Spawner3" parent="." instance=ExtResource("10_32jo0")]
-position = Vector2(76, 590)
-
-[node name="Spawner4" parent="." instance=ExtResource("10_32jo0")]
-position = Vector2(70, 269)
-
-[node name="Spawner5" parent="." instance=ExtResource("10_32jo0")]
-position = Vector2(731, 568)

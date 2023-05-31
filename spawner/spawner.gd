@@ -3,6 +3,7 @@ extends StaticBody2D
 
 signal sig_death
 signal sig_health_updated
+signal on_projectile_hit
 
 @export var enemy_spawn: PackedScene 
 @export var health: int = 3 :
@@ -11,9 +12,11 @@ signal sig_health_updated
 	set(value):
 		health = value
 		# Level Scale Spawn Rate
-		sprite_2d.self_modulate.a -= 0.25
+		if (sprite_2d):
+			sprite_2d.self_modulate.a -= 0.25
+		if (timer):
+			timer.wait_time = spawn_rate
 		spawn_rate -= 0.25
-		timer.wait_time = spawn_rate
 		sig_health_updated.emit(health)
 		if (health <= 0):
 			die()
@@ -28,6 +31,7 @@ signal sig_health_updated
 
 
 func _ready() -> void:
+	on_projectile_hit.connect(_on_projectile_hit)
 	sprite_2d.texture = texture
 	collision_shape_2d.shape = RectangleShape2D.new()
 	collision_shape_2d.shape.size = sprite_2d.get_rect().size
@@ -47,6 +51,10 @@ func spawn() -> void:
 		new_enemy.level = health # scale the enemy's level according to spawner health
 		new_enemy.global_position = global_position
 		get_tree().get_root().add_child(new_enemy)
+
+
+func _on_projectile_hit(projectile: Projectile, knockback_strength: float) -> void:
+	health -= projectile.power
 
 
 func _on_timer_timeout():

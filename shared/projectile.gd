@@ -1,3 +1,4 @@
+class_name Projectile
 extends CharacterBody2D
 
 @export var power := 1
@@ -5,11 +6,13 @@ extends CharacterBody2D
 @export var speed := 400
 @export var is_bouncy := false
 @export var is_piercing := false
+@export var knockback_strength := 10
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var time_to_live_timer = $TimeToLiveTimer
-@onready var time_to_live = 5
+@onready var time_to_live = 3
 @onready var sprite_2d = $Sprite2D
+
 
 var direction = Vector2.ZERO
 
@@ -29,6 +32,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var collision = move_and_collide(velocity * speed * delta)
+	
 	if (collision):
 		var body = collision.get_collider()
 		
@@ -41,11 +45,12 @@ func _process(delta):
 			set_collision_mask_value(3, false) # Wall Mask
 			
 		if ('health' in body):
-			body.health -= power
+			body.emit_signal('on_projectile_hit', self, knockback_strength)
 			queue_free()
 		else:
 			if (!is_bouncy and !is_piercing):
 				queue_free()
+
 
 func _on_time_to_live_timer_timeout():
 	queue_free()

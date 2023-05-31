@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://be1g6io4kjok8"]
+
+[ext_resource type="Script" path="res://enemies/lobber/lobber.gd" id="1_w6bx0"]
+[ext_resource type="Texture2D" uid="uid://cgarx3fjrmpxi" path="res://enemies/lobber/monster_imp.png" id="2_bhgfa"]
+[ext_resource type="PackedScene" uid="uid://5e8vtqck28tn" path="res://enemies/enemy_projectile.tscn" id="2_j6toj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdv1g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xe8nc"]
+radius = 64.0
+
+[node name="Lobber" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 463
+script = ExtResource("1_w6bx0")
+projectile = ExtResource("2_j6toj")
+shooting_delay = 2.0
+spawner_level_scale = {
+1: {
+"health": 1,
+"opacity": 0.5,
+"power": 3,
+"score": 10
+},
+2: {
+"health": 2,
+"opacity": 0.75,
+"power": 3,
+"score": 10
+},
+3: {
+"health": 3,
+"opacity": 1,
+"power": 3,
+"score": 10
+}
+}
+is_ranged = true
+is_projectile_piercing = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kdv1g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bhgfa")
+
+[node name="RunawayArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RunawayArea2D"]
+shape = SubResource("CircleShape2D_xe8nc")
+
+[connection signal="area_entered" from="RunawayArea2D" to="." method="_on_runaway_area_2d_area_entered"]
+[connection signal="area_exited" from="RunawayArea2D" to="." method="_on_runaway_area_2d_area_exited"]

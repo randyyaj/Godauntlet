@@ -1,24 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp0x0ktit7xmg"]
+[gd_scene load_steps=5 format=3 uid="uid://5e8vtqck28tn"]
 
-[ext_resource type="Script" path="res://shared/projectile.gd" id="1_456bm"]
-[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="2_uxhl4"]
+[ext_resource type="Script" path="res://shared/projectile.gd" id="1_32421"]
+[ext_resource type="Texture2D" uid="uid://djfite3qladq2" path="res://enemies/Fireball1.png" id="3_yuk6a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdu24"]
-atlas = ExtResource("2_uxhl4")
-region = Rect2(200, 416, 16, 16)
+atlas = ExtResource("3_yuk6a")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nirh5"]
 
-[node name="Projectile" type="CharacterBody2D"]
-collision_layer = 64
-collision_mask = 429
-script = ExtResource("1_456bm")
+[node name="EnemyProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 391
+script = ExtResource("1_32421")
 texture = SubResource("AtlasTexture_bdu24")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nirh5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_yuk6a")
 
 [node name="TimeToLiveTimer" type="Timer" parent="."]
 wait_time = 5.0

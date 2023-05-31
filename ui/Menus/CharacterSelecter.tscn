@@ -1,0 +1,1213 @@
+[gd_scene load_steps=26 format=3 uid="uid://clm5wx7mcs538"]
+
+[ext_resource type="Script" path="res://ui/Menus/CharacterSelecter.gd" id="1_kjhhx"]
+[ext_resource type="Theme" uid="uid://e3762etq6xnc" path="res://ui/Menus/Menus.tres" id="2_u2rfc"]
+[ext_resource type="Texture2D" uid="uid://bpqcaygbglvql" path="res://HUD/Icons/1-bit 16px icons part-1.png" id="3_ktbw6"]
+[ext_resource type="Texture2D" uid="uid://dhtxsnydjuty6" path="res://HUD/Icons/1bit 16px icons part-2.png" id="4_kmfx1"]
+[ext_resource type="Texture2D" uid="uid://bc5uj1f4sg7fp" path="res://Art/Tilesets/0x72_16x16DungeonTileset.v5.png" id="5_72yt5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl6bk"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(224, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei81y"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(200, 392, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bb1h"]
+atlas = ExtResource("4_kmfx1")
+region = Rect2(104, 56, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ceid6"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(440, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dd75"]
+atlas = ExtResource("5_72yt5")
+region = Rect2(144, 240, 16, 16)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pvurw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti128"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(225, 369, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjt2m"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(177, 393, 13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xu0h"]
+atlas = ExtResource("4_kmfx1")
+region = Rect2(105, 56, 14, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj2xx"]
+atlas = ExtResource("4_kmfx1")
+region = Rect2(344, 106, 15, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ta7dm"]
+atlas = ExtResource("4_kmfx1")
+region = Rect2(297, 202, 14, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xpsb"]
+atlas = ExtResource("3_ktbw6")
+region = Rect2(440, 368, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcs40"]
+atlas = ExtResource("5_72yt5")
+region = Rect2(224, 236, 15, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1epge"]
+atlas = ExtResource("5_72yt5")
+region = Rect2(161, 241, 15, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31fao"]
+atlas = ExtResource("5_72yt5")
+region = Rect2(128, 224, 14, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nf84j"]
+bg_color = Color(0.341176, 0.266667, 0.301961, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nxaq"]
+bg_color = Color(0.262745, 0.2, 0.231373, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ymgl"]
+bg_color = Color(0.670588, 0.560784, 0.611765, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.180392, 0.137255, 0.156863, 1)
+
+[sub_resource type="Theme" id="Theme_m1cyg"]
+Button/styles/focus = SubResource("StyleBoxFlat_nf84j")
+Button/styles/hover = SubResource("StyleBoxFlat_4nxaq")
+Button/styles/normal = SubResource("StyleBoxFlat_nf84j")
+Button/styles/pressed = SubResource("StyleBoxFlat_0ymgl")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqm08"]
+atlas = ExtResource("4_kmfx1")
+region = Rect2(272, 8, 16, 16)
+
+[node name="CharacterSelecter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kjhhx")
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 21.0
+offset_right = 978.0
+offset_bottom = 117.0
+theme = ExtResource("2_u2rfc")
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/line_spacing = 4
+theme_override_font_sizes/font_size = 41
+text = "choose a character"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IconGrid" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 135.0
+offset_right = 1069.0
+offset_bottom = 201.0
+theme_override_constants/h_separation = 209
+theme_override_constants/v_separation = 16
+columns = 4
+
+[node name="Sword" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_rl6bk")
+flip_h = true
+
+[node name="Bow" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ei81y")
+
+[node name="Shield" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_3bb1h")
+
+[node name="Scepter" type="TextureRect" parent="IconGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ceid6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -555.0
+offset_top = -223.0
+offset_right = 555.0
+offset_bottom = 412.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="WarriorButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_u2rfc")
+
+[node name="Label" type="Label" parent="HBoxContainer/WarriorButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -70.5
+offset_right = 56.5
+offset_bottom = -47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+text = "Warrior"
+horizontal_alignment = 1
+
+[node name="ChampPic" type="TextureRect" parent="HBoxContainer/WarriorButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.5
+offset_top = -275.5
+offset_right = 89.5
+offset_bottom = -95.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_3dd75")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/WarriorButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -36.5
+offset_right = 102.5
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 19
+
+[node name="MeleeAttackPanel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ti128")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangeAttackLabel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="RangeAttackIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_bjt2m")
+
+[node name="RangeAttackIcon2" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "RNG ATK: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefencePanel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="DefenseIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8xu0h")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "Def: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedLabel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_kj2xx")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK SPD: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedLabel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ta7dm")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "SPD: 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicLabel" type="Panel" parent="HBoxContainer/WarriorButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/WarriorButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_4xpsb")
+
+[node name="MagicLabel" type="Label" parent="HBoxContainer/WarriorButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "MGK: 1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KnightButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_u2rfc")
+
+[node name="Label" type="Label" parent="HBoxContainer/KnightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -70.5
+offset_right = 56.5
+offset_bottom = -47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+text = "Knight
+"
+horizontal_alignment = 1
+
+[node name="ChampPic" type="TextureRect" parent="HBoxContainer/KnightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -283.5
+offset_right = 90.0
+offset_bottom = -86.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_hcs40")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/KnightButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -36.5
+offset_right = 102.5
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 19
+
+[node name="MeleeAttackPanel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ti128")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangeAttackLabel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="RangeAttackIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_bjt2m")
+
+[node name="RangeAttackIcon2" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "RNG ATK: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefencePanel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="DefenseIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8xu0h")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "Def: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedLabel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_kj2xx")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK SPD: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedLabel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ta7dm")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "SPD: 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicLabel" type="Panel" parent="HBoxContainer/KnightButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/KnightButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_4xpsb")
+
+[node name="MagicLabel" type="Label" parent="HBoxContainer/KnightButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "MGK: 1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcherButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_u2rfc")
+
+[node name="Label" type="Label" parent="HBoxContainer/ArcherButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -70.5
+offset_right = 56.5
+offset_bottom = -47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+text = "Archer
+"
+horizontal_alignment = 1
+
+[node name="ChampPic" type="TextureRect" parent="HBoxContainer/ArcherButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -283.5
+offset_right = 90.0
+offset_bottom = -86.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_1epge")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ArcherButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -36.5
+offset_right = 102.5
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 19
+
+[node name="MeleeAttackPanel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ti128")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangeAttackLabel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="RangeAttackIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_bjt2m")
+
+[node name="RangeAttackIcon2" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "RNG ATK: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefencePanel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="DefenseIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8xu0h")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "Def: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedLabel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_kj2xx")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK SPD: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedLabel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ta7dm")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "SPD: 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicLabel" type="Panel" parent="HBoxContainer/ArcherButton/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/ArcherButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_4xpsb")
+
+[node name="MagicLabel" type="Label" parent="HBoxContainer/ArcherButton/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "MGK: 1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArcherButton2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_u2rfc")
+
+[node name="Label" type="Label" parent="HBoxContainer/ArcherButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -70.5
+offset_right = 56.5
+offset_bottom = -47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+text = "Wizard
+"
+horizontal_alignment = 1
+
+[node name="ChampPic" type="TextureRect" parent="HBoxContainer/ArcherButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -283.5
+offset_right = 90.0
+offset_bottom = -86.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_31fao")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ArcherButton2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = -36.5
+offset_right = 102.5
+offset_bottom = 280.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 19
+
+[node name="MeleeAttackPanel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ti128")
+
+[node name="AttackLabel" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/MeleeAttackPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK: 5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RangeAttackLabel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="RangeAttackIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_bjt2m")
+
+[node name="RangeAttackIcon2" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/RangeAttackLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "RNG ATK: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefencePanel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="DefenseIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_8xu0h")
+
+[node name="DefenceLabel" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/DefencePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "Def: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackSpeedLabel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="AttackSpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_kj2xx")
+
+[node name="AttackSpeedLabel" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/AttackSpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "ATK SPD: 2
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedLabel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="SpeedIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_ta7dm")
+
+[node name="SpeedLabel" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/SpeedLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "SPD: 3
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagicLabel" type="Panel" parent="HBoxContainer/ArcherButton2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pvurw")
+
+[node name="MagicIcon" type="TextureRect" parent="HBoxContainer/ArcherButton2/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_4xpsb")
+
+[node name="MagicLabel" type="Label" parent="HBoxContainer/ArcherButton2/VBoxContainer/MagicLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 71.0
+offset_right = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_u2rfc")
+theme_override_font_sizes/font_size = 10
+text = "MGK: 1
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 31.0
+offset_right = -1094.0
+offset_bottom = -797.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m1cyg")
+
+[node name="TextureRect" type="TextureRect" parent="ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = -10.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dqm08")
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
