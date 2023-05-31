@@ -171,7 +171,7 @@ func die() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		area.get_parent().health -= power # Inflict damage to player
+		area.get_parent().emit_signal('on_melee_hit', power) # Inflict damage to player
 		if (is_kamikaze):
 			die()
 		else:

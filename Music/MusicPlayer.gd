@@ -6,7 +6,6 @@ extends Node
 @onready var currentSongName = MusicList.MusicList.front().SongDescription
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#print(startingSong)
 	audio_stream_player_2d.stream = MusicList.MusicList.front().Song
 	audio_stream_player_2d.play()
 	pass # Replace with function body.
