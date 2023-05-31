@@ -13,7 +13,7 @@ func _physics_process(delta: float) -> void:
 	super(delta)
 	
 	if (target and damage_dealt < max_damage_inflicted):
-		target.health -= power
+		target.emit_signal('on_melee_hit', power)
 		damage_dealt += 1
 	
 	if (damage_dealt >= max_damage_inflicted):

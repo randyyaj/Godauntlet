@@ -16,7 +16,6 @@ func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
 		var OGspeed = area.get_parent().speed
 		area.get_parent().speed = OGspeed * slow_factor
-		print(str(OGspeed))
 	pass # Replace with function body.
 
 
