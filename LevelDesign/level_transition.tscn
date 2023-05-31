@@ -17,5 +17,10 @@ color = Color(0.12549, 0.12549, 0.12549, 1)
 wait_time = 0.5
 one_shot = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="easy_level_beat" from="." to="." method="_on_easy_level_beat"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

@@ -18,7 +18,7 @@ func _process(delta):
 
 
 func _on_play_button_pressed():
-	get_tree().change_scene_to_file("res://ui/Menus/ChooseClass.tscn")
+	get_tree().change_scene_to_file("res://ui/Menus/CharacterSelecter.tscn")
 	pass # Replace with function body.
 
 
@@ -35,6 +35,7 @@ Esc: Pause"
 
 
 func _on_exit_button_pressed():
+	quit_yes_and_no_buttons.visible = false
 	menu_panel.visible = false
 	pass # Replace with function body.
 
