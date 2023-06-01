@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id="Resource_j37ma"]
 script = ExtResource("2_ntros")
 modifier_type = 2
-amount = 400
-operation_type = 4
+amount = 15
+operation_type = 0
 duration = 25.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ou4oa"]

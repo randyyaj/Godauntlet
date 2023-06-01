@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://xjc638oqbk2d"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/itemChoice.gd" id="1_h67e4"]
+[ext_resource type="Resource" uid="uid://br8swo08sdxg6" path="res://LevelDesign/Utility/Randomizers/PotionChoices/PotionListRandom.tres" id="2_fig3s"]
+[ext_resource type="Resource" uid="uid://dmf1hkrn0yxq5" path="res://LevelDesign/Utility/Randomizers/PotionChoices/PotionChoice2.tres" id="3_4ne6j"]
+[ext_resource type="Resource" uid="uid://d3ylht286wfhg" path="res://LevelDesign/Utility/Randomizers/PotionChoices/PotionChoice3.tres" id="4_t2gx4"]
+
+[sub_resource type="Animation" id="Animation_jum8e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0n22r"]
+resource_name = "Shrink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"kill"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e53sv"]
+_data = {
+"RESET": SubResource("Animation_jum8e"),
+"Shrink": SubResource("Animation_0n22r")
+}
+
+[node name="ItemChoice" type="Node2D"]
+script = ExtResource("1_h67e4")
+item_choice1 = ExtResource("2_fig3s")
+item_choice2 = ExtResource("3_4ne6j")
+item_choice3 = ExtResource("4_t2gx4")
+
+[node name="ChooseAPotionLabel" type="Label" parent="."]
+offset_left = -47.0
+offset_top = -13.0
+offset_right = 47.0
+offset_bottom = 10.0
+theme_override_font_sizes/font_size = 12
+text = "Choose a potion"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e53sv")
+}
+
+[node name="Potions" type="Node2D" parent="."]
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="Choice1Postion" type="Marker2D" parent="Positions"]
+position = Vector2(-32, 24)
+
+[node name="Choice2Postion" type="Marker2D" parent="Positions"]
+position = Vector2(0, 24)
+
+[node name="Choice3Postion" type="Marker2D" parent="Positions"]
+position = Vector2(32, 24)

@@ -38,7 +38,6 @@ func next_level_easy():
 		#randomise after how ever many levels
 		if real_current_level_index % level_index_shuffler == 0:
 			myLevelList.levelList.shuffle()
-			print(str(myLevelList.levelList[1]))
 	elif real_current_level_index > level_max:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		var youWinInst = youWinScreen.instantiate()
