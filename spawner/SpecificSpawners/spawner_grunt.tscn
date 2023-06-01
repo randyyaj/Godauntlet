@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkndpj7bmqcjl"]
+
+[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="1_5qgil"]
+[ext_resource type="PackedScene" uid="uid://2aend56nw62r" path="res://enemies/grunt/grunt.tscn" id="2_pqolh"]
+
+[node name="GruntSpawner" instance=ExtResource("1_5qgil")]
+enemy_spawn = ExtResource("2_pqolh")

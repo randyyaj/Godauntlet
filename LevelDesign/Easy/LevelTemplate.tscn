@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bj8kqp5ghij8t"]
+[gd_scene load_steps=24 format=3 uid="uid://bj8kqp5ghij8t"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_qy022"]
 [ext_resource type="PackedScene" uid="uid://cpwb3kiincc4v" path="res://LevelDesign/Utility/next_level_ladder.tscn" id="2_05eex"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://duduq86hp1aho" path="res://items/treasure/treasure.tscn" id="17_5ir0b"]
 [ext_resource type="PackedScene" uid="uid://bif0t8ug1rab5" path="res://LevelDesign/Utility/destructible_wall.tscn" id="18_qxkey"]
 [ext_resource type="PackedScene" uid="uid://dryif7r1tjml0" path="res://LevelDesign/Utility/triggered_door.tscn" id="18_smxam"]
+[ext_resource type="PackedScene" uid="uid://xjc638oqbk2d" path="res://LevelDesign/Utility/Randomizers/itemChoice.tscn" id="19_4q628"]
+[ext_resource type="PackedScene" uid="uid://cmi3rwccf5x3l" path="res://LevelDesign/Utility/Randomizers/ItemRandomizers/item_randomizer.tscn" id="20_qq3w3"]
+[ext_resource type="PackedScene" uid="uid://tyb2iwulmi2v" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/SpawnRandomizer.tscn" id="21_im0gd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0orol"]
 vertices = PackedVector2Array(847, 350, 842, 639, 2, 644, -1, -1, 852, -4)
@@ -57,7 +60,6 @@ layer_3/tile_data = PackedInt32Array()
 position = Vector2(-191, -15)
 
 [node name="Key" parent="Keys" instance=ExtResource("7_q7pbw")]
-position = Vector2(-6, 0)
 
 [node name="Fences" type="Node2D" parent="."]
 
@@ -74,10 +76,10 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1638460, 1048577, 14, 1703995, 983041, 15, 1703996, 1048577, 15)
 
 [node name="SpecialTiles" type="Node2D" parent="."]
-position = Vector2(-219, 488)
+position = Vector2(-190, 500)
 
 [node name="SlowTile" parent="SpecialTiles" instance=ExtResource("3_0gy6p")]
-position = Vector2(-70, 50)
+position = Vector2(-64, 24)
 
 [node name="DamageTile" parent="SpecialTiles" instance=ExtResource("5_ef2w5")]
 position = Vector2(-65, -43)
@@ -101,13 +103,12 @@ position = Vector2(75, -43)
 position = Vector2(145, 142)
 
 [node name="Ladders" type="Node2D" parent="."]
-position = Vector2(-212, 844)
+position = Vector2(-118, 776)
 
 [node name="NextLevelLadder" parent="Ladders" instance=ExtResource("2_05eex")]
-position = Vector2(-8, -1)
 
 [node name="Spawners" type="Node2D" parent="."]
-position = Vector2(-287, 693)
+position = Vector2(-480, 716)
 
 [node name="Spawner" parent="Spawners" instance=ExtResource("8_17c6j")]
 position = Vector2(0, 2)
@@ -153,6 +154,29 @@ position = Vector2(-188, 60)
 [node name="TriggeredDoor" parent="TriggeredDoors" instance=ExtResource("18_smxam")]
 position = Vector2(-393, -15)
 
+[node name="Choicer" type="Node2D" parent="."]
+position = Vector2(-441, 413)
+
+[node name="ItemChoice" parent="Choicer" instance=ExtResource("19_4q628")]
+item_choice1 = null
+item_choice2 = null
+item_choice3 = null
+
+[node name="RandomItem" type="Node2D" parent="."]
+position = Vector2(-415, 209)
+
+[node name="ItemRandomizer" parent="RandomItem" instance=ExtResource("20_qq3w3")]
+
+[node name="Point1" parent="RandomItem/ItemRandomizer/PotentialPositions" index="0"]
+position = Vector2(-3, -51)
+
+[node name="Point2" parent="RandomItem/ItemRandomizer/PotentialPositions" index="1"]
+position = Vector2(-3, 61)
+
+[node name="RandomSpawner" type="Node2D" parent="."]
+
+[node name="SpawnRandomizer" parent="RandomSpawner" instance=ExtResource("21_im0gd")]
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_0orol")
@@ -162,3 +186,5 @@ visible = false
 position = Vector2(423, 380)
 
 [editable path="SpecialTiles/TP_tiles"]
+[editable path="Choicer/ItemChoice"]
+[editable path="RandomItem/ItemRandomizer"]

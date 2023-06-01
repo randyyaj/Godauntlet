@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3g0yrtaerdgk"]
+
+[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="1_f3y4e"]
+[ext_resource type="PackedScene" uid="uid://be1g6io4kjok8" path="res://enemies/lobber/lobber.tscn" id="2_dx6x4"]
+
+[node name="LobberSpawner" instance=ExtResource("1_f3y4e")]
+enemy_spawn = ExtResource("2_dx6x4")

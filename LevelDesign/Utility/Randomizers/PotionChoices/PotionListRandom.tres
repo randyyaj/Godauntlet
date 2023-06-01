@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Randomizer" load_steps=7 format=3 uid="uid://br8swo08sdxg6"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/RandomizerList.gd" id="1_l23dt"]
+[ext_resource type="PackedScene" uid="uid://bcx1wdsnktsv3" path="res://items/potion/magic_potion.tscn" id="2_gp7n2"]
+[ext_resource type="PackedScene" uid="uid://kq74v50eppio" path="res://items/potion/shot_power_potion.tscn" id="3_i4lgr"]
+[ext_resource type="PackedScene" uid="uid://d2m2lctjy773j" path="res://items/potion/shot_speed_potion.tscn" id="4_aokw1"]
+[ext_resource type="PackedScene" uid="uid://o4qbw0dr25vh" path="res://items/potion/speed_potion.tscn" id="5_1k06x"]
+[ext_resource type="PackedScene" uid="uid://cs0acy6ewncdr" path="res://items/potion/strength_potion.tscn" id="6_r4qpt"]
+
+[resource]
+script = ExtResource("1_l23dt")
+randomList = Array[PackedScene]([ExtResource("2_gp7n2"), ExtResource("3_i4lgr"), ExtResource("4_aokw1"), ExtResource("5_1k06x"), ExtResource("6_r4qpt")])
