@@ -19,6 +19,7 @@ signal easy_level_beat
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	shuffleLevels()
 	pass # Replace with function body.
 
 
@@ -54,7 +55,7 @@ func next_level_easy():
 	elif  real_current_level_index == level_max:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		var youWinInst = youWinScreen.instantiate()
-		get_parent().get_node("World").get_node("CanvasLayer").add_child(youWinInst)
+		get_parent().get_child(4).get_child(0).get_node("Player").get_node("CanvasLayer").add_child(youWinInst)
 
 func _on_easy_level_beat():
 	next_level_easy()
@@ -69,7 +70,6 @@ func _on_timer_timeout():
 		for member in get_tree().get_nodes_in_group("enemies"):
 			member.queue_free()
 		timer_2.start()
-		print(levelinst)
 	elif real_current_level_index >= 5:
 		PlayerManager.set_player_data(PlayerManager.player)
 		get_parent().get_node("World").get_child(0).queue_free()
@@ -85,3 +85,7 @@ func _on_timer_timeout():
 func _on_timer_2_timeout():
 	get_parent().get_node("World").move_child(get_parent().get_node("World").get_child(1),0)
 	pass # Replace with function body.
+	
+func shuffleLevels():
+	myLevelList_easy.levelList.shuffle()
+	myLevelList_medium.levelList.shuffle()

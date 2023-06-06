@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ceogpewrxq1ol"]
+[gd_scene load_steps=28 format=3 uid="uid://ceogpewrxq1ol"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_btw6d"]
 [ext_resource type="PackedScene" uid="uid://tuc5fgxjk74c" path="res://items/key/key.tscn" id="2_s6b5k"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c0feqne80j0vr" path="res://LevelDesign/Utility/damage_tile.tscn" id="4_mivtm"]
 [ext_resource type="PackedScene" uid="uid://dhsy0gnj2juh" path="res://LevelDesign/Utility/tp_tiles.tscn" id="5_0g1uu"]
 [ext_resource type="PackedScene" uid="uid://dtjj45b0y4i4d" path="res://LevelDesign/Utility/stun_tile.tscn" id="6_myx7e"]
-[ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="7_wkfk2"]
 [ext_resource type="PackedScene" uid="uid://cpwb3kiincc4v" path="res://LevelDesign/Utility/next_level_ladder.tscn" id="8_iqh4l"]
 [ext_resource type="PackedScene" uid="uid://tyb2iwulmi2v" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/SpawnRandomizer.tscn" id="9_y22od"]
 [ext_resource type="PackedScene" uid="uid://b7y15mb7kf7kc" path="res://spawner/SpecificSpawners/spawner_demon.tscn" id="10_jlupg"]
@@ -22,8 +21,10 @@
 [ext_resource type="PackedScene" uid="uid://dryif7r1tjml0" path="res://LevelDesign/Utility/triggered_door.tscn" id="18_lys5w"]
 [ext_resource type="PackedScene" uid="uid://cmi3rwccf5x3l" path="res://LevelDesign/Utility/Randomizers/ItemRandomizers/item_randomizer.tscn" id="20_vw17v"]
 [ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/SpawnRandomizer.gd" id="21_kc3pn"]
+[ext_resource type="Resource" uid="uid://d1okoek0yxa8j" path="res://LevelDesign/Utility/Randomizers/SpecialListRandom.tres" id="21_ytfll"]
 [ext_resource type="Resource" uid="uid://x2cmptaxm5xe" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/EasySpawnRandom.tres" id="22_g6j3y"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="22_hpd85"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/ItemRandomizers/ItemRandomizer.gd" id="22_t2vld"]
 [ext_resource type="Resource" uid="uid://dgnwacxeo5w81" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/MediumSpawnRandom.tres" id="24_tj5wn"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_0orol"]
@@ -57,7 +58,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = true
 layer_3/y_sort_origin = 0
 layer_3/z_index = 1
-layer_3/tile_data = PackedInt32Array(983061, 1114114, 0, 1048597, 1114114, 1, 1507349, 1114114, 0, 1572885, 1114114, 1, 983062, 1114114, 0, 1048598, 1114114, 1, 1507350, 1114114, 0, 1572886, 1114114, 1, 983063, 1114114, 0, 1048599, 1114114, 1, 1507351, 1114114, 0, 1572887, 1114114, 1, 983068, 1114114, 0, 1048604, 1114114, 1, 1507356, 1114114, 0, 1572892, 1114114, 1, 983069, 1114114, 0, 1048605, 1114114, 1, 1507357, 65538, 0, 1572893, 2, 1, 983070, 1179650, 0, 1048606, 1179650, 1, 1507358, 1179650, 2, 1572894, 1179650, 3, 983060, 1048578, 0, 1048596, 1048578, 1, 1114132, 1048578, 2, 1179668, 1048578, 3, 1441812, 1048578, 2, 1507348, 1048578, 2, 1572884, 1310722, 2, 983067, 1114114, 0, 1048603, 1114114, 1, 1507355, 1114114, 0, 1572891, 1114114, 1, 1114142, 1179650, 2, 1179678, 1179650, 3, 1441822, 1179650, 1, 589866, 65538, 0, 655402, 65538, 1, 589867, 65538, 0, 655403, 65538, 1, 589868, 1310722, 0, 655404, 1310722, 1, 262167, 1179650, 1, 327703, 1179650, 2, 393239, 1179650, 1, 458775, 1179650, 2, 524311, 1179650, 2, 1179692, 1114114, 0, 1376263, 65538, 0, 1638420, 1310722, 3, 1900561, 1179650, 1, 1966097, 1245186, 2, 1703971, 1048578, 0, 1769507, 1048578, 1, 1835043, 1048578, 2, 2228259, 1048578, 2, 2293795, 1048578, 3, 1703972, 1114114, 0, 1769508, 1114114, 1, 2228260, 1114114, 0, 2293796, 1114114, 1, 1703973, 1114114, 0, 1769509, 1114114, 1, 2228261, 1114114, 0, 2293797, 1114114, 1, 1703974, 1114114, 0, 1769510, 1114114, 1, 2228262, 1114114, 0, 2293798, 1114114, 1, 2228263, 1114114, 0, 2293799, 1114114, 1, 2228264, 1114114, 0, 2293800, 1114114, 1, 2228265, 1114114, 0, 2293801, 1114114, 1, 1703978, 1114114, 0, 1769514, 1114114, 1, 2228266, 1114114, 0, 2293802, 1114114, 1, 1703979, 1114114, 0, 1769515, 1114114, 1, 2228267, 1114114, 0, 2293803, 1114114, 1, 1703980, 65538, 0, 2031633, 1245186, 3, 1966098, 65538, 0, 2031634, 2, 1, 1966099, 65538, 0, 2031635, 2, 1, 1966100, 65538, 0, 2031636, 2, 1, 1966101, 65538, 0, 2031637, 2, 1, 1966102, 65538, 0, 2031638, 2, 1, 1966103, 65538, 0, 2031639, 2, 1, 1966104, 65538, 0, 2031640, 2, 1, 1966105, 65538, 0, 2031641, 2, 1, 1966106, 65538, 0, 2031642, 2, 1, 1966107, 65538, 0, 2031643, 2, 1, 1966108, 65538, 0, 2031644, 2, 1, 1966109, 65538, 0, 2031645, 2, 1, 1966110, 65538, 0, 2031646, 2, 1, 1900575, 65538, 0, 1966111, 2, 1, 1835040, 65538, 0, 1900576, 2, 1, 1835041, 65538, 0, 1900577, 2, 1, 1835042, 65538, 0, 1900578, 2, 1, 262158, 1179650, 2, 327694, 1179650, 2, 393230, 1179650, 1, 458766, 1179650, 2, 524302, 1179650, 3, 917511, 1245186, 0, 983047, 1245186, 1, 917512, 65538, 0, 983048, 2, 1, 917513, 65538, 0, 983049, 2, 1, 917514, 65538, 0, 983050, 2, 1, 262177, 1179650, 1, 327713, 1179650, 2, 393249, 1179650, 2, 458785, 1179650, 1, 524321, 1179650, 2, 589857, 1179650, 3)
+layer_3/tile_data = PackedInt32Array(983061, 1114114, 0, 1048597, 1114114, 1, 1507349, 1114114, 0, 1572885, 1114114, 1, 983062, 1114114, 0, 1048598, 1114114, 1, 1507350, 1114114, 0, 1572886, 1114114, 1, 983063, 1114114, 0, 1048599, 1114114, 1, 1507351, 1114114, 0, 1572887, 1114114, 1, 983068, 1114114, 0, 1048604, 1114114, 1, 1507356, 1114114, 0, 1572892, 1114114, 1, 983069, 1114114, 0, 1048605, 1114114, 1, 1507357, 65538, 0, 1572893, 2, 1, 983070, 1179650, 0, 1048606, 1179650, 1, 1507358, 1179650, 2, 1572894, 1179650, 3, 983060, 1048578, 0, 1048596, 1048578, 1, 1114132, 1048578, 2, 1179668, 1048578, 3, 1441812, 1048578, 2, 1507348, 1048578, 2, 1572884, 1310722, 2, 983067, 1114114, 0, 1048603, 1114114, 1, 1507355, 1114114, 0, 1572891, 1114114, 1, 1114142, 1179650, 2, 1179678, 1179650, 3, 1441822, 1179650, 1, 589866, 65538, 0, 655402, 65538, 1, 589867, 65538, 0, 655403, 65538, 1, 589868, 1310722, 0, 655404, 1310722, 1, 262167, 1179650, 1, 327703, 1179650, 2, 393239, 1179650, 1, 458775, 1179650, 2, 524311, 1179650, 2, 1179692, 1114114, 0, 1376263, 65538, 0, 1638420, 1310722, 3, 1900561, 1179650, 1, 1966097, 1245186, 2, 1703971, 1048578, 0, 1769507, 1048578, 1, 1835043, 1048578, 2, 2228259, 1048578, 2, 2293795, 1048578, 3, 1703972, 1114114, 0, 1769508, 1114114, 1, 2228260, 1114114, 0, 2293796, 1114114, 1, 1703973, 1114114, 0, 1769509, 1114114, 1, 2228261, 1114114, 0, 2293797, 1114114, 1, 1703974, 1114114, 0, 1769510, 1114114, 1, 2228262, 1114114, 0, 2293798, 1114114, 1, 2228263, 1114114, 0, 2293799, 1114114, 1, 2228264, 1114114, 0, 2293800, 1114114, 1, 2228265, 1114114, 0, 2293801, 1114114, 1, 1703978, 1114114, 0, 1769514, 1114114, 1, 2228266, 1114114, 0, 2293802, 1114114, 1, 1703979, 1114114, 0, 1769515, 1114114, 1, 2228267, 1114114, 0, 2293803, 1114114, 1, 1703980, 65538, 0, 2031633, 1245186, 3, 1966098, 65538, 0, 2031634, 2, 1, 1966099, 65538, 0, 2031635, 2, 1, 1966100, 65538, 0, 2031636, 2, 1, 1966101, 65538, 0, 2031637, 2, 1, 1966102, 65538, 0, 2031638, 2, 1, 1966103, 65538, 0, 2031639, 2, 1, 1966104, 65538, 0, 2031640, 2, 1, 1966105, 65538, 0, 2031641, 2, 1, 1966106, 65538, 0, 2031642, 2, 1, 1966107, 65538, 0, 2031643, 2, 1, 1966108, 65538, 0, 2031644, 2, 1, 1966109, 65538, 0, 2031645, 2, 1, 1966110, 65538, 0, 2031646, 2, 1, 1900575, 65538, 0, 1966111, 2, 1, 1835040, 65538, 0, 1900576, 2, 1, 1835041, 65538, 0, 1900577, 2, 1, 1835042, 65538, 0, 1900578, 2, 1, 262158, 1179650, 2, 327694, 1179650, 2, 393230, 1179650, 1, 458766, 1179650, 2, 524302, 1179650, 3, 917511, 1245186, 0, 983047, 1245186, 1, 917512, 65538, 0, 983048, 2, 1, 917513, 65538, 0, 983049, 2, 1, 917514, 65538, 0, 983050, 2, 1, 262177, 1179650, 1, 327713, 1179650, 2, 393249, 1179650, 2, 458785, 1179650, 1, 524321, 1179650, 2, 589857, 1179650, 3, 1638413, 851970, 11, 1703949, 851970, 12, 1769485, 851970, 13, 720912, 851970, 11, 786448, 851970, 12, 851984, 851970, 13, 720928, 851970, 11, 786464, 851970, 12, 852000, 851970, 13)
 
 [node name="Keys" type="Node2D" parent="."]
 position = Vector2(-191, -15)
@@ -103,9 +104,6 @@ position = Vector2(75, -43)
 
 [node name="Foods" type="Node2D" parent="."]
 
-[node name="Food" parent="Foods" instance=ExtResource("7_wkfk2")]
-position = Vector2(390, 94)
-
 [node name="Ladders" type="Node2D" parent="."]
 position = Vector2(-118, 776)
 
@@ -148,6 +146,7 @@ position = Vector2(-74, 22)
 position = Vector2(-209, 299)
 
 [node name="Bomb" parent="Bombs" instance=ExtResource("15_1a2qj")]
+position = Vector2(737, 195)
 
 [node name="Treasure" type="Node2D" parent="."]
 position = Vector2(-188, 60)
@@ -157,6 +156,12 @@ position = Vector2(441, 39)
 
 [node name="Treasure2" parent="Treasure" instance=ExtResource("16_ol824")]
 position = Vector2(488, 39)
+
+[node name="Treasure10" parent="Treasure" instance=ExtResource("16_ol824")]
+position = Vector2(740, 34)
+
+[node name="Treasure11" parent="Treasure" instance=ExtResource("16_ol824")]
+position = Vector2(811, 34)
 
 [node name="Treasure3" parent="Treasure" instance=ExtResource("16_ol824")]
 position = Vector2(531, 39)
@@ -175,6 +180,9 @@ position = Vector2(883, 479)
 
 [node name="Treasure8" parent="Treasure" instance=ExtResource("16_ol824")]
 position = Vector2(791, 405)
+
+[node name="Treasure9" parent="Treasure" instance=ExtResource("16_ol824")]
+position = Vector2(698, 31)
 
 [node name="DestructibleWalls" type="Node2D" parent="."]
 
@@ -201,12 +209,31 @@ position = Vector2(611, -318)
 position = Vector2(-415, 209)
 
 [node name="ItemRandomizer" parent="RandomItem" instance=ExtResource("20_vw17v")]
+item_list = Array[Resource("res://LevelDesign/Utility/Randomizers/RandomizerList.gd")]([ExtResource("21_ytfll")])
 
 [node name="Point1" parent="RandomItem/ItemRandomizer/PotentialPositions" index="0"]
 position = Vector2(1103, 132)
 
 [node name="Point2" parent="RandomItem/ItemRandomizer/PotentialPositions" index="1"]
 position = Vector2(-3, 61)
+
+[node name="ItemRandomizer2" parent="RandomItem" instance=ExtResource("20_vw17v")]
+item_list = Array[Resource("res://LevelDesign/Utility/Randomizers/RandomizerList.gd")]([ExtResource("21_ytfll")])
+
+[node name="Point1" parent="RandomItem/ItemRandomizer2/PotentialPositions" index="0"]
+position = Vector2(880, -116)
+
+[node name="Point2" parent="RandomItem/ItemRandomizer2/PotentialPositions" index="1"]
+position = Vector2(546, 120)
+
+[node name="ItemRandomizer3" type="Node2D" parent="RandomItem"]
+script = ExtResource("22_t2vld")
+item_list = Array[Resource("res://LevelDesign/Utility/Randomizers/RandomizerList.gd")]([ExtResource("21_ytfll")])
+
+[node name="PotentialPositions" type="Node2D" parent="RandomItem/ItemRandomizer3"]
+
+[node name="Point1" type="Marker2D" parent="RandomItem/ItemRandomizer3/PotentialPositions"]
+position = Vector2(1002, -116)
 
 [node name="RandomSpawner" type="Node2D" parent="."]
 
@@ -237,15 +264,35 @@ position = Vector2(132, 215)
 [node name="Point2" type="Marker2D" parent="RandomSpawner/SpawnRandomizer2/PotentialPositions"]
 position = Vector2(343, 129)
 
+[node name="SpawnRandomizer4" type="Node2D" parent="RandomSpawner"]
+script = ExtResource("21_kc3pn")
+spawner_list = ExtResource("22_g6j3y")
+
+[node name="PotentialPositions" type="Node2D" parent="RandomSpawner/SpawnRandomizer4"]
+
+[node name="Point1" type="Marker2D" parent="RandomSpawner/SpawnRandomizer4/PotentialPositions"]
+position = Vector2(389, 120)
+
+[node name="Point2" type="Marker2D" parent="RandomSpawner/SpawnRandomizer4/PotentialPositions"]
+position = Vector2(515, 133)
+
+[node name="SpawnRandomizer3" type="Node2D" parent="RandomSpawner"]
+script = ExtResource("21_kc3pn")
+spawner_list = ExtResource("24_tj5wn")
+
+[node name="PotentialPositions" type="Node2D" parent="RandomSpawner/SpawnRandomizer3"]
+
+[node name="Point1" type="Marker2D" parent="RandomSpawner/SpawnRandomizer3/PotentialPositions"]
+position = Vector2(298, 476)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_0orol")
 
 [node name="Player" parent="." instance=ExtResource("22_hpd85")]
-visible = false
-position = Vector2(426, 313)
+position = Vector2(401, 321)
 
 [editable path="SpecialTiles/TP_tiles"]
 [editable path="Spawners/DemonSpawner"]
 [editable path="TriggeredDoors/TriggeredDoor"]
 [editable path="RandomItem/ItemRandomizer"]
+[editable path="RandomItem/ItemRandomizer2"]
