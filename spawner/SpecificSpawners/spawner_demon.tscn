@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7y15mb7kf7kc"]
+
+[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="1_43jdh"]
+[ext_resource type="PackedScene" uid="uid://bu03k208ojloi" path="res://enemies/demon/demon.tscn" id="2_hkoqh"]
+
+[node name="DemonSpawner" instance=ExtResource("1_43jdh")]
+top_level = true
+enemy_spawn = ExtResource("2_hkoqh")
+spawn_rate = 3.0

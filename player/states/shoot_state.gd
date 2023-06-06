@@ -49,6 +49,11 @@ func shoot_projectile() -> void:
 
 
 func _on_can_fire_timer_timeout():
+	if Input.is_action_pressed("shoot"):
+		var cancel_event = InputEventAction.new()
+		cancel_event.action = "shoot"
+		cancel_event.pressed = true
+		Input.parse_input_event(cancel_event)
 	can_fire = true
 
 

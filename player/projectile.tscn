@@ -10,6 +10,7 @@ region = Rect2(200, 416, 16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_nirh5"]
 
 [node name="Projectile" type="CharacterBody2D"]
+modulate = Color(1, 0.847059, 0.34902, 1)
 collision_layer = 64
 collision_mask = 429
 script = ExtResource("1_456bm")

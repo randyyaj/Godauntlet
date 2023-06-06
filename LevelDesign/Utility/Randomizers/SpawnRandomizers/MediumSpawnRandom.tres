@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Randomizer" load_steps=4 format=3 uid="uid://dgnwacxeo5w81"]
+
+[ext_resource type="PackedScene" uid="uid://bkndpj7bmqcjl" path="res://spawner/SpecificSpawners/spawner_grunt.tscn" id="1_a00v0"]
+[ext_resource type="PackedScene" uid="uid://d3g0yrtaerdgk" path="res://spawner/SpecificSpawners/spawner_lobber.tscn" id="2_3e6fd"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/RandomizerList.gd" id="3_y7na3"]
+
+[resource]
+script = ExtResource("3_y7na3")
+randomList = Array[PackedScene]([ExtResource("1_a00v0"), ExtResource("2_3e6fd")])

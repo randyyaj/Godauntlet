@@ -4,4 +4,5 @@
 [ext_resource type="PackedScene" uid="uid://be1g6io4kjok8" path="res://enemies/lobber/lobber.tscn" id="2_dx6x4"]
 
 [node name="LobberSpawner" instance=ExtResource("1_f3y4e")]
+top_level = true
 enemy_spawn = ExtResource("2_dx6x4")

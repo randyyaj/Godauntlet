@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c77jcwlixku1h"]
+
+[ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="1_8gijm"]
+[ext_resource type="PackedScene" uid="uid://objrltg4dbj1" path="res://enemies/sorcerer/sorcerer.tscn" id="2_kktho"]
+
+[node name="SorcererSpawner" instance=ExtResource("1_8gijm")]
+top_level = true
+enemy_spawn = ExtResource("2_kktho")
+spawn_rate = 3.0

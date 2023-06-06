@@ -4,4 +4,5 @@
 [ext_resource type="PackedScene" uid="uid://2aend56nw62r" path="res://enemies/grunt/grunt.tscn" id="2_pqolh"]
 
 [node name="GruntSpawner" instance=ExtResource("1_5qgil")]
+top_level = true
 enemy_spawn = ExtResource("2_pqolh")
