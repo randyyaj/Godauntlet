@@ -55,7 +55,6 @@ signal on_projectile_hit
 @export var is_bullet_proof := false
 
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var timer = $Timer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 const MAX_PROJECTILE_DISTANCE = 200

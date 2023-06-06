@@ -89,3 +89,8 @@ func _on_timer_2_timeout():
 func shuffleLevels():
 	myLevelList_easy.levelList.shuffle()
 	myLevelList_medium.levelList.shuffle()
+	var world = get_parent().get_node("World")
+	
+	if (world.get_child_count() > 1):
+		var child_node = world.get_child(1)
+		world.move_child(child_node, 0)

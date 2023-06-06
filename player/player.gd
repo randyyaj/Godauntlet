@@ -121,7 +121,7 @@ var audio_stream_player: AudioStreamPlayer = AudioStreamPlayer.new()
 @export var attack_offset := 16
 
 @onready var health_timer: Timer = $HealthTimer
-@onready var blast_radius =$BlastRadius
+@onready var blast_radius = $BlastRadius
 @onready var blast_radius_shape: CollisionShape2D = $BlastRadius/BlastRadiusShape
 @onready var attack_area: Area2D = $AttackArea
 @onready var attack_timer: Timer = $AttackTimer

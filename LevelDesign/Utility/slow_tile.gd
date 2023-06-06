@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var timer = $Timer
-
 @export var slow_factor := .5
 
 var OGspeed = 0
