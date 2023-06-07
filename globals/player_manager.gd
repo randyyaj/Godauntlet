@@ -18,7 +18,6 @@ func init_player_data() -> void:
 		player_data = PlayerData.new()
 
 	if (player and player_data):
-		print('initializing player data')
 		player.max_health = player_data.max_health
 		player.max_power = player_data.max_power
 		player.max_speed = player_data.max_speed
