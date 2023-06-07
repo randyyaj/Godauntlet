@@ -327,7 +327,7 @@ visible = false
 navigation_polygon = SubResource("NavigationPolygon_0orol")
 
 [node name="Player" parent="." instance=ExtResource("22_mbj0v")]
-position = Vector2(440, 54)
+position = Vector2(440, 48)
 
 [editable path="SpecialTiles/TP_tiles"]
 [editable path="SpecialTiles/TP_tiles2"]

@@ -34,5 +34,8 @@ func apply_modifiers(body: PhysicsBody2D) -> Node2D:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	sig_item_collided.emit(body)
-	queue_free()
+	if (body is Projectile and data.is_destructible):
+		queue_free()
+	else:
+		sig_item_collided.emit(body)
+		queue_free()

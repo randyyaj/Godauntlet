@@ -172,7 +172,7 @@ func _physics_process(delta: float) -> void:
 
 ## Wrapper function allows us to specify a property name and apply operator logic on it
 ## Example emit_signal('health', '+', 4) | emit_signal('health', 'ADD', 4) | emit_signal('health', 'PLUS', 2) | emit_signal('health', 'add', 2)
-func apply_modifier(property_name: StringName, operand: StringName, amount: int, duration: float) -> void:
+func apply_modifier(property_name: StringName, operand: StringName, amount: int, duration: float, sig: Signal) -> void:
 	var property: Variant = get(property_name)
 	var previous_property_value = get(property_name)
 	match operand:
@@ -190,10 +190,11 @@ func apply_modifier(property_name: StringName, operand: StringName, amount: int,
 			pass
 	
 	# Reset property value if duration is present
-	if (previous_property_value and duration):
+	if (previous_property_value and duration > 0):
 		await get_tree().create_timer(duration).timeout
 		set(property_name, previous_property_value)
-		
+	
+	sig.emit(get(property_name))
 
 
 func use_bomb() -> void:
