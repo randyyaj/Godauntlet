@@ -9,7 +9,7 @@ extends Resource
 @export var shot_power := 1
 @export var defense := 0
 @export var score := 0
-@export var speed: int = 200
+@export var speed: int = 100
 @export var shot_speed := 200
 @export var magic_power: int = 1
 @export var bombs: int = 0

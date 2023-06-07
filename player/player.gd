@@ -134,6 +134,7 @@ var last_facing_direction: Vector2 = Vector2.DOWN
 
 func _ready() -> void:
 	PlayerManager.player = self
+	PlayerManager.init_player_data()
 	animation_tree.active = true
 	on_projectile_hit.connect(_on_projectile_hit)
 	on_melee_hit.connect(_on_melee_hit)

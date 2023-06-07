@@ -164,7 +164,7 @@ func _on_projectile_hit(projectile: Projectile, knockback_strength: float) -> vo
 
 func die() -> void:
 	sig_death.emit()
-	PlayerManager.player.score = score
+	PlayerManager.player.score += score
 	queue_free()
 
 
