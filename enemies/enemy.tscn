@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://l5kj1xp4biaf"]
+[gd_scene load_steps=6 format=3 uid="uid://l5kj1xp4biaf"]
 
 [ext_resource type="Script" path="res://enemies/enemy.gd" id="1_fit13"]
 [ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_fdrxu"]
+[ext_resource type="Script" path="res://player/states/state_machine.gd" id="3_hl78q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n4dua"]
 
@@ -22,3 +23,6 @@ shape = SubResource("CircleShape2D_n4dua")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CompressedTexture2D_noruj")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_hl78q")

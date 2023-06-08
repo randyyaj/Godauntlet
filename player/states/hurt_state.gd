@@ -7,6 +7,7 @@ func _ready():
 	
 
 func on_enter(_msg := {}) -> void:
+	super()
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(character.sprite_2d, "modulate", Color(1, 0, 0, 1), .1).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(character.sprite_2d, "modulate", Color(1, 1, 1, 1), .1).set_trans(Tween.TRANS_BOUNCE)

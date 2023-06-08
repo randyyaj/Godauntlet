@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://c68w2sftvjej0"]
+[gd_scene load_steps=108 format=3 uid="uid://c68w2sftvjej0"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_vlum0"]
 [ext_resource type="PackedScene" uid="uid://bp0x0ktit7xmg" path="res://player/projectile.tscn" id="2_l4mr6"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" path="res://player/states/idle_state.gd" id="7_hxkhs"]
 [ext_resource type="Script" path="res://player/states/shoot_state.gd" id="8_4f4ca"]
 [ext_resource type="Script" path="res://player/states/melee_state.gd" id="10_57yjo"]
+[ext_resource type="AudioStream" uid="uid://dugooeekx5vgl" path="res://player/sfx/sfx_shoot.wav" id="10_u1ydw"]
 [ext_resource type="Script" path="res://player/states/hurt_state.gd" id="11_7p8cv"]
+[ext_resource type="AudioStream" uid="uid://p75mbmk0dt5x" path="res://player/sfx/sfx_melee.wav" id="12_gqrir"]
+[ext_resource type="AudioStream" uid="uid://2qakki85uaid" path="res://player/sfx/sfx_hurt.wav" id="14_t1aog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbedo"]
 size = Vector2(10, 14)
@@ -2058,6 +2061,8 @@ fire_rate = 0.35
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_tadkq")
 hframes = 24
@@ -2128,35 +2133,43 @@ script = ExtResource("6_nedwk")
 character = NodePath("..")
 current_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "state_machine")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_player", "state_machine")]
 script = ExtResource("7_hxkhs")
 animation_tree = NodePath("../../AnimationTree")
 animation_player = NodePath("../../AnimationPlayer")
+audio_player = NodePath("../../AudioStreamPlayer")
 state_machine = NodePath("..")
 
-[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "state_machine")]
+[node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_player", "state_machine")]
 script = ExtResource("7_6vqml")
 animation_tree = NodePath("../../AnimationTree")
 animation_player = NodePath("../../AnimationPlayer")
+audio_player = NodePath("../../AudioStreamPlayer")
 state_machine = NodePath("..")
 
-[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "state_machine")]
+[node name="Shoot" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_player", "state_machine")]
 script = ExtResource("8_4f4ca")
 projectile = ExtResource("2_l4mr6")
 animation_tree = NodePath("../../AnimationTree")
 animation_player = NodePath("../../AnimationPlayer")
+audio_player = NodePath("../../AudioStreamPlayer")
+sfx = ExtResource("10_u1ydw")
 state_machine = NodePath("..")
 
-[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "state_machine")]
+[node name="Melee" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_player", "state_machine")]
 script = ExtResource("10_57yjo")
 animation_tree = NodePath("../../AnimationTree")
 animation_player = NodePath("../../AnimationPlayer")
+audio_player = NodePath("../../AudioStreamPlayer")
+sfx = ExtResource("12_gqrir")
 state_machine = NodePath("..")
 
-[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "state_machine")]
+[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation_tree", "animation_player", "audio_player", "state_machine")]
 script = ExtResource("11_7p8cv")
 animation_tree = NodePath("../../AnimationTree")
 animation_player = NodePath("../../AnimationPlayer")
+audio_player = NodePath("../../AudioStreamPlayer")
+sfx = ExtResource("14_t1aog")
 state_machine = NodePath("..")
 
 [connection signal="timeout" from="HealthTimer" to="." method="_on_health_timer_timeout"]

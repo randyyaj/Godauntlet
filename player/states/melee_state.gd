@@ -8,6 +8,7 @@ func _ready():
 	
 
 func on_enter(_msg := {}) -> void:
+	super()
 	animation_tree['parameters/conditions/is_melee'] = true
 
 

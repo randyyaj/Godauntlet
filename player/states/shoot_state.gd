@@ -16,6 +16,7 @@ func _ready():
 	
 
 func on_enter(_msg := {}) -> void:
+	super()
 	animation_tree['parameters/conditions/is_shooting'] = true
 	can_fire_timer.wait_time = character.fire_rate
 	can_fire_timer.start()
