@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://v6cbwga3r71o"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/spawn_clumper.gd" id="1_aewfq"]
+[ext_resource type="PackedScene" uid="uid://2aend56nw62r" path="res://enemies/grunt/grunt.tscn" id="2_75veu"]
+
+[node name="SpawnClumper" type="Node2D"]
+script = ExtResource("1_aewfq")
+enemy_type = ExtResource("2_75veu")
+enemy_count = 2
+
+[node name="SpawnPos" type="Marker2D" parent="."]

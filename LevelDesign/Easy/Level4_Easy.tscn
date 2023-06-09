@@ -440,7 +440,7 @@ navigation_polygon = SubResource("NavigationPolygon_0orol")
 [node name="Player" parent="." instance=ExtResource("22_6b8qx")]
 position = Vector2(65, 50)
 
-[node name="AnimationTree" parent="Player" index="12"]
+[node name="AnimationTree" parent="Player" index="13"]
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_y7l0p")
 
 [connection signal="timeout" from="Spawners/LobberSpawner/SpawnTimer" to="Spawners/LobberSpawner" method="_on_timer_timeout" flags=18]
