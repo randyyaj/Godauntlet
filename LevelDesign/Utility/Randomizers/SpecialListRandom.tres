@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Randomizer" load_steps=5 format=3 uid="uid://d1okoek0yxa8j"]
+
+[ext_resource type="PackedScene" uid="uid://j2b72g6l2n2j" path="res://items/bomb/bomb.tscn" id="1_l7o26"]
+[ext_resource type="PackedScene" uid="uid://tuc5fgxjk74c" path="res://items/key/key.tscn" id="2_yf74k"]
+[ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="3_gv5wm"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/RandomizerList.gd" id="7_kxyqs"]
+
+[resource]
+script = ExtResource("7_kxyqs")
+randomList = Array[PackedScene]([ExtResource("1_l7o26"), ExtResource("2_yf74k"), ExtResource("3_gv5wm")])

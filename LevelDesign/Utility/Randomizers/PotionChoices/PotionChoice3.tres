@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Randomizer" load_steps=4 format=3 uid="uid://d3ylht286wfhg"]
+
+[ext_resource type="PackedScene" uid="uid://bcx1wdsnktsv3" path="res://items/potion/magic_potion.tscn" id="1_vlpsd"]
+[ext_resource type="PackedScene" uid="uid://o4qbw0dr25vh" path="res://items/potion/speed_potion.tscn" id="2_ah6q7"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/RandomizerList.gd" id="3_ucqp5"]
+
+[resource]
+script = ExtResource("3_ucqp5")
+randomList = Array[PackedScene]([ExtResource("1_vlpsd"), ExtResource("2_ah6q7")])

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmi3rwccf5x3l"]
+
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/ItemRandomizers/ItemRandomizer.gd" id="1_t7bdj"]
+[ext_resource type="Resource" uid="uid://br8swo08sdxg6" path="res://LevelDesign/Utility/Randomizers/PotionChoices/PotionListRandom.tres" id="2_lfb03"]
+
+[node name="ItemRandomizer" type="Node2D"]
+script = ExtResource("1_t7bdj")
+item_list = Array[Resource("res://LevelDesign/Utility/Randomizers/RandomizerList.gd")]([ExtResource("2_lfb03")])
+
+[node name="PotentialPositions" type="Node2D" parent="."]
+
+[node name="Point1" type="Marker2D" parent="PotentialPositions"]
+position = Vector2(312, 32)
+
+[node name="Point2" type="Marker2D" parent="PotentialPositions"]
+position = Vector2(312, 144)
