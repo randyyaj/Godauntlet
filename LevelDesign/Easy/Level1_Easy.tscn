@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dc138rp7ybxnw"]
+[gd_scene load_steps=17 format=3 uid="uid://dc138rp7ybxnw"]
 
 [ext_resource type="TileSet" uid="uid://d2pk5ufmx0tni" path="res://LevelDesign/Easy/Tileset.tres" id="1_av0fj"]
 [ext_resource type="PackedScene" uid="uid://c68w2sftvjej0" path="res://player/player.tscn" id="2_1k0am"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dob43ahxbtdei" path="res://LevelDesign/Utility/slow_tile.tscn" id="3_dhok2"]
 [ext_resource type="PackedScene" uid="uid://dtjj45b0y4i4d" path="res://LevelDesign/Utility/stun_tile.tscn" id="4_wjt6p"]
 [ext_resource type="PackedScene" uid="uid://c0feqne80j0vr" path="res://LevelDesign/Utility/damage_tile.tscn" id="5_snsgn"]
-[ext_resource type="PackedScene" uid="uid://dhsy0gnj2juh" path="res://LevelDesign/Utility/tp_tiles.tscn" id="6_xnxbs"]
 [ext_resource type="PackedScene" uid="uid://tuc5fgxjk74c" path="res://items/key/key.tscn" id="8_0fboo"]
 [ext_resource type="PackedScene" uid="uid://nef3abjc2xj6" path="res://spawner/spawner.tscn" id="9_d4d7s"]
 [ext_resource type="PackedScene" uid="uid://nao5ghiwnn8m" path="res://items/food/food.tscn" id="10_idf1k"]
@@ -15,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://objrltg4dbj1" path="res://enemies/sorcerer/sorcerer.tscn" id="12_7g4wh"]
 [ext_resource type="PackedScene" uid="uid://2aend56nw62r" path="res://enemies/grunt/grunt.tscn" id="13_pgko8"]
 [ext_resource type="PackedScene" uid="uid://bu03k208ojloi" path="res://enemies/demon/demon.tscn" id="14_snt2v"]
-[ext_resource type="PackedScene" uid="uid://be1g6io4kjok8" path="res://enemies/lobber/lobber.tscn" id="16_6mcwt"]
-[ext_resource type="PackedScene" uid="uid://b7bd5jehnynnp" path="res://enemies/death/death.tscn" id="17_ygq5c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5mp81"]
 size = Vector2(64, 16)
@@ -53,10 +50,7 @@ layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = true
 layer_3/y_sort_origin = 0
 layer_3/z_index = 1
-layer_3/tile_data = PackedInt32Array(20, 1048578, 2, 65556, 1048578, 1, 589824, 1245186, 0, 655360, 1245186, 1, 35, 1179650, 1, 65571, 1179650, 2, 917556, 1310722, 0, 983092, 1310722, 1, 983082, 1179650, 1, 1048618, 1179650, 2, 1114154, 1179650, 1, 1179690, 1179650, 2, 1245226, 1179650, 1, 1310762, 1179650, 2, 1376298, 1179650, 1, 1441834, 1179650, 2, 1507370, 1179650, 1, 1572906, 1179650, 2, 1638442, 1179650, 1, 1703978, 1179650, 2, 1769514, 1179650, 1, 1835050, 1179650, 2, 1900587, 65538, 0, 1966123, 65538, 1, 1900588, 65538, 0, 1966124, 65538, 1, 1900589, 65538, 0, 1966125, 65538, 1, 1835034, 65538, 0, 1835035, 65538, 0, 1835036, 65538, 0, 1835037, 65538, 0, 1835038, 65538, 0, 1835039, 65538, 0, 1703968, 1179650, 2, 1769504, 1179650, 1, 1835040, 1179650, 2, 1048593, 1048578, 1, 1114129, 1048578, 2, 917521, 1048578, 1, 983057, 1048578, 2, 786449, 1048578, 1, 851985, 1048578, 2, 655377, 1048578, 1, 720913, 1048578, 2, 983075, 1179650, 1, 1048611, 1179650, 1, 1114147, 1179650, 2, 1572899, 1179650, 2, 1638435, 1179650, 2, 1507363, 1179650, 2, 1441827, 1179650, 1, 196614, 327682, 6, 262150, 327682, 7, 196615, 393218, 6, 262151, 393218, 7, 1900596, 1310722, 0, 1966132, 1310722, 1, 1900595, 65538, 0, 1966131, 65538, 1, 1900594, 65538, 0, 1966130, 65538, 1, 1900586, 1245186, 2, 1900569, 1048578, 1, 1966105, 1048578, 2, 2031641, 1048578, 1, 2097177, 1048578, 2, 2490393, 1048578, 1, 2555929, 1048578, 2, 1376268, 1114114, 0, 1441804, 1114114, 1, 1376269, 1179650, 0, 1441805, 1179650, 1, 1376267, 65538, 0, 1441803, 65538, 1, 1376266, 65538, 0, 1441802, 65538, 1, 1376256, 1245186, 0, 1441792, 1245186, 1, 1376257, 65538, 0, 1441793, 65538, 1, 1376258, 65538, 0, 1441794, 65538, 1, 1376259, 65538, 0, 1441795, 65538, 1, 1376260, 65538, 0, 1441796, 65538, 1, 2097152, 1245186, 0, 2162688, 1245186, 1, 2097153, 65538, 0, 2162689, 65538, 1, 2097154, 65538, 0, 2162690, 65538, 1, 2097155, 65538, 0, 2162691, 65538, 1, 2097156, 65538, 0, 2162692, 65538, 1, 2097157, 65538, 0, 2162693, 65538, 1, 2097158, 65538, 0, 2162694, 65538, 1, 2097159, 1114114, 0, 2162695, 1114114, 1, 2097160, 1179650, 0, 2162696, 1179650, 1, 2228232, 1179650, 1, 2490376, 1179650, 1, 2555912, 1179650, 1, 1441815, 327682, 6, 1507351, 327682, 7, 1441816, 393218, 6, 1507352, 393218, 7, 2293795, 327682, 6, 2359331, 327682, 7, 2293796, 393218, 6, 2359332, 393218, 7, 2031628, 327682, 6, 2097164, 327682, 7, 2031629, 393218, 6, 2097165, 393218, 7, 524329, 327682, 6, 589865, 327682, 7, 524330, 393218, 6, 589866, 393218, 7)
-
-[node name="PlayerStartPoint" type="Marker2D" parent="."]
-position = Vector2(52, 63)
+layer_3/tile_data = PackedInt32Array(20, 1048578, 2, 65556, 1048578, 1, 589824, 1245186, 0, 655360, 1245186, 1, 35, 1179650, 1, 65571, 1179650, 2, 917556, 1310722, 0, 983092, 1310722, 1, 983082, 1179650, 1, 1048618, 1179650, 2, 1114154, 1179650, 1, 1179690, 1179650, 2, 1245226, 1179650, 1, 1310762, 1179650, 2, 1376298, 1179650, 1, 1441834, 1179650, 2, 1507370, 1179650, 1, 1572906, 1179650, 2, 1638442, 1179650, 1, 1703978, 1179650, 2, 1769514, 1179650, 1, 1835050, 1179650, 2, 1900587, 65538, 0, 1966123, 65538, 1, 1900588, 65538, 0, 1966124, 65538, 1, 1900589, 65538, 0, 1966125, 65538, 1, 1835034, 65538, 0, 1835035, 65538, 0, 1835036, 65538, 0, 1835037, 65538, 0, 1835038, 65538, 0, 1835039, 65538, 0, 1703968, 1179650, 2, 1769504, 1179650, 1, 1835040, 1179650, 2, 1048593, 1048578, 1, 1114129, 1048578, 2, 917521, 1048578, 1, 983057, 1048578, 2, 786449, 1048578, 1, 851985, 1048578, 2, 655377, 1048578, 1, 720913, 1048578, 2, 983075, 1179650, 1, 1048611, 1179650, 1, 1114147, 1179650, 2, 1572899, 1179650, 2, 1638435, 1179650, 2, 1507363, 1179650, 2, 1441827, 1179650, 1, 196614, 327682, 6, 262150, 327682, 7, 196615, 393218, 6, 262151, 393218, 7, 1900596, 1310722, 0, 1966132, 1310722, 1, 1900595, 65538, 0, 1966131, 65538, 1, 1900594, 65538, 0, 1966130, 65538, 1, 1900586, 1245186, 2, 1900569, 1048578, 1, 1966105, 1048578, 2, 2031641, 1048578, 1, 2097177, 1048578, 2, 2490393, 1048578, 1, 2555929, 1048578, 2, 1376268, 1114114, 0, 1441804, 1114114, 1, 1376269, 1179650, 0, 1441805, 1179650, 1, 1376267, 65538, 0, 1441803, 65538, 1, 1376266, 65538, 0, 1441802, 65538, 1, 1376256, 1245186, 0, 1441792, 1245186, 1, 1376257, 65538, 0, 1441793, 65538, 1, 1376258, 65538, 0, 1441794, 65538, 1, 1376259, 65538, 0, 1441795, 65538, 1, 1376260, 65538, 0, 1441796, 65538, 1, 2097152, 1245186, 0, 2162688, 1245186, 1, 2097153, 65538, 0, 2162689, 65538, 1, 2097154, 65538, 0, 2162690, 65538, 1, 2097155, 65538, 0, 2162691, 65538, 1, 2097156, 65538, 0, 2162692, 65538, 1, 2097157, 65538, 0, 2162693, 65538, 1, 2097158, 65538, 0, 2162694, 65538, 1, 2097159, 1114114, 0, 2162695, 1114114, 1, 2097160, 1179650, 0, 2162696, 1179650, 1, 2228232, 1179650, 1, 2490376, 1179650, 1, 2555912, 1179650, 1, 1441815, 327682, 6, 1507351, 327682, 7, 1441816, 393218, 6, 1507352, 393218, 7, 2293795, 327682, 6, 2359331, 327682, 7, 2293796, 393218, 6, 2359332, 393218, 7, 2031628, 327682, 6, 2097164, 327682, 7, 2031629, 393218, 6, 2097165, 393218, 7, 524329, 327682, 6, 589865, 327682, 7, 524330, 393218, 6, 589866, 393218, 7, 1114122, 851970, 11, 1179658, 851970, 12, 1245194, 851970, 13, 1769477, 851970, 11, 1835013, 851970, 12, 1900549, 851970, 13, 2228244, 851970, 11, 2293780, 851970, 12, 2359316, 851970, 13, 983064, 851970, 11, 1048600, 851970, 12, 1114136, 851970, 13, 262189, 851970, 11, 327725, 851970, 12, 393261, 851970, 13, 327705, 851970, 11, 393241, 851970, 12, 458777, 851970, 13, 196622, 851970, 11, 262158, 851970, 12, 327694, 851970, 13)
 
 [node name="Fence1" type="TileMap" parent="." groups=["Door"]]
 tile_set = ExtResource("1_av0fj")
@@ -88,7 +82,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1638459, 983041, 14, 1703995, 983041, 15, 1638460, 1048577, 14, 1703996, 1048577, 15)
 
 [node name="NextLevelLadder" parent="." instance=ExtResource("2_yyqch")]
-position = Vector2(128, 224)
+position = Vector2(112, 256)
 
 [node name="NextLevelLadder2" parent="." instance=ExtResource("2_yyqch")]
 position = Vector2(784, 608)
@@ -109,19 +103,10 @@ position = Vector2(624, 240)
 [node name="StunTile" parent="." instance=ExtResource("5_snsgn")]
 position = Vector2(102, 108)
 
-[node name="TP_tiles" parent="." instance=ExtResource("6_xnxbs")]
-position = Vector2(19, 31)
-
-[node name="Tile1" parent="TP_tiles" index="0"]
-rotation = 3.14159
-
-[node name="Tile2" parent="TP_tiles" index="1"]
-position = Vector2(420, 586)
-
 [node name="Keys" type="Node2D" parent="."]
 
 [node name="Key" parent="Keys" instance=ExtResource("8_0fboo")]
-position = Vector2(381, 61)
+position = Vector2(528, 136)
 
 [node name="Key2" parent="Keys" instance=ExtResource("8_0fboo")]
 position = Vector2(250, 376)
@@ -130,7 +115,7 @@ position = Vector2(250, 376)
 position = Vector2(40, 594)
 
 [node name="Key4" parent="Keys" instance=ExtResource("8_0fboo")]
-position = Vector2(621, 178)
+position = Vector2(808, 40)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -140,13 +125,19 @@ navigation_polygon = SubResource("NavigationPolygon_0orol")
 position = Vector2(48, 96)
 
 [node name="Food" parent="." instance=ExtResource("10_idf1k")]
-position = Vector2(145, 142)
+position = Vector2(248, 200)
 
 [node name="Spawners" type="Node2D" parent="."]
 
 [node name="GhostSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(448, 64)
 enemy_spawn = ExtResource("11_u33ky")
+spawn_rate = 2.5
+
+[node name="GhostSpawner2" parent="Spawners" instance=ExtResource("9_d4d7s")]
+position = Vector2(528, 216)
+enemy_spawn = ExtResource("11_u33ky")
+spawn_rate = 2.5
 
 [node name="SorcererSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(92, 583)
@@ -156,13 +147,24 @@ enemy_spawn = ExtResource("12_7g4wh")
 position = Vector2(270, 346)
 enemy_spawn = ExtResource("13_pgko8")
 
+[node name="GruntSpawner2" parent="Spawners" instance=ExtResource("9_d4d7s")]
+position = Vector2(712, 440)
+enemy_spawn = ExtResource("13_pgko8")
+
+[node name="GruntSpawner3" parent="Spawners" instance=ExtResource("9_d4d7s")]
+position = Vector2(656, 216)
+enemy_spawn = ExtResource("13_pgko8")
+spawn_rate = 2.0
+
 [node name="DemonSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
 position = Vector2(579, 462)
 enemy_spawn = ExtResource("14_snt2v")
+spawn_rate = 3.0
 
-[node name="LobberSpawner" parent="Spawners" instance=ExtResource("9_d4d7s")]
-position = Vector2(128, 192)
-enemy_spawn = ExtResource("16_6mcwt")
+[node name="DemonSpawner2" parent="Spawners" instance=ExtResource("9_d4d7s")]
+position = Vector2(720, 216)
+enemy_spawn = ExtResource("14_snt2v")
+spawn_rate = 4.0
 
 [node name="TimedDamageTile" parent="." instance=ExtResource("11_jscb0")]
 position = Vector2(320, 64)
@@ -184,8 +186,4 @@ position = Vector2(336, 64)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Death" parent="Enemies" instance=ExtResource("17_ygq5c")]
-position = Vector2(416, 288)
-
 [editable path="SlowTile"]
-[editable path="TP_tiles"]

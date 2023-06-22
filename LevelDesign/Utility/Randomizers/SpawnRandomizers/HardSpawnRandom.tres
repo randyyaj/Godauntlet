@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Randomizer" load_steps=6 format=3 uid="uid://f1nsr7mgcde0"]
+
+[ext_resource type="PackedScene" uid="uid://d3g0yrtaerdgk" path="res://spawner/SpecificSpawners/spawner_lobber.tscn" id="1_5vvxk"]
+[ext_resource type="PackedScene" uid="uid://b7y15mb7kf7kc" path="res://spawner/SpecificSpawners/spawner_demon.tscn" id="2_wje57"]
+[ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/RandomizerList.gd" id="3_em6bc"]
+[ext_resource type="PackedScene" uid="uid://objrltg4dbj1" path="res://enemies/sorcerer/sorcerer.tscn" id="3_ou8p1"]
+[ext_resource type="PackedScene" uid="uid://bu03k208ojloi" path="res://enemies/demon/demon.tscn" id="4_v5nm6"]
+
+[resource]
+script = ExtResource("3_em6bc")
+randomList = Array[PackedScene]([ExtResource("1_5vvxk"), ExtResource("2_wje57"), ExtResource("3_ou8p1"), ExtResource("4_v5nm6")])

@@ -55,7 +55,6 @@ signal on_projectile_hit
 @export var is_bullet_proof := false
 
 @onready var navigation_agent_2d = $NavigationAgent2D
-@onready var timer = $Timer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 const MAX_PROJECTILE_DISTANCE = 200
@@ -165,13 +164,13 @@ func _on_projectile_hit(projectile: Projectile, knockback_strength: float) -> vo
 
 func die() -> void:
 	sig_death.emit()
-	PlayerManager.player.score = score
+	PlayerManager.player.score += score
 	queue_free()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		area.get_parent().health -= power # Inflict damage to player
+		area.get_parent().emit_signal('on_melee_hit', power) # Inflict damage to player
 		if (is_kamikaze):
 			die()
 		else:

@@ -14,6 +14,9 @@ func get_global_transform() -> Transform2D:
 
 
 func init_player_data() -> void:
+	if (!player_data):
+		player_data = PlayerData.new()
+
 	if (player and player_data):
 		player.max_health = player_data.max_health
 		player.max_power = player_data.max_power

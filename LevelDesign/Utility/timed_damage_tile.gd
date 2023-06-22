@@ -21,7 +21,6 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
-		print("player hit!")
 		area_2d.set_deferred("monitoring", false)
 		area.get_parent().health -= damage # Inflict damage to player
 		timer.start()

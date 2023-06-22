@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://tyb2iwulmi2v"]
+[gd_scene load_steps=3 format=3 uid="uid://tyb2iwulmi2v"]
 
 [ext_resource type="Script" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/SpawnRandomizer.gd" id="1_0xwxl"]
+[ext_resource type="Resource" uid="uid://x2cmptaxm5xe" path="res://LevelDesign/Utility/Randomizers/SpawnRandomizers/EasySpawnRandom.tres" id="2_x6l6y"]
 
 [node name="SpawnRandomizer" type="Node2D"]
 script = ExtResource("1_0xwxl")
+spawner_list = ExtResource("2_x6l6y")
 
 [node name="PotentialPositions" type="Node2D" parent="."]
 

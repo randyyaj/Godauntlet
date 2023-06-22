@@ -1,7 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://duduq86hp1aho"]
+[gd_scene load_steps=8 format=3 uid="uid://duduq86hp1aho"]
 
 [ext_resource type="Script" path="res://items/treasure/treasure.gd" id="1_ev7ws"]
+[ext_resource type="Script" path="res://items/modifier.gd" id="2_c8x6x"]
 [ext_resource type="Script" path="res://items/item_resource.gd" id="2_s1aqb"]
+[ext_resource type="Texture2D" uid="uid://ypgt3j7xbfct" path="res://Art/Tilesets/0x72_DungeonTilesetII_v1.6.png" id="3_62qwh"]
+
+[sub_resource type="Resource" id="Resource_1kjwo"]
+script = ExtResource("2_c8x6x")
+modifier_type = 7
+amount = 200
+operation_type = 0
+duration = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr18o"]
+atlas = ExtResource("3_62qwh")
+region = Rect2(321, 418, 14, 13)
 
 [sub_resource type="Resource" id="Resource_k7uhh"]
 script = ExtResource("2_s1aqb")
@@ -11,7 +24,8 @@ description = "Treasure"
 stackable = false
 is_consumable = true
 is_destructible = true
-modifiers = Array[Resource("res://items/modifier.gd")]([])
+texture = SubResource("AtlasTexture_nr18o")
+modifiers = Array[ExtResource("2_c8x6x")]([SubResource("Resource_1kjwo")])
 
 [node name="Treasure" type="Node2D"]
 script = ExtResource("1_ev7ws")

@@ -1,12 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8twan08rtw1p"]
+[gd_scene load_steps=2 format=3 uid="uid://b8twan08rtw1p"]
 
-[ext_resource type="PackedScene" uid="uid://ggw2l8ut2p7" path="res://HUD/player_hud.tscn" id="4_tt866"]
-[ext_resource type="PackedScene" uid="uid://dc138rp7ybxnw" path="res://LevelDesign/Easy/Level1_Easy.tscn" id="11_dd8gi"]
+[ext_resource type="PackedScene" uid="uid://dc138rp7ybxnw" path="res://LevelDesign/Easy/Level1_Easy.tscn" id="1_orino"]
 
 [node name="World" type="Node"]
 
-[node name="Level1Easy" parent="." instance=ExtResource("11_dd8gi")]
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PlayerHUD" parent="CanvasLayer" instance=ExtResource("4_tt866")]
+[node name="Level1Easy" parent="." instance=ExtResource("1_orino")]
